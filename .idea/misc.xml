@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="../../../../layout/compose-model-1646047192519.xml" value="2.0" />
+        <entry key="../../../../layout/compose-model-1646126892572.xml" value="0.33" />
+        <entry key="../../../../layout/compose-model-1646127378011.xml" value="0.33" />
+        <entry key="../../../../layout/compose-model-1646129007382.xml" value="0.24415204678362573" />
+        <entry key="../../../../layout/compose-model-1646331712441.xml" value="0.33" />
+        <entry key="../../../../layout/compose-model-1646332033264.xml" value="0.33" />
+        <entry key="../../../../layout/compose-model-1646336852749.xml" value="0.33" />
+        <entry key="app/src/main/res/drawable/ic_logo.xml" value="0.3375" />
+        <entry key="app/src/main/res/drawable/ic_music.xml" value="0.4085" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK" />
+</project>
