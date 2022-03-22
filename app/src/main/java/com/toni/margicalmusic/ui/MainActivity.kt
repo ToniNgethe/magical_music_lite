@@ -11,11 +11,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
-import com.toni.margicalmusic.ui.presentation.SplashScreen
-import com.toni.margicalmusic.ui.presentation.home.HomePage
-import com.toni.margicalmusic.ui.presentation.on_boarding.OnBoardingScreen
-import com.toni.margicalmusic.ui.presentation.theme.DarkPrimary
-import com.toni.margicalmusic.ui.presentation.theme.MargicalMusicAppTheme
+import com.toni.margicalmusic.presentation.splash.SplashScreen
+import com.toni.margicalmusic.presentation.home.HomePage
+import com.toni.margicalmusic.presentation.on_boarding.OnBoardingScreen
+import com.toni.margicalmusic.presentation.theme.DarkPrimary
+import com.toni.margicalmusic.presentation.theme.MargicalMusicAppTheme
 import com.toni.margicalmusic.ui.utils.Routes
 
 class MainActivity : ComponentActivity() {

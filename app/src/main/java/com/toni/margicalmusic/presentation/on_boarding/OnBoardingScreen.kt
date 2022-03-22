@@ -1,4 +1,4 @@
-package com.toni.margicalmusic.ui.presentation.on_boarding
+package com.toni.margicalmusic.presentation.on_boarding
 
 import android.Manifest
 import android.widget.Toast
@@ -21,10 +21,10 @@ import com.google.accompanist.permissions.PermissionStatus
 import com.google.accompanist.permissions.rememberPermissionState
 import com.google.accompanist.permissions.shouldShowRationale
 import com.toni.margicalmusic.R
-import com.toni.margicalmusic.ui.presentation.on_boarding.components.OnBoardingItem
-import com.toni.margicalmusic.ui.presentation.theme.Ascent
-import com.toni.margicalmusic.ui.presentation.theme.MargicalMusicAppTheme
-import com.toni.margicalmusic.ui.presentation.theme.gray_a
+import com.toni.margicalmusic.presentation.on_boarding.components.OnBoardingItem
+import com.toni.margicalmusic.presentation.theme.Ascent
+import com.toni.margicalmusic.presentation.theme.MargicalMusicAppTheme
+import com.toni.margicalmusic.presentation.theme.gray_a
 import com.toni.margicalmusic.ui.utils.Routes
 import com.toni.margicalmusic.ui.utils.UiEvent
 import kotlinx.coroutines.launch

@@ -1,4 +1,4 @@
-package com.toni.margicalmusic.ui.presentation.theme
+package com.toni.margicalmusic.presentation.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle

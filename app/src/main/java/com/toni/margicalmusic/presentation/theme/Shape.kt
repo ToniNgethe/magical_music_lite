@@ -1,4 +1,4 @@
-package com.toni.margicalmusic.ui.presentation.theme
+package com.toni.margicalmusic.presentation.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes

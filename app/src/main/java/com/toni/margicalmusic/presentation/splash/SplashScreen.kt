@@ -1,4 +1,4 @@
-package com.toni.margicalmusic.ui.presentation
+package com.toni.margicalmusic.presentation.splash
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
@@ -17,7 +17,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.toni.margicalmusic.R
-import com.toni.margicalmusic.ui.presentation.theme.MargicalMusicAppTheme
+import com.toni.margicalmusic.presentation.theme.MargicalMusicAppTheme
 import com.toni.margicalmusic.ui.utils.Routes
 import com.toni.margicalmusic.ui.utils.UiEvent
 import kotlinx.coroutines.delay

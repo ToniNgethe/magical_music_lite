@@ -1,4 +1,4 @@
-package com.toni.margicalmusic.ui.presentation.on_boarding.components
+package com.toni.margicalmusic.presentation.on_boarding.components
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
