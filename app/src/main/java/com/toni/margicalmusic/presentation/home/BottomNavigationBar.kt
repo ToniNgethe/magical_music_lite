@@ -21,7 +21,7 @@ fun BottomNavigationBar(navController: NavHostController) {
     )
     MargicalMusicAppTheme {
         BottomNavigation(
-            backgroundColor = MaterialTheme.colors.background
+            backgroundColor = MaterialTheme.colors.primaryVariant
         ) {
             val navBackStackEntry by navController.currentBackStackEntryAsState()
             val currentRoute = navBackStackEntry?.destination?.route
