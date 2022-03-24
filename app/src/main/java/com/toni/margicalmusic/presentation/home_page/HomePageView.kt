@@ -27,6 +27,8 @@ import com.toni.margicalmusic.domain.models.sampleArtistsData
 import com.toni.margicalmusic.domain.models.sampleDaya
 import com.toni.margicalmusic.domain.models.sampleSonsg
 import com.toni.margicalmusic.presentation.home_page.components.CategoriesView
+import com.toni.margicalmusic.presentation.home_page.components.HomeSongsItem
+import com.toni.margicalmusic.presentation.shared_components.HomePageHeader
 import com.toni.margicalmusic.presentation.theme.Ascent
 import com.toni.margicalmusic.presentation.theme.MargicalMusicAppTheme
 
@@ -39,22 +41,7 @@ fun HomePageView() {
                 .fillMaxSize()
         ) {
             // header
-            Row(
-                modifier = Modifier
-                    .padding(all = 10.dp)
-                    .fillMaxWidth(), Arrangement.SpaceBetween
-            ) {
-                Text(
-                    text = "Good  morning",
-                    color = Ascent,
-                    style = MaterialTheme.typography.h1.copy(fontSize = 24.sp)
-                )
-                Icon(
-                    painter = painterResource(R.drawable.ic_search),
-                    contentDescription = "search",
-                    tint = MaterialTheme.colors.onSurface
-                )
-            }
+            HomePageHeader(displaySearchIcon = true)
 
             // categories
             LazyRow(modifier = Modifier.padding(top = 10.dp)) {
@@ -127,57 +114,7 @@ fun HomePageView() {
             // songs row
             LazyColumn {
                 items(sampleSonsg.size) { index ->
-                    Box(modifier =
-                    Modifier.background(color = if (index % 2 == 1) MaterialTheme.colors.background else MaterialTheme.colors.primaryVariant)) {
-                        Row(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(all = 10.dp),
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            Image(
-                                painter = painterResource(id = sampleSonsg[index].songArt),
-                                contentDescription = null,
-                                modifier = Modifier.size(height = 50.dp, width = 50.dp),
-                                contentScale = ContentScale.Crop
-                            )
-                            Column(
-                                modifier = Modifier
-                                    .weight(1.0f, true)
-                                    .padding(start = 10.dp, end = 10.dp),
-                            ) {
-                                Text(
-                                    text = sampleSonsg[index].name,
-                                    style = MaterialTheme.typography.h2.copy(
-                                        color = MaterialTheme.colors.onSurface, fontSize = 14.sp
-                                    )
-                                )
-
-                                Row(modifier = Modifier.padding(all = 10.dp)) {
-                                    Image(
-                                        painterResource(id = sampleSonsg[index].artist.image),
-                                        contentDescription = null,
-                                        contentScale = ContentScale.Crop,
-                                        modifier = Modifier
-                                            .size(height = 20.dp, width = 20.dp)
-                                            .clip(CircleShape)
-                                    )
-                                    Text(
-                                        text = sampleSonsg[index].artist.name,
-                                        modifier = Modifier.padding(start = 10.dp),
-                                        style = MaterialTheme.typography.h3.copy(
-                                            fontSize = 12.sp, color = MaterialTheme.colors.onSurface
-                                        )
-                                    )
-                                }
-                            }
-                            Icon(
-                                painter = painterResource(id = R.drawable.ic_more),
-                                contentDescription = null,
-                                tint = MaterialTheme.colors.onSurface
-                            )
-                        }
-                    }
+                    HomeSongsItem(index, sampleSonsg[index])
                 }
             }
         }

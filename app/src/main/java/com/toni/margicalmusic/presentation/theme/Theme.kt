@@ -15,7 +15,7 @@ private val DarkColorPalette = darkColors(
     secondary = Ascent,
     background = DarkPrimary,
     surface = DarkPrimary,
-    onSurface = Color.White
+    onSurface = Color.White,
 )
 
 @SuppressLint("ConflictingOnColor")
