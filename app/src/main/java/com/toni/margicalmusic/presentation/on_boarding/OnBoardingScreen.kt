@@ -41,8 +41,7 @@ fun OnBoardingScreen(onNavigate: (UiEvent.OnNavigate) -> Unit) {
         val context = LocalContext.current
 
 
-        BottomSheetScaffold(
-            scaffoldState = bottomSheetState,
+        BottomSheetScaffold(scaffoldState = bottomSheetState,
             sheetPeekHeight = 0.dp,
             sheetContent = {
                 Column(
@@ -132,41 +131,19 @@ fun OnBoardingScreen(onNavigate: (UiEvent.OnNavigate) -> Unit) {
                     icon = R.drawable.ic_music
                 )
 
-                Box(
-                    modifier = Modifier
-                        .padding(horizontal = 40.dp)
-                        .padding(vertical = 20.dp)
-                        .fillMaxWidth()
-                        .height(0.5.dp)
-                        .background(gray_a)
-                )
+                Spacer(modifier = Modifier.padding(all = 10.dp))
 
                 OnBoardingItem(
                     title = "Bringing more to your  music, artists and \nplaylist",
                     icon = R.drawable.ic_playlist
                 )
-
-                Box(
-                    modifier = Modifier
-                        .padding(horizontal = 40.dp)
-                        .padding(vertical = 20.dp)
-                        .fillMaxWidth()
-                        .height(0.5.dp)
-                        .background(gray_a)
-                )
-
+                Spacer(modifier = Modifier.padding(all = 10.dp))
                 OnBoardingItem(
                     title = "Discover your favourite artist albums, songs \n" + "and music videos",
                     icon = R.drawable.ic_albums
                 )
 
-                Box(
-                    modifier = Modifier
-                        .padding(horizontal = 40.dp)
-                        .padding(vertical = 20.dp)
-                        .fillMaxWidth()
-                        .background(gray_a)
-                )
+                Spacer(modifier = Modifier.weight(2f))
 
                 Box(modifier = Modifier.padding(40.dp)) {
                     Button(

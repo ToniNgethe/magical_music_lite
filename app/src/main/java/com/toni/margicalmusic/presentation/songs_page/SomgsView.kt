@@ -13,18 +13,15 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.toni.margicalmusic.R
-import com.toni.margicalmusic.domain.models.sampleSonsg
-import com.toni.margicalmusic.presentation.home_page.components.HomeSongsItem
+import com.toni.margicalmusic.presentation.shared_components.HomeSongsItem
 import com.toni.margicalmusic.presentation.shared_components.HomePageHeader
 import com.toni.margicalmusic.presentation.theme.MargicalMusicAppTheme
 import com.toni.margicalmusic.presentation.theme.gray_a
-import java.util.Stack
 
 @Composable
 fun SongsView() {
@@ -72,11 +69,11 @@ fun SongsView() {
             }
 
             // songs row
-            LazyColumn {
-                items(sampleSonsg.size) { index ->
-                    HomeSongsItem(index, sampleSonsg[index], icon = R.drawable.ic_play)
-                }
-            }
+//            LazyColumn {
+//                items(sampleSonsg.size) { index ->
+//                    HomeSongsItem(index, sampleSonsg[index], icon = R.drawable.ic_play)
+//                }
+//            }
         }
     }
 }

@@ -17,7 +17,9 @@ import com.toni.margicalmusic.presentation.on_boarding.OnBoardingScreen
 import com.toni.margicalmusic.presentation.theme.DarkPrimary
 import com.toni.margicalmusic.presentation.theme.MargicalMusicAppTheme
 import com.toni.margicalmusic.ui.utils.Routes
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

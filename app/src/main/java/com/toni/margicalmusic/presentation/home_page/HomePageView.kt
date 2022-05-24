@@ -1,4 +1,4 @@
-package com.toni.margicalmusic.ui.presentation.home
+package com.toni.margicalmusic.presentation.home_page
 
 import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
@@ -7,33 +7,33 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.toni.margicalmusic.R
-import com.toni.margicalmusic.domain.models.sampleArtistsData
 import com.toni.margicalmusic.domain.models.sampleDaya
-import com.toni.margicalmusic.domain.models.sampleSonsg
 import com.toni.margicalmusic.presentation.home_page.components.CategoriesView
-import com.toni.margicalmusic.presentation.home_page.components.HomeSongsItem
+import com.toni.margicalmusic.presentation.shared_components.HomeSongsItem
+import com.toni.margicalmusic.presentation.home_page.vm.HomePageViewModel
 import com.toni.margicalmusic.presentation.shared_components.HomePageHeader
 import com.toni.margicalmusic.presentation.theme.Ascent
 import com.toni.margicalmusic.presentation.theme.MargicalMusicAppTheme
 
 @Composable
-fun HomePageView() {
+fun HomePageView(homePageViewModel: HomePageViewModel = hiltViewModel()) {
+    val uiState = homePageViewModel.homePageState.collectAsState()
     MargicalMusicAppTheme {
         Column(
             modifier = Modifier
@@ -44,12 +44,29 @@ fun HomePageView() {
             HomePageHeader(displaySearchIcon = true)
 
             // categories
-            LazyRow(modifier = Modifier.padding(top = 10.dp)) {
+            val categories = uiState.value.genres
+            val catgeoriesErrorMessage = uiState.value.errorMessage
+
+            if (categories?.isNotEmpty() == true) LazyRow(modifier = Modifier.padding(top = 10.dp)) {
                 items(sampleDaya.size) { index ->
                     CategoriesView(
                         title = sampleDaya[index].title,
                         image = sampleDaya[index].image,
                         color = sampleDaya[index].color
+                    )
+                }
+            }
+
+            catgeoriesErrorMessage?.let { uiText ->
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(10.dp)
+                ) {
+                    Text(
+                        text = uiText.asString(LocalContext.current),
+                        style = MaterialTheme.typography.h1.copy(fontSize = 13.sp),
+                        color = MaterialTheme.colors.onSurface
                     )
                 }
             }
@@ -63,28 +80,32 @@ fun HomePageView() {
             ) {}
 
             // artists row
+
+            val artists = uiState.value.artists
+            val artistMessage = uiState.value.artistsError
+
             TitleRow("Artists") {
 
             }
-
-            Box(modifier = Modifier.padding(start = 10.dp)) {
+            if (artists?.isNotEmpty() == true) Box(modifier = Modifier.padding(start = 10.dp)) {
                 LazyRow {
-                    items(sampleArtistsData.size) { index ->
+                    items(artists.size) { index ->
+                        val artist = artists[index]
                         Column {
-                            Image(
-                                painter = painterResource(id = sampleArtistsData[index].image),
+                            if (artist.image == null) Image(
+                                painter = painterResource(id = R.drawable.ic_loader),
                                 contentDescription = "",
                                 modifier = Modifier
                                     .height(90.dp)
                                     .width(120.dp)
                             )
                             Text(
-                                text = sampleArtistsData[index].name,
+                                text = artist.name,
                                 style = MaterialTheme.typography.h2.copy(fontSize = 14.sp),
                                 color = MaterialTheme.colors.onSurface
                             )
                             Text(
-                                text = "${sampleArtistsData[index].noTracks} tracks",
+                                text = "${artist.songCount} tracks",
                                 style = MaterialTheme.typography.h3.copy(
                                     fontSize = 12.sp,
                                     fontStyle = FontStyle.Normal,
@@ -97,6 +118,19 @@ fun HomePageView() {
                 }
             }
 
+            artistMessage?.let { uiText ->
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(10.dp)
+                ) {
+                    Text(
+                        text = uiText.asString(LocalContext.current),
+                        style = MaterialTheme.typography.h1.copy(fontSize = 13.sp),
+                        color = MaterialTheme.colors.onSurface
+                    )
+                }
+            }
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -112,9 +146,25 @@ fun HomePageView() {
             }
 
             // songs row
-            LazyColumn {
-                items(sampleSonsg.size) { index ->
-                    HomeSongsItem(index, sampleSonsg[index])
+            val songs = uiState.value.songs
+            val songError = uiState.value.songsError
+
+            if (songs?.isNotEmpty() == true) LazyColumn {
+                items(songs.size) { index ->
+                    HomeSongsItem(index, songs[index])
+                }
+            }
+            songError?.let { uiText ->
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(10.dp)
+                ) {
+                    Text(
+                        text = uiText.asString(LocalContext.current),
+                        style = MaterialTheme.typography.h1.copy(fontSize = 13.sp),
+                        color = MaterialTheme.colors.onSurface
+                    )
                 }
             }
         }

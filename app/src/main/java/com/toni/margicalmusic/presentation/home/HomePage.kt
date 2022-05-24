@@ -6,7 +6,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.toni.margicalmusic.ui.presentation.home.HomePageView
+import com.toni.margicalmusic.presentation.home_page.HomePageView
 
 @Composable
 fun HomePage() {

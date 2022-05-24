@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Margical Music App</string>
+    <string name="no_albums">No albums found</string>
+    <string name="no_artists_found">No artists found</string>
+    <string name="no_songs">No song(s) found</string>
+    <string name="no_genres">Genre(s) not found</string>
 </resources>
