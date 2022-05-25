@@ -23,6 +23,7 @@ import coil.compose.rememberImagePainter
 import coil.request.ImageRequest
 import com.toni.margicalmusic.R
 import com.toni.margicalmusic.domain.models.Song
+import com.toni.margicalmusic.utils.MediaUtils.convertMillisToMinsSecs
 import com.toni.margicalmusic.utils.MediaUtils.getAlbumArtUri
 
 
@@ -65,15 +66,15 @@ fun HomeSongsItem(index: Int, song: Song, icon: Int = R.drawable.ic_more) {
                             .size(height = 20.dp, width = 20.dp)
                             .clip(CircleShape)
                     )
-                    song.artistName?.let {
-                        Text(
-                            text = it ,
-                            modifier = Modifier.padding(start = 10.dp),
-                            style = MaterialTheme.typography.h3.copy(
-                                fontSize = 14.sp, color = MaterialTheme.colors.onSurface
-                            )
+
+                    Text(
+                        text = "${song.artistName}. ${convertMillisToMinsSecs(song.duration.toLong())}",
+                        modifier = Modifier.padding(start = 10.dp),
+                        style = MaterialTheme.typography.h3.copy(
+                            fontSize = 14.sp, color = MaterialTheme.colors.onSurface
                         )
-                    }
+                    )
+
                 }
             }
             Icon(

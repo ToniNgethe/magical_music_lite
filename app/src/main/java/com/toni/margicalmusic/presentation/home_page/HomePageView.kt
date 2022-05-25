@@ -30,6 +30,8 @@ import com.toni.margicalmusic.presentation.home_page.vm.HomePageViewModel
 import com.toni.margicalmusic.presentation.shared_components.HomePageHeader
 import com.toni.margicalmusic.presentation.theme.Ascent
 import com.toni.margicalmusic.presentation.theme.MargicalMusicAppTheme
+import com.toni.margicalmusic.utils.MediaUtils
+import com.toni.margicalmusic.utils.MediaUtils.getAlbumArtUri
 
 @Composable
 fun HomePageView(homePageViewModel: HomePageViewModel = hiltViewModel()) {
@@ -48,11 +50,11 @@ fun HomePageView(homePageViewModel: HomePageViewModel = hiltViewModel()) {
             val catgeoriesErrorMessage = uiState.value.errorMessage
 
             if (categories?.isNotEmpty() == true) LazyRow(modifier = Modifier.padding(top = 10.dp)) {
-                items(sampleDaya.size) { index ->
+                items(categories.size) { index ->
                     CategoriesView(
-                        title = sampleDaya[index].title,
-                        image = sampleDaya[index].image,
-                        color = sampleDaya[index].color
+                        title = categories[index].name,
+                        imageUri = getAlbumArtUri(albumId = categories[index].song.albumId),
+                        color = categories[index].getGenreColor()
                     )
                 }
             }

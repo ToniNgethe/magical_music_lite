@@ -1,5 +1,6 @@
 package com.toni.margicalmusic.presentation.home_page.components
 
+import android.net.Uri
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -14,10 +15,12 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.rememberImagePainter
 import com.toni.margicalmusic.R
+import com.toni.margicalmusic.utils.MediaUtils.getAlbumArtUri
 
 @Composable
-fun CategoriesView(title: String, image: Int, color: Color) {
+fun CategoriesView(title: String, imageUri: Uri, color: Color) {
     Box(modifier = Modifier.padding(start = 10.dp)) {
         Row(
             modifier = Modifier.background(color = color),
@@ -25,7 +28,7 @@ fun CategoriesView(title: String, image: Int, color: Color) {
             Alignment.CenterVertically
         ) {
             Image(
-                painter = painterResource(id = image),
+                painter = rememberImagePainter(data = imageUri),
                 contentScale = ContentScale.FillBounds,
                 contentDescription = "image",
                 modifier = Modifier.size(40.dp),
