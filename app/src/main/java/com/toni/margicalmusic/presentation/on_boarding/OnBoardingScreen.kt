@@ -25,8 +25,8 @@ import com.toni.margicalmusic.presentation.on_boarding.components.OnBoardingItem
 import com.toni.margicalmusic.presentation.theme.Ascent
 import com.toni.margicalmusic.presentation.theme.MargicalMusicAppTheme
 import com.toni.margicalmusic.presentation.theme.gray_a
-import com.toni.margicalmusic.ui.utils.Routes
-import com.toni.margicalmusic.ui.utils.UiEvent
+import com.toni.margicalmusic.presentation.ui.utils.Routes
+import com.toni.margicalmusic.presentation.ui.utils.UiEvent
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterialApi::class, ExperimentalPermissionsApi::class)

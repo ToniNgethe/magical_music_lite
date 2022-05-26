@@ -8,12 +8,6 @@ object MediaUtils {
         return ContentUris.withAppendedId(Uri.parse("content://media/external/audio/albumart"), albumId)
     }
 
-    /**
-     * Convert millisseconds to hh:mm:ss format.
-     *
-     * @param milliseconds The input time in milliseconds to format.
-     * @return The formatted time string.
-     */
     fun convertMillisToMinsSecs(milliseconds: Long): String {
 
         val secondsValue = (milliseconds / 1000).toInt() % 60
@@ -37,11 +31,11 @@ object MediaUtils {
         if (hoursValue != 0) {
             minutes = "0$minutesValue"
             hours = "" + hoursValue
-            output = "$hours:$minutes:$seconds"
+            output = "$hours.$minutes.$seconds"
         } else {
             minutes = "" + minutesValue
             hours = "" + hoursValue
-            output = "$minutes:$seconds"
+            output = "$minutes.$seconds"
         }
 
         return output

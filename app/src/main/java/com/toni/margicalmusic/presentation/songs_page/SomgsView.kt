@@ -1,30 +1,31 @@
-package com.toni.margicalmusic.presentation.home
+package com.toni.margicalmusic.presentation.songs_page
 
 import android.content.res.Configuration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.text.BasicTextField
-import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.toni.margicalmusic.R
-import com.toni.margicalmusic.presentation.shared_components.HomeSongsItem
 import com.toni.margicalmusic.presentation.shared_components.HomePageHeader
+import com.toni.margicalmusic.presentation.shared_components.HomeSongsItem
 import com.toni.margicalmusic.presentation.theme.MargicalMusicAppTheme
-import com.toni.margicalmusic.presentation.theme.gray_a
+import com.toni.margicalmusic.presentation.ui.CustomSearchField
 
 @Composable
-fun SongsView() {
+fun SongsView(
+    songsVm: SongsVm = hiltViewModel()
+) {
+    val songsUiState = songsVm.songsUiState.collectAsState()
+
     MargicalMusicAppTheme {
         Column(
             modifier = Modifier
@@ -33,47 +34,31 @@ fun SongsView() {
         ) {
             HomePageHeader()
 
-            // search
-            val text = remember {
-                mutableStateOf("")
-            }
-            Box(modifier = Modifier.padding(start = 10.dp, end = 10.dp, bottom = 16.dp)) {
-                Box(
+            CustomSearchField()
+
+            val errorMessage = songsUiState.value.errorMessage
+
+            if (errorMessage != null) {
+                Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .background(MaterialTheme.colors.primaryVariant),
-                    contentAlignment = Alignment.CenterStart
+                        .padding(10.dp)
                 ) {
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.ic_search),
-                            contentDescription = "search",
-                            modifier = Modifier.padding(all = 10.dp),
-                            tint = gray_a
-                        )
-                        BasicTextField(
-                            value = text.value,
-                            onValueChange = {
-                                text.value = it
-                            },
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(end = 10.dp),
-                            textStyle = TextStyle.Default.copy(color = MaterialTheme.colors.onSurface)
-                        )
-                    }
-                    if (text.value.isEmpty()) Text(
-                        color = gray_a, text = "Search", modifier = Modifier.padding(start = 50.dp)
+                    Text(
+                        text = errorMessage.asString(LocalContext.current),
+                        style = MaterialTheme.typography.h1.copy(fontSize = 13.sp),
+                        color = MaterialTheme.colors.onSurface
                     )
                 }
             }
 
+            val songs = songsUiState.value.songs
             // songs row
-//            LazyColumn {
-//                items(sampleSonsg.size) { index ->
-//                    HomeSongsItem(index, sampleSonsg[index], icon = R.drawable.ic_play)
-//                }
-//            }
+            if (songs?.isNotEmpty() == true) LazyColumn {
+                items(songs.size) { index ->
+                    HomeSongsItem(index, songs[index], icon = R.drawable.ic_play)
+                }
+            }
         }
     }
 }

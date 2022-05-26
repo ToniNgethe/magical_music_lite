@@ -18,12 +18,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.toni.margicalmusic.R
 import com.toni.margicalmusic.presentation.theme.MargicalMusicAppTheme
-import com.toni.margicalmusic.ui.utils.Routes
-import com.toni.margicalmusic.ui.utils.UiEvent
+import com.toni.margicalmusic.presentation.ui.utils.Routes
+import com.toni.margicalmusic.presentation.ui.utils.UiEvent
 import kotlinx.coroutines.delay
 
 @Composable
-fun SplashScreen( onNavigate: ( UiEvent.OnNavigate ) -> Unit ) {
+fun SplashScreen( onNavigate: (UiEvent.OnNavigate ) -> Unit ) {
     val textVisible = produceState(initialValue = false) {
         delay(1000)
         value = true

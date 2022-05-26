@@ -1,4 +1,4 @@
-package com.toni.margicalmusic.ui.utils
+package com.toni.margicalmusic.presentation.ui.utils
 
 object Routes {
     const val SPLASH_SCREEN = "splash-screen"

@@ -1,4 +1,4 @@
-package com.toni.margicalmusic.ui
+package com.toni.margicalmusic.presentation.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -7,6 +7,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -16,7 +17,7 @@ import com.toni.margicalmusic.presentation.home.HomePage
 import com.toni.margicalmusic.presentation.on_boarding.OnBoardingScreen
 import com.toni.margicalmusic.presentation.theme.DarkPrimary
 import com.toni.margicalmusic.presentation.theme.MargicalMusicAppTheme
-import com.toni.margicalmusic.ui.utils.Routes
+import com.toni.margicalmusic.presentation.ui.utils.Routes
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -27,6 +28,7 @@ class MainActivity : ComponentActivity() {
             MargicalMusicAppTheme {
                 val systemUiController = rememberSystemUiController()
                 val userDarkIcons = MaterialTheme.colors.isLight
+                val context = LocalContext.current
 
                 SideEffect {
                     systemUiController.setSystemBarsColor(
@@ -52,7 +54,7 @@ class MainActivity : ComponentActivity() {
                             })
                         }
                         composable(Routes.HOME_PAGE) {
-                            HomePage()
+                            HomePage( context )
                         }
                     }
 
