@@ -2,6 +2,7 @@ package com.toni.margicalmusic.presentation.songs_page
 
 import android.content.res.Configuration
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.MaterialTheme
@@ -19,10 +20,11 @@ import com.toni.margicalmusic.presentation.shared_components.HomePageHeader
 import com.toni.margicalmusic.presentation.shared_components.HomeSongsItem
 import com.toni.margicalmusic.presentation.theme.MargicalMusicAppTheme
 import com.toni.margicalmusic.presentation.ui.CustomSearchField
+import com.toni.margicalmusic.presentation.ui.utils.UiEvent
 
 @Composable
 fun SongsView(
-    songsVm: SongsVm = hiltViewModel()
+    songsVm: SongsVm = hiltViewModel(), onEvent: (UiEvent) -> Unit
 ) {
     val songsUiState = songsVm.songsUiState.collectAsState()
 
@@ -68,5 +70,7 @@ fun SongsView(
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO, name = "white theme")
 @Composable
 fun SongsViewPreview() {
-    SongsView()
+    SongsView {
+
+    }
 }

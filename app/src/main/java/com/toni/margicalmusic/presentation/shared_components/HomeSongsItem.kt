@@ -2,6 +2,7 @@ package com.toni.margicalmusic.presentation.shared_components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Colors
@@ -28,9 +29,13 @@ import com.toni.margicalmusic.utils.MediaUtils.getAlbumArtUri
 
 
 @Composable
-fun HomeSongsItem(index: Int, song: Song, icon: Int = R.drawable.ic_more) {
+fun HomeSongsItem(
+    index: Int, song: Song, icon: Int = R.drawable.ic_more, onClick: ((Song) -> Unit)? = null
+) {
     Box(
-        modifier = Modifier.background(color = if (index % 2 == 1) MaterialTheme.colors.background else MaterialTheme.colors.primaryVariant)
+        modifier = Modifier
+            .background(color = if (index % 2 == 1) MaterialTheme.colors.background else MaterialTheme.colors.primaryVariant)
+            .clickable { onClick?.invoke(song) }
     ) {
         Row(
             modifier = Modifier

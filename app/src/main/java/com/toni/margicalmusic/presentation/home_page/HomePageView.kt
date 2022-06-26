@@ -2,7 +2,6 @@ package com.toni.margicalmusic.presentation.home_page
 
 import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -18,23 +17,28 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.toni.margicalmusic.R
-import com.toni.margicalmusic.domain.models.sampleDaya
 import com.toni.margicalmusic.presentation.home_page.components.CategoriesView
-import com.toni.margicalmusic.presentation.shared_components.HomeSongsItem
 import com.toni.margicalmusic.presentation.home_page.vm.HomePageViewModel
+import com.toni.margicalmusic.presentation.shared_components.HomeSongsItem
 import com.toni.margicalmusic.presentation.shared_components.HomePageHeader
 import com.toni.margicalmusic.presentation.theme.Ascent
 import com.toni.margicalmusic.presentation.theme.MargicalMusicAppTheme
-import com.toni.margicalmusic.utils.MediaUtils
+import com.toni.margicalmusic.presentation.ui.utils.Routes
+import com.toni.margicalmusic.presentation.ui.utils.UiEvent
 import com.toni.margicalmusic.utils.MediaUtils.getAlbumArtUri
 
 @Composable
-fun HomePageView(homePageViewModel: HomePageViewModel = hiltViewModel()) {
+fun HomePageView(
+    homePageViewModel: HomePageViewModel = hiltViewModel(),
+    onNavigate: ((UiEvent.OnNavigate) -> Unit)? = null
+) {
+
     val uiState = homePageViewModel.homePageState.collectAsState()
     MargicalMusicAppTheme {
         Column(
@@ -82,7 +86,6 @@ fun HomePageView(homePageViewModel: HomePageViewModel = hiltViewModel()) {
             ) {}
 
             // artists row
-
             val artists = uiState.value.artists
             val artistMessage = uiState.value.artistsError
 
@@ -93,18 +96,21 @@ fun HomePageView(homePageViewModel: HomePageViewModel = hiltViewModel()) {
                 LazyRow {
                     items(artists.size) { index ->
                         val artist = artists[index]
-                        Column {
-                            if (artist.image == null) Image(
-                                painter = painterResource(id = R.drawable.ic_loader),
-                                contentDescription = "",
+                        Column(modifier = Modifier.padding(all = 5.dp)) {
+                            if (artist.image == null) Box(
                                 modifier = Modifier
+                                    .background(Color.LightGray)
                                     .height(90.dp)
                                     .width(120.dp)
                             )
+
                             Text(
                                 text = artist.name,
                                 style = MaterialTheme.typography.h2.copy(fontSize = 14.sp),
-                                color = MaterialTheme.colors.onSurface
+                                color = MaterialTheme.colors.onSurface,
+                                maxLines = 1,
+                                overflow = TextOverflow.Ellipsis,
+                                modifier = Modifier.width(120.dp)
                             )
                             Text(
                                 text = "${artist.songCount} tracks",
@@ -143,9 +149,7 @@ fun HomePageView(homePageViewModel: HomePageViewModel = hiltViewModel()) {
 
 
             // artists row
-            TitleRow("Songs", moreText = "Show more") {
-
-            }
+            TitleRow("Songs", moreText = "Show more") {}
 
             // songs row
             val songs = uiState.value.songs
@@ -153,7 +157,9 @@ fun HomePageView(homePageViewModel: HomePageViewModel = hiltViewModel()) {
 
             if (songs?.isNotEmpty() == true) LazyColumn {
                 items(songs.size) { index ->
-                    HomeSongsItem(index, songs[index])
+                    HomeSongsItem(index, songs[index]) { song ->
+                        onNavigate?.invoke(UiEvent.OnNavigate(Routes.SONG_PAGE))
+                    }
                 }
             }
             songError?.let { uiText ->

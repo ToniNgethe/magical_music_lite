@@ -16,7 +16,6 @@ fun BottomNavigationBar(navController: NavHostController) {
         NavigationItem.Home,
         NavigationItem.Songs,
         NavigationItem.Artists,
-        NavigationItem.Albums,
         NavigationItem.Trending,
     )
     MargicalMusicAppTheme {

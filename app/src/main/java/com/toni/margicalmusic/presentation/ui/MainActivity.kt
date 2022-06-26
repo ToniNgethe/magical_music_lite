@@ -15,9 +15,11 @@ import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.toni.margicalmusic.presentation.splash.SplashScreen
 import com.toni.margicalmusic.presentation.home.HomePage
 import com.toni.margicalmusic.presentation.on_boarding.OnBoardingScreen
+import com.toni.margicalmusic.presentation.selected_song.SelectedSongScreen
 import com.toni.margicalmusic.presentation.theme.DarkPrimary
 import com.toni.margicalmusic.presentation.theme.MargicalMusicAppTheme
 import com.toni.margicalmusic.presentation.ui.utils.Routes
+import com.toni.margicalmusic.presentation.ui.utils.UiEvent
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -54,7 +56,14 @@ class MainActivity : ComponentActivity() {
                             })
                         }
                         composable(Routes.HOME_PAGE) {
-                            HomePage( context )
+                            HomePage(context) { uiEvent ->
+                                if (uiEvent is UiEvent.OnNavigate) navController.navigate(uiEvent.route)
+                            }
+                        }
+                        composable(Routes.SONG_PAGE) {
+                            SelectedSongScreen(context, lifecycle) { event ->
+
+                            }
                         }
                     }
 
