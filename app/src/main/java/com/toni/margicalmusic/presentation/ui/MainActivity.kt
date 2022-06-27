@@ -61,7 +61,7 @@ class MainActivity : ComponentActivity() {
                             }
                         }
                         composable(Routes.SONG_PAGE) {
-                            SelectedSongScreen(context, lifecycle) { event ->
+                            SelectedSongScreen(context, lifecycle, navController) { event ->
 
                             }
                         }
