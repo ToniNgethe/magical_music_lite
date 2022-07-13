@@ -6,7 +6,7 @@ import com.toni.margicalmusic.domain.models.Artist
 import com.toni.margicalmusic.domain.models.GenreSongModel
 import com.toni.margicalmusic.domain.models.Song
 import com.toni.margicalmusic.domain.usecases.GetHomePageDataUseCase
-import com.toni.margicalmusic.utils.MediaState
+import com.toni.margicalmusic.utils.ResponseState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -37,35 +37,35 @@ class HomePageViewModel @Inject constructor(private val getHomePageDataUseCase: 
         }
     }
 
-    private suspend fun emitGenres(genres: MediaState<List<GenreSongModel>>) {
+    private suspend fun emitGenres(genres: ResponseState<List<GenreSongModel>>) {
         when (genres) {
-            is MediaState.Success -> {
+            is ResponseState.Success -> {
                 _homePageState.emit(_homePageState.value.copy(genres = genres.data))
             }
-            is MediaState.Error -> {
+            is ResponseState.Error -> {
                 _homePageState.emit(_homePageState.value.copy(genresError = genres.uiText))
             }
         }
     }
 
-    private suspend fun emitSongs(songs: MediaState<List<Song>>) {
+    private suspend fun emitSongs(songs: ResponseState<List<Song>>) {
         when (songs) {
-            is MediaState.Success -> {
+            is ResponseState.Success -> {
                 _homePageState.emit(_homePageState.value.copy(songs = songs.data))
             }
-            is MediaState.Error -> {
+            is ResponseState.Error -> {
                 _homePageState.emit(_homePageState.value.copy(songsError = songs.uiText))
             }
         }
     }
 
-    private suspend fun emitArtists(artists: MediaState<List<Artist>>) {
+    private suspend fun emitArtists(artists: ResponseState<List<Artist>>) {
         // artists
         when (artists) {
-            is MediaState.Success -> {
+            is ResponseState.Success -> {
                 _homePageState.emit(_homePageState.value.copy(artists = artists.data))
             }
-            is MediaState.Error -> {
+            is ResponseState.Error -> {
                 _homePageState.emit(_homePageState.value.copy(artistsError = artists.uiText))
             }
         }

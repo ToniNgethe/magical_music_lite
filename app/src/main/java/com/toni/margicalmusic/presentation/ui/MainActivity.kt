@@ -11,7 +11,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import com.toni.margicalmusic.domain.models.Song
 import com.toni.margicalmusic.presentation.splash.SplashScreen
 import com.toni.margicalmusic.presentation.home.HomePage
 import com.toni.margicalmusic.presentation.on_boarding.OnBoardingScreen
@@ -20,6 +22,7 @@ import com.toni.margicalmusic.presentation.theme.DarkPrimary
 import com.toni.margicalmusic.presentation.theme.MargicalMusicAppTheme
 import com.toni.margicalmusic.presentation.ui.utils.Routes
 import com.toni.margicalmusic.presentation.ui.utils.UiEvent
+import com.toni.margicalmusic.utils.MoshiParser
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -60,10 +63,14 @@ class MainActivity : ComponentActivity() {
                                 if (uiEvent is UiEvent.OnNavigate) navController.navigate(uiEvent.route)
                             }
                         }
-                        composable(Routes.SONG_PAGE) {
-                            SelectedSongScreen(context, lifecycle, navController) { event ->
+                        composable(
+                            Routes.SONG_PAGE, arguments = listOf(navArgument("song") {})
+                        ) { backSentry ->
+                            SelectedSongScreen(context, MoshiParser.fromJson(
+                                backSentry.arguments?.getString("song")!!, Song::class.java
+                            ), lifecycle, navController, onNavigate = { event ->
 
-                            }
+                            })
                         }
                     }
 

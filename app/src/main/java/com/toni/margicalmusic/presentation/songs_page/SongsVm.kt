@@ -3,7 +3,7 @@ package com.toni.margicalmusic.presentation.songs_page
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.toni.margicalmusic.domain.repositories.SongsRepository
-import com.toni.margicalmusic.utils.MediaState
+import com.toni.margicalmusic.utils.ResponseState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -26,7 +26,7 @@ class SongsVm @Inject constructor(val songsRepository: SongsRepository) : ViewMo
             val songs = songsRepository.fetchSongs()
             songs.collectLatest { songsState ->
                 when (songsState) {
-                    is MediaState.Success -> {
+                    is ResponseState.Success -> {
                         _songsUiState.emit(
                             _songsUiState.value.copy(
                                 isLoading = false, songs = songsState.data
@@ -34,7 +34,7 @@ class SongsVm @Inject constructor(val songsRepository: SongsRepository) : ViewMo
                         )
                     }
 
-                    is MediaState.Error -> {
+                    is ResponseState.Error -> {
                         _songsUiState.emit(
                             _songsUiState.value.copy(
                                 isLoading = false, errorMessage = songsState.uiText

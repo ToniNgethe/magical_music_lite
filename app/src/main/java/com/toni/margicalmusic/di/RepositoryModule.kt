@@ -2,9 +2,11 @@ package com.toni.margicalmusic.di
 
 import com.toni.margicalmusic.data.repository.ArtistsRepositoryImpl
 import com.toni.margicalmusic.data.repository.GenreRepositoryImpl
+import com.toni.margicalmusic.data.repository.LyricsRepositoryImpl
 import com.toni.margicalmusic.data.repository.SongsRepositoryImpl
 import com.toni.margicalmusic.domain.repositories.ArtistsRepository
 import com.toni.margicalmusic.domain.repositories.GenreRepository
+import com.toni.margicalmusic.domain.repositories.LyricsRepository
 import com.toni.margicalmusic.domain.repositories.SongsRepository
 import dagger.Binds
 import dagger.Module
@@ -27,4 +29,8 @@ abstract class RepositoryModule {
     @Singleton
     @Binds
     abstract fun bindArtistrepository(artistsRepositoryImpl: ArtistsRepositoryImpl): ArtistsRepository
+
+    @Singleton
+    @Binds
+    abstract fun bindLyricRepository(lyricsRepositoryImpl: LyricsRepositoryImpl): LyricsRepository
 }

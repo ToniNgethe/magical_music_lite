@@ -1,5 +1,6 @@
 package com.toni.margicalmusic.di
 
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.toni.margicalmusic.BuildConfig
 import com.toni.margicalmusic.data.services.LyricsService
 import com.toni.margicalmusic.data.services.VideosService
@@ -28,8 +29,11 @@ object NetworkModule {
     @Provides
     @Singleton
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit =
-        Retrofit.Builder().client(okHttpClient).baseUrl(BuildConfig.BASE_URL)
-            .addConverterFactory(MoshiConverterFactory.create()).build()
+        Retrofit.Builder().client(okHttpClient)
+            .addConverterFactory(MoshiConverterFactory.create())
+            .addCallAdapterFactory(CoroutineCallAdapterFactory())
+            .baseUrl(BuildConfig.BASE_URL)
+            .build()
 
     @Provides
     @Singleton

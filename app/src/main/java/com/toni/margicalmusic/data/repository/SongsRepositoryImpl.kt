@@ -4,7 +4,7 @@ import com.toni.margicalmusic.R
 import com.toni.margicalmusic.data.dataloaders.SongLoader
 import com.toni.margicalmusic.domain.repositories.SongsRepository
 import com.toni.margicalmusic.utils.AppDispatchers
-import com.toni.margicalmusic.utils.MediaState
+import com.toni.margicalmusic.utils.ResponseState
 import com.toni.margicalmusic.utils.UiText
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
@@ -18,12 +18,12 @@ class SongsRepositoryImpl @Inject constructor(
         try {
             val songs = songLoader.getAllSongs()
             if (songs.isNotEmpty()) {
-                emit(MediaState.Success(songs))
+                emit(ResponseState.Success(songs))
             } else {
-                emit(MediaState.Error(UiText.StaticText(R.string.no_songs)))
+                emit(ResponseState.Error(UiText.StaticText(R.string.no_songs)))
             }
         } catch (e: Exception) {
-            emit(MediaState.Error(UiText.DynamicText(e.message!!)))
+            emit(ResponseState.Error(UiText.DynamicText(e.message!!)))
         }
     }.flowOn(appDispatchers.io())
 }

@@ -7,7 +7,7 @@ import com.toni.margicalmusic.domain.repositories.ArtistsRepository
 import com.toni.margicalmusic.domain.repositories.GenreRepository
 import com.toni.margicalmusic.domain.repositories.SongsRepository
 import com.toni.margicalmusic.utils.AppDispatchers
-import com.toni.margicalmusic.utils.MediaState
+import com.toni.margicalmusic.utils.ResponseState
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
@@ -20,7 +20,7 @@ class GetHomePageDataUseCase @Inject constructor(
     val songsRepository: SongsRepository,
     val appDispatchers: AppDispatchers
 ) {
-    suspend fun invoke(): Flow<Triple<MediaState<List<Artist>>, MediaState<List<Song>>, MediaState<List<GenreSongModel>>>> {
+    suspend fun invoke(): Flow<Triple<ResponseState<List<Artist>>, ResponseState<List<Song>>, ResponseState<List<GenreSongModel>>>> {
         val artists = artistsRepository.fetchArtists()
         val songs = songsRepository.fetchSongs()
         val genres = genreSongRepository.fetchGenres()

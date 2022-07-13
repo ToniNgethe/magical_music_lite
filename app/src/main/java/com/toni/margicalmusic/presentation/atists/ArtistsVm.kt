@@ -3,7 +3,7 @@ package com.toni.margicalmusic.presentation.atists
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.toni.margicalmusic.domain.repositories.ArtistsRepository
-import com.toni.margicalmusic.utils.MediaState
+import com.toni.margicalmusic.utils.ResponseState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collectLatest
@@ -24,11 +24,11 @@ class ArtistsVm @Inject constructor(val artistsRepository: ArtistsRepository) : 
         viewModelScope.launch {
             artistsRepository.fetchArtists().collectLatest { uiState ->
                 when (uiState) {
-                    is MediaState.Success -> {
+                    is ResponseState.Success -> {
                         _artistsUiState.emit(_artistsUiState.value.copy(artists = uiState.data))
                     }
 
-                    is MediaState.Error -> {
+                    is ResponseState.Error -> {
                         _artistsUiState.emit(_artistsUiState.value.copy(errorMessage = uiState.uiText))
                     }
                 }

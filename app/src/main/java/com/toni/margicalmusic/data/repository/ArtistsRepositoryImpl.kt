@@ -4,7 +4,7 @@ import com.toni.margicalmusic.R
 import com.toni.margicalmusic.data.dataloaders.ArtistLoader
 import com.toni.margicalmusic.domain.repositories.ArtistsRepository
 import com.toni.margicalmusic.utils.AppDispatchers
-import com.toni.margicalmusic.utils.MediaState
+import com.toni.margicalmusic.utils.ResponseState
 import com.toni.margicalmusic.utils.UiText
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
@@ -20,12 +20,12 @@ class ArtistsRepositoryImpl @Inject constructor(
         try {
             val artists = artistsLoader.getAllArtists()
             if (artists.isNotEmpty()) {
-                emit(MediaState.Success(artists))
+                emit(ResponseState.Success(artists))
             } else {
-                emit(MediaState.Error(UiText.StaticText(R.string.no_artists_found)))
+                emit(ResponseState.Error(UiText.StaticText(R.string.no_artists_found)))
             }
         } catch (e: Exception) {
-            emit(MediaState.Error(UiText.DynamicText(e.message!!)))
+            emit(ResponseState.Error(UiText.DynamicText(e.message!!)))
         }
     }.flowOn(appDispatchers.io())
 }
