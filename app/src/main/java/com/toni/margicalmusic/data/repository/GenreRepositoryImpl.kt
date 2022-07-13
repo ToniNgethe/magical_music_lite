@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
 class GenreRepositoryImpl @Inject constructor(
-    val genreLoader: GenreLoader, val appDispatchers: AppDispatchers
+    private val genreLoader: GenreLoader, val appDispatchers: AppDispatchers
 ) : GenreRepository {
 
 

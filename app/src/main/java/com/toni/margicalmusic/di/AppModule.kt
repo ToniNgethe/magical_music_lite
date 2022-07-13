@@ -14,6 +14,6 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideDispatchers() : AppDispatchers = AppDispatchersImpl()
+    fun provideDispatchers(): AppDispatchers = AppDispatchersImpl()
 
 }
