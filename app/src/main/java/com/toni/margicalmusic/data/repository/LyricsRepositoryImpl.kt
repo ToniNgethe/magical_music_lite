@@ -14,22 +14,21 @@ class LyricsRepositoryImpl @Inject constructor(
     private val lyricsService: LyricsService, val appDispatchers: AppDispatchers
 ) : LyricsRepository {
 
-    override suspend fun fetchLyrics(title: String, artistName: String): ResponseState<Lyric> {
+    override suspend fun fetchLyrics(title: String, artistName: String): ResponseState<Lyric> =
         try {
             val response = lyricsService.getLyrics(
                 LyricsRequestDto(
                     artist = artistName, song = title
                 )
             )
-            return if (response.status == "00") {
+            if (response.status == "00") {
                 ResponseState.Success(response.toLyricModel())
             } else {
                 ResponseState.Error(UiText.DynamicText(response.message!!))
             }
 
         } catch (e: Exception) {
-            return if (e.message != null) ResponseState.Error(UiText.DynamicText(e.message!!))
+            if (e.message != null) ResponseState.Error(UiText.DynamicText(e.message!!))
             else ResponseState.Error(UiText.StaticText(R.string.lyrics_error))
         }
-    }
 }

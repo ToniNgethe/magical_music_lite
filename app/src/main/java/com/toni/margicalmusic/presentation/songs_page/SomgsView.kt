@@ -16,15 +16,18 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.toni.margicalmusic.R
+import com.toni.margicalmusic.domain.models.Song
 import com.toni.margicalmusic.presentation.shared_components.HomePageHeader
 import com.toni.margicalmusic.presentation.shared_components.HomeSongsItem
 import com.toni.margicalmusic.presentation.theme.MargicalMusicAppTheme
 import com.toni.margicalmusic.presentation.ui.CustomSearchField
 import com.toni.margicalmusic.presentation.ui.utils.UiEvent
+import com.toni.margicalmusic.utils.MoshiParser
 
 @Composable
 fun SongsView(
-    songsVm: SongsVm = hiltViewModel(), onEvent: (UiEvent) -> Unit
+    songsVm: SongsVm = hiltViewModel(),
+    onNavigate: ((UiEvent.OnNavigate) -> Unit)? = null
 ) {
     val songsUiState = songsVm.songsUiState.collectAsState()
 
@@ -58,7 +61,20 @@ fun SongsView(
             // songs row
             if (songs?.isNotEmpty() == true) LazyColumn {
                 items(songs.size) { index ->
-                    HomeSongsItem(index, songs[index], icon = R.drawable.ic_play)
+                    HomeSongsItem(index,
+                        songs[index],
+                        icon = R.drawable.ic_play,
+                        onClick = { song ->
+                            onNavigate?.invoke(
+                                UiEvent.OnNavigate(
+                                    "song_page?song=${
+                                        MoshiParser.toJson(
+                                            song, Song::class.java
+                                        )
+                                    }"
+                                )
+                            )
+                        })
                 }
             }
         }

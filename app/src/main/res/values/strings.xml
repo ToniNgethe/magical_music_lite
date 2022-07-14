@@ -6,4 +6,5 @@
     <string name="no_genres">Genre(s) not found</string>
     <string name="lyrics_error">Unable to fetch lyrics for this song at the moment! Kindly try later</string>
     <string name="song_details_error">Unable to fetch song details</string>
+    <string name="video_error">Unable to find song video</string>
 </resources>

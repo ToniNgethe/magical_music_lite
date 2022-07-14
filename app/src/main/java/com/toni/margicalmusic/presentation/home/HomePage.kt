@@ -37,7 +37,7 @@ fun Navigation(
             HomePageView(onNavigate = onUiEvent)
         }
         composable(NavigationItem.Songs.route) {
-            SongsView(onEvent = onUiEvent)
+            SongsView(onNavigate = onUiEvent)
         }
         composable(NavigationItem.Artists.route) {
             ArtistsView(context)

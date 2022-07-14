@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
@@ -57,7 +58,7 @@ fun SelectedSongScreen(
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(all = 18.dp)
+                        .padding(top = 18.dp, start = 18.dp, end = 18.dp)
                 ) {
                     Icon(painter = painterResource(id = R.drawable.ic_close),
                         contentDescription = "close page",
@@ -65,19 +66,36 @@ fun SelectedSongScreen(
                         modifier = Modifier.clickable {
                             navController.popBackStack()
                         })
-                    Text(
-                        text = "${song?.title}",
-                        color = MaterialTheme.colors.onSurface,
-                        modifier = Modifier.fillMaxWidth(),
-                        fontSize = 18.sp,
-                        textAlign = TextAlign.Center,
-                        maxLines = 2,
-                        overflow = TextOverflow.Ellipsis
+                    Column {
+                        Text(
+                            text = "${song?.title}",
+                            color = MaterialTheme.colors.onSurface,
+                            modifier = Modifier.fillMaxWidth(),
+                            fontSize = 18.sp,
+                            textAlign = TextAlign.Center,
+                            maxLines = 2,
+                            overflow = TextOverflow.Ellipsis
+                        )
+                        Text(
+                            text = "${song?.artistName}",
+                            color = MaterialTheme.colors.onSurface,
+                            modifier = Modifier.fillMaxWidth(),
+                            fontSize = 14.sp,
+                            textAlign = TextAlign.Center,
+                            maxLines = 2,
+                            overflow = TextOverflow.Ellipsis
+                        )
+                    }
+                }
+
+                if (uiState.isLoading) Box(
+                    contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize(
+                    )
+                ) {
+                    CircularProgressIndicator(
+                        color = Ascent
                     )
                 }
-                if (uiState.isLoading) CircularProgressIndicator(
-                    modifier = Modifier.fillMaxWidth(),
-                    color = Ascent)
 
                 if (uiState.errorMessage != null) Text(
                     uiState.errorMessage!!.asString(context = context),
@@ -88,29 +106,31 @@ fun SelectedSongScreen(
                     color = MaterialTheme.colors.onSurface
                 )
 
-                if (uiState.lyrics != null) Column(modifier = Modifier.fillMaxWidth()) {
-                    val youtubePlayer = remember {
-                        YouTubePlayerView(context).apply {
-                            lifecycle.addObserver(this)
-                            enableAutomaticInitialization = false
-                            initialize(object : AbstractYouTubePlayerListener() {
-                                override fun onReady(youTubePlayer: YouTubePlayer) {
-                                    youTubePlayer.loadVideo("nlMYTD_pHBA", 0f)
-                                }
-                            })
+                Column(modifier = Modifier.fillMaxWidth()) {
+                    if (uiState.video != null) {
+                        val youtubePlayer = remember {
+                            YouTubePlayerView(context).apply {
+                                lifecycle.addObserver(this)
+                                enableAutomaticInitialization = false
+                                initialize(object : AbstractYouTubePlayerListener() {
+                                    override fun onReady(youTubePlayer: YouTubePlayer) {
+                                        youTubePlayer.loadVideo("${uiState.video!!.videoId}", 0f)
+                                    }
+                                })
+                            }
                         }
+                        AndroidView(
+                            {
+                                youtubePlayer
+                            },
+                            modifier = Modifier
+                                .padding(all = 5.dp)
+                                .fillMaxWidth()
+                                .wrapContentHeight()
+                        )
                     }
-                    AndroidView(
-                        {
-                            youtubePlayer
-                        },
-                        modifier = Modifier
-                            .padding(all = 5.dp)
-                            .fillMaxWidth()
-                            .wrapContentHeight()
-                    )
 
-                    Text(
+                    if (uiState.lyrics != null) Text(
                         color = MaterialTheme.colors.onSurface,
                         textAlign = TextAlign.Center,
                         modifier = Modifier
