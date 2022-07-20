@@ -8,6 +8,7 @@ import androidx.compose.material.Surface
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.navigation.NavOptions
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -50,12 +51,16 @@ class MainActivity : ComponentActivity() {
                     ) {
                         composable(Routes.SPLASH_SCREEN) {
                             SplashScreen(onNavigate = {
-                                navController.navigate(Routes.ONBOARDING_SCREEN)
+                                navController.navigate(it.route) {
+                                    popUpTo(0)
+                                }
                             })
                         }
                         composable(Routes.ONBOARDING_SCREEN) {
                             OnBoardingScreen(onNavigate = {
-                                navController.navigate(Routes.HOME_PAGE)
+                                navController.navigate(Routes.HOME_PAGE) {
+                                    popUpTo(0)
+                                }
                             })
                         }
                         composable(Routes.HOME_PAGE) {

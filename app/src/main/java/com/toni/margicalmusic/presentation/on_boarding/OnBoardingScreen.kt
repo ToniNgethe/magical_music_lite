@@ -14,14 +14,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.PermissionStatus
 import com.google.accompanist.permissions.rememberPermissionState
 import com.google.accompanist.permissions.shouldShowRationale
 import com.toni.margicalmusic.R
 import com.toni.margicalmusic.presentation.on_boarding.components.OnBoardingItem
+import com.toni.margicalmusic.presentation.splash.SplashScreenVm
+import com.toni.margicalmusic.presentation.splash.UserOnboarded
 import com.toni.margicalmusic.presentation.theme.Ascent
 import com.toni.margicalmusic.presentation.theme.MargicalMusicAppTheme
 import com.toni.margicalmusic.presentation.theme.gray_a
@@ -31,7 +35,9 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterialApi::class, ExperimentalPermissionsApi::class)
 @Composable
-fun OnBoardingScreen(onNavigate: (UiEvent.OnNavigate) -> Unit) {
+fun OnBoardingScreen(
+    viewModel: SplashScreenVm = hiltViewModel(), onNavigate: (UiEvent.OnNavigate) -> Unit
+) {
     MargicalMusicAppTheme {
         val bottomSheetState =
             rememberBottomSheetScaffoldState(bottomSheetState = BottomSheetState(BottomSheetValue.Collapsed))
@@ -40,8 +46,8 @@ fun OnBoardingScreen(onNavigate: (UiEvent.OnNavigate) -> Unit) {
             rememberPermissionState(permission = Manifest.permission.READ_EXTERNAL_STORAGE)
         val context = LocalContext.current
 
-
-        BottomSheetScaffold(scaffoldState = bottomSheetState,
+        BottomSheetScaffold(
+            scaffoldState = bottomSheetState,
             sheetPeekHeight = 0.dp,
             sheetContent = {
                 Column(
@@ -56,19 +62,19 @@ fun OnBoardingScreen(onNavigate: (UiEvent.OnNavigate) -> Unit) {
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
                         Text(
-                            "Permission to access your \n" + "music folder",
+                            stringResource(R.string.permission_music_folder),
                             style = MaterialTheme.typography.h1.copy(
                                 fontSize = 24.sp, color = Color.White
                             )
                         )
                         Image(
                             painter = painterResource(id = R.drawable.ic_music_folder),
-                            contentDescription = "music folder"
+                            contentDescription = null
                         )
                     }
 
                     Text(
-                        text = "For Magical Music to perform its charms on your music, it needs to access your local music \n" + "storage",
+                        text = stringResource(R.string.permission_description),
                         modifier = Modifier.padding(10.dp),
                         style = MaterialTheme.typography.body2.copy(
                             color = Color.White, fontSize = 16.sp
@@ -79,6 +85,7 @@ fun OnBoardingScreen(onNavigate: (UiEvent.OnNavigate) -> Unit) {
                         Button(
                             onClick = {
                                 if (permissionState.status == PermissionStatus.Granted) {
+                                    viewModel.onEvent(UserOnboarded.OnBoardUser)
                                     onNavigate(UiEvent.OnNavigate(Routes.HOME_PAGE))
                                 } else {
                                     val message = if (permissionState.status.shouldShowRationale) {
@@ -118,7 +125,7 @@ fun OnBoardingScreen(onNavigate: (UiEvent.OnNavigate) -> Unit) {
                     painter = painterResource(id = R.drawable.ic_logo), contentDescription = "logo"
                 )
                 Text(
-                    text = "Margical Music App",
+                    text = stringResource(R.string.magical_music_app),
                     style = MaterialTheme.typography.h1,
                     color = MaterialTheme.colors.secondary,
                     fontSize = 20.sp,
@@ -157,7 +164,11 @@ fun OnBoardingScreen(onNavigate: (UiEvent.OnNavigate) -> Unit) {
                             .height(50.dp),
                         colors = ButtonDefaults.buttonColors(backgroundColor = Ascent)
                     ) {
-                        Text(text = "Get Started", color = Color.White, fontSize = 16.sp)
+                        Text(
+                            text = stringResource(R.string.get_started),
+                            color = Color.White,
+                            fontSize = 16.sp
+                        )
                     }
                 }
 

@@ -7,4 +7,8 @@
     <string name="lyrics_error">Unable to fetch lyrics for this song at the moment! Kindly try later</string>
     <string name="song_details_error">Unable to fetch song details</string>
     <string name="video_error">Unable to find song video</string>
+    <string name="permission_music_folder">Permission to access your music folder</string>
+    <string name="permission_description">For Magical Music to perform its charms on your music, it needs to access your local music storage</string>
+    <string name="magical_music_app">Magical Music App</string>
+    <string name="get_started">Get Started</string>
 </resources>
