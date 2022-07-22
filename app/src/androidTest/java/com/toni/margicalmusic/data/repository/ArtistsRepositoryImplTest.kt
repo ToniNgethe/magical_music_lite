@@ -44,9 +44,9 @@ class TestAppDataStore constructor(testContext: Context) :
 @RunWith(AndroidJUnit4::class)
 @OptIn(ExperimentalCoroutinesApi::class)
 class ArtistsRepositoryImplTest {
-    lateinit var dataStore: AppDataStore
-    lateinit var appDispatchers: AppDispatchers
-    lateinit var splashScreenRepo: SplashScreenRepo
+    private lateinit var dataStore: AppDataStore
+    private lateinit var appDispatchers: AppDispatchers
+    private lateinit var splashScreenRepo: SplashScreenRepo
 
     private val testContext: Context = ApplicationProvider.getApplicationContext()
 

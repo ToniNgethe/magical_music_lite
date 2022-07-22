@@ -2,6 +2,7 @@ package com.toni.margicalmusic.presentation.home_page
 
 import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -35,6 +36,7 @@ import com.toni.margicalmusic.presentation.ui.utils.UiEvent
 import com.toni.margicalmusic.utils.MediaUtils.getAlbumArtUri
 import com.toni.margicalmusic.utils.MoshiParser
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun HomePageView(
     homePageViewModel: HomePageViewModel = hiltViewModel(),
@@ -158,8 +160,12 @@ fun HomePageView(
             val songError = uiState.value.songsError
 
             if (songs?.isNotEmpty() == true) LazyColumn {
-                items(songs.size) { index ->
-                    HomeSongsItem(index, songs[index]) { song ->
+                items(
+                     songs.count(),
+                    key = { index -> songs[index].id }) { index ->
+                    HomeSongsItem(
+                        modifier = Modifier.animateItemPlacement(), index, songs[index]
+                    ) { song ->
                         onNavigate?.invoke(
                             UiEvent.OnNavigate(
                                 "song_page?song=${

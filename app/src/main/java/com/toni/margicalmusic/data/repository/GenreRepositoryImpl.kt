@@ -15,14 +15,12 @@ class GenreRepositoryImpl @Inject constructor(
     private val genreLoader: GenreLoader, val appDispatchers: AppDispatchers
 ) : GenreRepository {
 
-
     override fun fetchGenres() = flow {
         try {
-            genreLoader.buildGenresLibrary()
             val genresModels = mutableListOf<GenreSongModel>()
             for ((key, value) in genreLoader.mGenresSongCountHashMap) {
                 /* check if already exists */
-                val model = GenreSongModel(key, genreLoader.getFirstSingInGenre(key), value)
+                val model = GenreSongModel(key, genreLoader.getFirstSongInGenre(key), value)
                 genresModels.add(model)
             }
             if (genresModels.isNotEmpty()) {

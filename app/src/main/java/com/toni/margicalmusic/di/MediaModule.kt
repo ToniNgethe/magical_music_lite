@@ -5,6 +5,7 @@ import com.toni.margicalmusic.data.dataloaders.AlbumLoader
 import com.toni.margicalmusic.data.dataloaders.ArtistLoader
 import com.toni.margicalmusic.data.dataloaders.GenreLoader
 import com.toni.margicalmusic.data.dataloaders.SongLoader
+import com.toni.margicalmusic.utils.AppDispatchers
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,7 +23,9 @@ object MediaModule {
 
     @Provides
     @Singleton
-    fun provideGenres(@ApplicationContext context: Context, songLoader: SongLoader): GenreLoader = GenreLoader(context, songLoader)
+    fun provideGenres(
+        @ApplicationContext context: Context, songLoader: SongLoader, appDispatchers: AppDispatchers
+    ): GenreLoader = GenreLoader(context, songLoader, appDispatchers = appDispatchers)
 
     @Provides
     @Singleton

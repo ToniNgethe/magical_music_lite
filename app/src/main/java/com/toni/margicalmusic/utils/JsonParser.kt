@@ -2,6 +2,7 @@ package com.toni.margicalmusic.utils
 
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
+import timber.log.Timber
 import java.lang.reflect.Type
 
 interface JsonParser {

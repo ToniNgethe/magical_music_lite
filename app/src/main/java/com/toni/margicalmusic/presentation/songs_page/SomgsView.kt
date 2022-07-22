@@ -1,6 +1,7 @@
 package com.toni.margicalmusic.presentation.songs_page
 
 import android.content.res.Configuration
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -24,6 +25,7 @@ import com.toni.margicalmusic.presentation.ui.CustomSearchField
 import com.toni.margicalmusic.presentation.ui.utils.UiEvent
 import com.toni.margicalmusic.utils.MoshiParser
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun SongsView(
     songsVm: SongsVm = hiltViewModel(),
@@ -61,7 +63,9 @@ fun SongsView(
             // songs row
             if (songs?.isNotEmpty() == true) LazyColumn {
                 items(songs.size) { index ->
-                    HomeSongsItem(index,
+                    HomeSongsItem(
+                        modifier = Modifier.animateItemPlacement(),
+                        index,
                         songs[index],
                         icon = R.drawable.ic_play,
                         onClick = { song ->

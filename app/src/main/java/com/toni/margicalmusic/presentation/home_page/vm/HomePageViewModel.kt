@@ -1,5 +1,6 @@
 package com.toni.margicalmusic.presentation.home_page.vm
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.toni.margicalmusic.domain.models.Artist
@@ -11,6 +12,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -27,46 +29,46 @@ class HomePageViewModel @Inject constructor(private val getHomePageDataUseCase: 
 
     private fun fetchAlbums() {
         viewModelScope.launch {
-            val useCase = getHomePageDataUseCase.invoke()
-            useCase.collectLatest { tripleData ->
-                val (artists, songs, genres) = tripleData
-                emitArtists(artists)
-                emitSongs(songs)
-                emitGenres(genres)
-            }
+            getHomePageDataUseCase.invoke().collectLatest { tripleData ->
+                    val (artists, songs, genres) = tripleData
+                    emitArtists(artists)
+                    emitSongs(songs)
+                    emitGenres(genres)
+                }
         }
     }
 
-    private suspend fun emitGenres(genres: ResponseState<List<GenreSongModel>>) {
+    private fun emitGenres(genres: ResponseState<List<GenreSongModel>>) {
+        Log.e("--->", "${genres}")
         when (genres) {
             is ResponseState.Success -> {
-                _homePageState.emit(_homePageState.value.copy(genres = genres.data))
+                _homePageState.update { it.copy(genres = genres.data) }
             }
             is ResponseState.Error -> {
-                _homePageState.emit(_homePageState.value.copy(genresError = genres.uiText))
+                _homePageState.update { it.copy(genresError = genres.uiText) }
             }
         }
     }
 
-    private suspend fun emitSongs(songs: ResponseState<List<Song>>) {
+    private fun emitSongs(songs: ResponseState<List<Song>>) {
         when (songs) {
             is ResponseState.Success -> {
-                _homePageState.emit(_homePageState.value.copy(songs = songs.data))
+                _homePageState.update { it.copy(songs = songs.data) }
             }
             is ResponseState.Error -> {
-                _homePageState.emit(_homePageState.value.copy(songsError = songs.uiText))
+                _homePageState.update { it.copy(songsError = songs.uiText) }
             }
         }
     }
 
-    private suspend fun emitArtists(artists: ResponseState<List<Artist>>) {
+    private fun emitArtists(artists: ResponseState<List<Artist>>) {
         // artists
         when (artists) {
             is ResponseState.Success -> {
-                _homePageState.emit(_homePageState.value.copy(artists = artists.data))
+                _homePageState.update { it.copy(artists = artists.data) }
             }
             is ResponseState.Error -> {
-                _homePageState.emit(_homePageState.value.copy(artistsError = artists.uiText))
+                _homePageState.update { it.copy(artistsError = artists.uiText) }
             }
         }
     }

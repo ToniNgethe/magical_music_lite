@@ -30,15 +30,16 @@ import com.toni.margicalmusic.utils.MediaUtils.getAlbumArtUri
 
 @Composable
 fun HomeSongsItem(
+    modifier: Modifier = Modifier,
     index: Int, song: Song, icon: Int = R.drawable.ic_more, onClick: ((Song) -> Unit)? = null
 ) {
     Box(
-        modifier = Modifier
+        modifier = modifier
             .background(color = if (index % 2 == 1) MaterialTheme.colors.background else MaterialTheme.colors.primaryVariant)
             .clickable { onClick?.invoke(song) }
     ) {
         Row(
-            modifier = Modifier
+            modifier = modifier
                 .fillMaxWidth()
                 .padding(all = 10.dp),
             verticalAlignment = Alignment.CenterVertically

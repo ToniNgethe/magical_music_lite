@@ -4,15 +4,27 @@ import android.content.Context
 import android.net.Uri
 import android.provider.MediaStore
 import com.toni.margicalmusic.domain.models.Song
+import com.toni.margicalmusic.utils.AppDispatchers
+import kotlinx.coroutines.*
 import javax.inject.Inject
 
-class GenreLoader @Inject constructor (val context: Context, val songLoader: SongLoader) {
+class GenreLoader @Inject constructor(
+    val context: Context, val songLoader: SongLoader, val appDispatchers: AppDispatchers
+) {
 
     val mGenresSongCountHashMap = HashMap<String, Int>()
-    val mMediaStoreSelection: String? = null
+    private val mMediaStoreSelection: String? = null
     val mGenresHashMap = HashMap<String, String>()
 
-    fun getFirstSingInGenre(genre: String): Song {
+    private val scope = CoroutineScope(appDispatchers.io() + Job())
+
+    init {
+        scope.launch {
+            buildGenresLibrary()
+        }
+    }
+
+    fun getFirstSongInGenre(genre: String): Song {
         var song: Song? = null
         for ((key, value) in mGenresHashMap) {
             if (value == genre) {
@@ -26,7 +38,7 @@ class GenreLoader @Inject constructor (val context: Context, val songLoader: Son
     /**
      * Builds a HashMap of all songs and their genres.
      */
-    fun buildGenresLibrary() {
+    private fun buildGenresLibrary() {
         //Get a cursor of all genres in MediaStore.
         val genresCursor = context.contentResolver.query(
             MediaStore.Audio.Genres.EXTERNAL_CONTENT_URI,
@@ -49,28 +61,31 @@ class GenreLoader @Inject constructor (val context: Context, val songLoader: Son
             /* Grab a cursor of songs in the each genre id. Limit the songs to
         	 * the user defined folders using mMediaStoreSelection.
         	 */
-            val cursor = context.contentResolver.query(
-                makeGenreUri(genreId),
-                arrayOf(MediaStore.Audio.Media.DATA),
-                mMediaStoreSelection,
-                null,
-                null
-            )
+            genreId?.let {
+                val cursor = context.contentResolver.query(
+                    makeGenreUri(genreId),
+                    arrayOf(MediaStore.Audio.Media.DATA),
+                    mMediaStoreSelection,
+                    null,
+                    null
+                )
 
-            //Add the songs' file paths and their genre names to the hash.
-            if (cursor != null) {
-                for (i in 0 until cursor.getCount()) {
-                    cursor.moveToPosition(i)
-                    mGenresHashMap.put(cursor.getString(0), genreName)
-                    mGenresSongCountHashMap.put(genreName, cursor.getCount())
+                //Add the songs' file paths and their genre names to the hash.
+                if (cursor != null) {
+                    for (i in 0 until cursor.getCount()) {
+                        cursor.moveToPosition(i)
+                        mGenresHashMap.put(cursor.getString(0), genreName)
+                        mGenresSongCountHashMap.put(genreName, cursor.getCount())
+                    }
+
+                    cursor.close()
                 }
-
-                cursor.close()
+                genresCursor.moveToNext()
             }
-            genresCursor.moveToNext()
         }
 
         genresCursor.close()
+        scope.cancel()
 
 //        for ((key, value) in mGenresHashMap)
 //            ConsoleUtils.print(value, "Song: ${SongLoader.getSongFromPath(key, mContext).title}")
@@ -81,10 +96,10 @@ class GenreLoader @Inject constructor (val context: Context, val songLoader: Son
      * The genre is specified using the genreId parameter.
      */
     private fun makeGenreUri(genreId: String): Uri {
-        val CONTENTDIR = MediaStore.Audio.Genres.Members.CONTENT_DIRECTORY
+        val contentDir = MediaStore.Audio.Genres.Members.CONTENT_DIRECTORY
         return Uri.parse(
             StringBuilder().append(MediaStore.Audio.Genres.EXTERNAL_CONTENT_URI.toString())
-                .append("/").append(genreId).append("/").append(CONTENTDIR).toString()
+                .append("/").append(genreId).append("/").append(contentDir).toString()
         )
     }
 
