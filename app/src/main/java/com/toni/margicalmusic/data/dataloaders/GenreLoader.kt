@@ -85,10 +85,6 @@ class GenreLoader @Inject constructor(
         }
 
         genresCursor.close()
-        scope.cancel()
-
-//        for ((key, value) in mGenresHashMap)
-//            ConsoleUtils.print(value, "Song: ${SongLoader.getSongFromPath(key, mContext).title}")
     }
 
     /**

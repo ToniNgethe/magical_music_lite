@@ -8,22 +8,21 @@ import androidx.compose.material.Surface
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.navigation.NavOptions
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.toni.margicalmusic.domain.models.Song
-import com.toni.margicalmusic.presentation.splash.SplashScreen
 import com.toni.margicalmusic.presentation.home.HomePage
 import com.toni.margicalmusic.presentation.on_boarding.OnBoardingScreen
 import com.toni.margicalmusic.presentation.selected_song.SelectedSongScreen
+import com.toni.margicalmusic.presentation.splash.SplashScreen
 import com.toni.margicalmusic.presentation.theme.DarkPrimary
 import com.toni.margicalmusic.presentation.theme.MargicalMusicAppTheme
 import com.toni.margicalmusic.presentation.ui.utils.Routes
 import com.toni.margicalmusic.presentation.ui.utils.UiEvent
-import com.toni.margicalmusic.utils.MoshiParser
+import com.toni.margicalmusic.utils.GsonParser
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -71,7 +70,7 @@ class MainActivity : ComponentActivity() {
                         composable(
                             Routes.SONG_PAGE, arguments = listOf(navArgument("song") {})
                         ) { backSentry ->
-                            SelectedSongScreen(context, MoshiParser.fromJson(
+                            SelectedSongScreen(context, GsonParser.fromJson(
                                 backSentry.arguments?.getString("song")!!, Song::class.java
                             ), lifecycle, navController, onNavigate = { event ->
 

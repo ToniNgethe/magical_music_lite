@@ -22,7 +22,7 @@ class GetHomePageDataUseCase @Inject constructor(
 ) {
     suspend fun invoke(): Flow<Triple<ResponseState<List<Artist>>, ResponseState<List<Song>>, ResponseState<List<GenreSongModel>>>> {
         val artists = artistsRepository.fetchArtists()
-        val songs = songsRepository.fetchSongs()
+        val songs = songsRepository.fetchSongs( 10 )
         val genres = genreSongRepository.fetchGenres()
 
         val result = withContext(appDispatchers.io()) {

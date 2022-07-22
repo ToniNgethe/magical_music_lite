@@ -34,7 +34,11 @@ fun Navigation(
         modifier = Modifier.padding(bottom = 56.dp)
     ) {
         composable(NavigationItem.Home.route) {
-            HomePageView(onNavigate = onUiEvent)
+            HomePageView { event ->
+                if (event.route == NavigationItem.Songs.route) {
+                    navController.navigate(NavigationItem.Songs.route)
+                } else onUiEvent.invoke(event)
+            }
         }
         composable(NavigationItem.Songs.route) {
             SongsView(onNavigate = onUiEvent)

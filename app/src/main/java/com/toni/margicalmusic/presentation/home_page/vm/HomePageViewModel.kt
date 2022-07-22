@@ -39,7 +39,6 @@ class HomePageViewModel @Inject constructor(private val getHomePageDataUseCase: 
     }
 
     private fun emitGenres(genres: ResponseState<List<GenreSongModel>>) {
-        Log.e("--->", "${genres}")
         when (genres) {
             is ResponseState.Success -> {
                 _homePageState.update { it.copy(genres = genres.data) }

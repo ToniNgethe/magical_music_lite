@@ -2,8 +2,10 @@ package com.toni.margicalmusic.presentation.home_page
 
 import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
+import android.util.Log
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
@@ -24,17 +26,21 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.toni.margicalmusic.R
+import com.toni.margicalmusic.domain.models.Artist
 import com.toni.margicalmusic.domain.models.Song
+import com.toni.margicalmusic.presentation.home.NavigationItem
 import com.toni.margicalmusic.presentation.home_page.components.CategoriesView
 import com.toni.margicalmusic.presentation.home_page.vm.HomePageViewModel
-import com.toni.margicalmusic.presentation.shared_components.HomeSongsItem
 import com.toni.margicalmusic.presentation.shared_components.HomePageHeader
+import com.toni.margicalmusic.presentation.shared_components.HomeSongsItem
 import com.toni.margicalmusic.presentation.theme.Ascent
 import com.toni.margicalmusic.presentation.theme.MargicalMusicAppTheme
-import com.toni.margicalmusic.presentation.ui.utils.Routes
 import com.toni.margicalmusic.presentation.ui.utils.UiEvent
 import com.toni.margicalmusic.utils.MediaUtils.getAlbumArtUri
 import com.toni.margicalmusic.utils.MoshiParser
+import okhttp3.Route
+import timber.log.Timber
+
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -44,6 +50,7 @@ fun HomePageView(
 ) {
 
     val uiState = homePageViewModel.homePageState.collectAsState()
+    Timber.tag("--->").e(uiState.value.genresError?.asString(LocalContext.current))
     MargicalMusicAppTheme {
         Column(
             modifier = Modifier
@@ -98,34 +105,10 @@ fun HomePageView(
             }
             if (artists?.isNotEmpty() == true) Box(modifier = Modifier.padding(start = 10.dp)) {
                 LazyRow {
-                    items(artists.size) { index ->
-                        val artist = artists[index]
-                        Column(modifier = Modifier.padding(all = 5.dp)) {
-                            if (artist.image == null) Box(
-                                modifier = Modifier
-                                    .background(Color.LightGray)
-                                    .height(90.dp)
-                                    .width(120.dp)
-                            )
-
-                            Text(
-                                text = artist.name,
-                                style = MaterialTheme.typography.h2.copy(fontSize = 14.sp),
-                                color = MaterialTheme.colors.onSurface,
-                                maxLines = 1,
-                                overflow = TextOverflow.Ellipsis,
-                                modifier = Modifier.width(120.dp)
-                            )
-                            Text(
-                                text = "${artist.songCount} tracks",
-                                style = MaterialTheme.typography.h3.copy(
-                                    fontSize = 12.sp,
-                                    fontStyle = FontStyle.Normal,
-                                    color = Color(0x6FCECECE)
-                                ),
-                                color = MaterialTheme.colors.onSurface
-                            )
-                        }
+                    items(artists.size, key = { index -> artists[index].id }) { index ->
+                        ArtistViewItem(
+                            modifier = Modifier.animateItemPlacement(), artists[index]
+                        )
                     }
                 }
             }
@@ -153,16 +136,20 @@ fun HomePageView(
 
 
             // artists row
-            TitleRow("Songs", moreText = "Show more") {}
+            TitleRow("Songs", moreText = "Show more") {
+                onNavigate?.invoke(
+                    UiEvent.OnNavigate(
+                        route = NavigationItem.Songs.route
+                    )
+                )
+            }
 
             // songs row
             val songs = uiState.value.songs
             val songError = uiState.value.songsError
 
             if (songs?.isNotEmpty() == true) LazyColumn {
-                items(
-                     songs.count(),
-                    key = { index -> songs[index].id }) { index ->
+                items(songs.count(), key = { index -> songs[index].id }) { index ->
                     HomeSongsItem(
                         modifier = Modifier.animateItemPlacement(), index, songs[index]
                     ) { song ->
@@ -196,13 +183,46 @@ fun HomePageView(
 }
 
 @Composable
-fun TitleRow(title: String, moreText: String? = null, onClick: () -> Unit) {
+private fun ArtistViewItem(
+    modifier: Modifier, artist: Artist
+) {
+    Column(
+        modifier = Modifier.padding(end = 5.dp, bottom = 5.dp)
+    ) {
+        if (artist.image == null) Box(
+            modifier = Modifier
+                .background(Color.LightGray)
+                .height(90.dp)
+                .width(120.dp)
+        )
+
+        Text(
+            text = artist.name,
+            style = MaterialTheme.typography.h2.copy(fontSize = 14.sp),
+            color = MaterialTheme.colors.onSurface,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+            modifier = Modifier.width(120.dp)
+        )
+        Text(
+            text = "${artist.songCount} tracks", style = MaterialTheme.typography.h3.copy(
+                fontSize = 12.sp, fontStyle = FontStyle.Normal, color = Color(0x6FCECECE)
+            ), color = MaterialTheme.colors.onSurface
+        )
+    }
+}
+
+@Composable
+fun TitleRow(title: String, moreText: String? = null, onRowClick: () -> Unit) {
     Row(
         modifier = Modifier
             .padding(all = 10.dp)
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .clickable(onClick = {
+                onRowClick.invoke()
+            }),
         Arrangement.SpaceBetween,
-        Alignment.CenterVertically
+        Alignment.CenterVertically,
     ) {
         Text(
             text = title,

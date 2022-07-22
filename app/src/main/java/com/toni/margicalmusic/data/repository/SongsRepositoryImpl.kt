@@ -14,9 +14,9 @@ class SongsRepositoryImpl @Inject constructor(
     private val songLoader: SongLoader, private val appDispatchers: AppDispatchers
 ) : SongsRepository {
 
-    override fun fetchSongs() = flow {
+    override fun fetchSongs(limit: Int) = flow {
         try {
-            val songs = songLoader.getAllSongs()
+            val songs = songLoader.getAllSongs(limit = limit)
             if (songs.isNotEmpty()) {
                 emit(ResponseState.Success(songs))
             } else {

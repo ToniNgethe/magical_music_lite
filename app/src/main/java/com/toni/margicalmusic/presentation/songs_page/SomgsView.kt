@@ -23,6 +23,7 @@ import com.toni.margicalmusic.presentation.shared_components.HomeSongsItem
 import com.toni.margicalmusic.presentation.theme.MargicalMusicAppTheme
 import com.toni.margicalmusic.presentation.ui.CustomSearchField
 import com.toni.margicalmusic.presentation.ui.utils.UiEvent
+import com.toni.margicalmusic.utils.GsonParser
 import com.toni.margicalmusic.utils.MoshiParser
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -72,7 +73,7 @@ fun SongsView(
                             onNavigate?.invoke(
                                 UiEvent.OnNavigate(
                                     "song_page?song=${
-                                        MoshiParser.toJson(
+                                        GsonParser.toJson(
                                             song, Song::class.java
                                         )
                                     }"

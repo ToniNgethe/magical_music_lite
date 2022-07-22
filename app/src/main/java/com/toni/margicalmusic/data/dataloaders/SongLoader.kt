@@ -14,7 +14,7 @@ class SongLoader @Inject constructor(val context: Context) {
     /**
      * Fetch songs from cursor to list
      */
-    private fun getSongsForCursor(cursor: Cursor?): ArrayList<Song> {
+    private fun getSongsForCursor(limit: Int, cursor: Cursor?): ArrayList<Song> {
         val arrayList = arrayListOf<Song>()
         if (cursor != null && cursor.moveToFirst()) do {
             val id = cursor.getLong(0)
@@ -26,7 +26,9 @@ class SongLoader @Inject constructor(val context: Context) {
             val artistId = cursor.getInt(6)
             val albumId = cursor.getLong(7)
 
-            arrayList.add(
+            if (limit != 0 && arrayList.size == limit) {
+                break
+            } else arrayList.add(
                 Song(
                     id, albumId, artistId, title, artist, album, duration, trackNumber
                 )
@@ -95,8 +97,8 @@ class SongLoader @Inject constructor(val context: Context) {
         } else return Song()
     }
 
-    fun getAllSongs(): List<Song> {
-        return getSongsForCursor(makeSongCursor(context, "", emptyArray()))
+    fun getAllSongs(limit: Int = 0): List<Song> {
+        return getSongsForCursor(limit, makeSongCursor(context, "", emptyArray()))
     }
 
     fun getSongListInFolder(path: String): LongArray {
@@ -113,12 +115,13 @@ class SongLoader @Inject constructor(val context: Context) {
     }
 
     fun searchSongs(searchString: String, limit: Int): List<Song> {
-        val result =
-            getSongsForCursor(makeSongCursor(context, "title LIKE ?", arrayOf("$searchString%")))
+        val result = getSongsForCursor(
+            limit = 0, makeSongCursor(context, "title LIKE ?", arrayOf("$searchString%"))
+        )
         if (result.size < limit) {
             result.addAll(
                 getSongsForCursor(
-                    makeSongCursor(
+                    limit = 0, makeSongCursor(
                         context, "title LIKE ?", arrayOf("%_$searchString%")
                     )
                 )

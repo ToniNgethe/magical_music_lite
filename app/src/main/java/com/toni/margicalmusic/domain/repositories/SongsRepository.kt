@@ -5,5 +5,5 @@ import com.toni.margicalmusic.utils.ResponseState
 import kotlinx.coroutines.flow.Flow
 
 interface SongsRepository {
-    fun fetchSongs(): Flow<ResponseState<List<Song>>>
+    fun fetchSongs(limit: Int = 0): Flow<ResponseState<List<Song>>>
 }
