@@ -2,7 +2,6 @@ package com.toni.margicalmusic.presentation.home_page
 
 import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
-import android.util.Log
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -38,7 +37,6 @@ import com.toni.margicalmusic.presentation.theme.MargicalMusicAppTheme
 import com.toni.margicalmusic.presentation.ui.utils.UiEvent
 import com.toni.margicalmusic.utils.MediaUtils.getAlbumArtUri
 import com.toni.margicalmusic.utils.MoshiParser
-import okhttp3.Route
 import timber.log.Timber
 
 

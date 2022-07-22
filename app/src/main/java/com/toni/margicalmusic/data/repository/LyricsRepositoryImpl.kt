@@ -6,6 +6,7 @@ import com.toni.margicalmusic.data.services.LyricsService
 import com.toni.margicalmusic.domain.models.Lyric
 import com.toni.margicalmusic.domain.repositories.LyricsRepository
 import com.toni.margicalmusic.utils.AppDispatchers
+import com.toni.margicalmusic.utils.ErrorHandler.parseRequestException
 import com.toni.margicalmusic.utils.ResponseState
 import com.toni.margicalmusic.utils.UiText
 import javax.inject.Inject
@@ -28,7 +29,6 @@ class LyricsRepositoryImpl @Inject constructor(
             }
 
         } catch (e: Exception) {
-            if (e.message != null) ResponseState.Error(UiText.DynamicText(e.message!!))
-            else ResponseState.Error(UiText.StaticText(R.string.lyrics_error))
+            parseRequestException(e)
         }
 }

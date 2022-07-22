@@ -107,6 +107,18 @@ fun SelectedSongScreen(
                 )
 
                 Column(modifier = Modifier.fillMaxWidth()) {
+
+                    if (uiState.videoError != null) {
+                        Text(
+                            uiState.videoError.asString(context = context),
+                            modifier = Modifier
+                                .padding(all = 30.dp)
+                                .fillMaxWidth(),
+                            textAlign = TextAlign.Center,
+                            color = MaterialTheme.colors.onSurface
+                        )
+                    }
+
                     if (uiState.video != null) {
                         val youtubePlayer = remember {
                             YouTubePlayerView(context).apply {
@@ -127,6 +139,17 @@ fun SelectedSongScreen(
                                 .padding(all = 5.dp)
                                 .fillMaxWidth()
                                 .wrapContentHeight()
+                        )
+                    }
+
+                    if (uiState.lyricsError != null) {
+                        Text(
+                            uiState.lyricsError.asString(context = context),
+                            modifier = Modifier
+                                .padding(all = 30.dp)
+                                .fillMaxWidth(),
+                            textAlign = TextAlign.Center,
+                            color = MaterialTheme.colors.onSurface
                         )
                     }
 

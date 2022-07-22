@@ -5,5 +5,6 @@ import com.toni.margicalmusic.utils.UiText
 
 data class SongsUiState(
     val isLoading: Boolean = false,
-    val errorMessage: UiText? = null, val songs: List<Song>? = null
+    val errorMessage: UiText? = null,
+    val songs: List<Song>? = null
 )

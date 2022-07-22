@@ -6,6 +6,8 @@ import com.toni.margicalmusic.domain.repositories.LyricsRepository
 import com.toni.margicalmusic.domain.repositories.VideoRepository
 import com.toni.margicalmusic.utils.ResponseState
 import com.toni.margicalmusic.utils.UiText
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.flowOf
 import javax.inject.Inject
 
 class GetLyricsAndVideoUseCase @Inject constructor(
@@ -13,25 +15,9 @@ class GetLyricsAndVideoUseCase @Inject constructor(
 ) {
     suspend fun invoke(
         title: String, artistName: String
-    ): ResponseState<Pair<Lyric, Video>> = try {
-        var lyricModel: Lyric? = null
-        var videoModel: Video? = null
-
+    ): Pair<ResponseState<Lyric>, ResponseState<Video>> {
         val lyrics = lyricsRepository.fetchLyrics(title = title, artistName)
-        if (lyrics is ResponseState.Error) {
-            lyrics.uiText
-        } else if (lyrics is ResponseState.Success) {
-            lyricModel = lyrics.data
-        }
-
         val videos = videoRepository.getVideo(title = title, artistName = artistName)
-        if (videos is ResponseState.Error) {
-            videos.uiText
-        } else if (videos is ResponseState.Success) {
-            videoModel = videos.data
-        }
-        ResponseState.Success(Pair(lyricModel!!, videoModel!!))
-    } catch (e: Exception) {
-        ResponseState.Error(UiText.DynamicText(e.message.toString()))
+        return Pair(lyrics, videos)
     }
 }

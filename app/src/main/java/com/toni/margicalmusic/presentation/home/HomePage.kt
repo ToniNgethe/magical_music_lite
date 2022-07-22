@@ -46,8 +46,5 @@ fun Navigation(
         composable(NavigationItem.Artists.route) {
             ArtistsView(context)
         }
-        composable(NavigationItem.Trending.route) {
-            TrendingView()
-        }
     }
 }
