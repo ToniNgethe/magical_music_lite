@@ -5,6 +5,9 @@ plugins {
     id 'dagger.hilt.android.plugin'
 }
 
+def localProperties = new Properties()
+localProperties.load(new FileInputStream(rootProject.file("local.properties")))
+
 android {
     namespace 'com.toni.margicalmusic'
     compileSdk 32
@@ -24,13 +27,13 @@ android {
 
     buildTypes {
         debug {
-            buildConfigField "String", "BASE_URL", "Your api url"
+            buildConfigField "String", "BASE_URL", "${localProperties.getProperty("API_URL")}"
         }
 
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "BASE_URL", "Your api url"
+            buildConfigField "String", "BASE_URL", "${localProperties.getProperty( "API_URL")}"
         }
     }
     compileOptions {
