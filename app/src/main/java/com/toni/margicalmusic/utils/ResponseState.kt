@@ -15,7 +15,6 @@ sealed class ResponseState<T> {
     data class Error<T>(val uiText: UiText) : ResponseState<T>()
 }
 
-
 object ErrorHandler {
     fun <T> parseRequestException(e: Exception): ResponseState.Error<T> {
         Timber.e(e)
