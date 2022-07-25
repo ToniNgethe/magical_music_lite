@@ -16,4 +16,7 @@
     <string name="socket_exception_error">Unable to connect to server. Please try again later.</string>
     <string name="check_internet">Please check your internet connection and try again.</string>
     <string name="something_error">Something went wrong. Please try again.</string>
+    <string name="request_permission">Reading external folder is important for this app. Please grant the permission.</string>
+    <string name="permission_required">Permission required to continue</string>
+    <string name="grant_access">Grant Access</string>
 </resources>
