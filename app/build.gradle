@@ -24,13 +24,13 @@ android {
 
     buildTypes {
         debug {
-            buildConfigField "String", "BASE_URL", "\"http://159.89.233.116:8000/api/v1/\""
+            buildConfigField "String", "BASE_URL", "Your api url"
         }
 
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "BASE_URL", "\"http://159.89.233.116:8000/api/v1/\""
+            buildConfigField "String", "BASE_URL", "Your api url"
         }
     }
     compileOptions {
