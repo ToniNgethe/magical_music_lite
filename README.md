@@ -1,1 +1,1 @@
-# margical_music_v2
+# Magical music app - lite
