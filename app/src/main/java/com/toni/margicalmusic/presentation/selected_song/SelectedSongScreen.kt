@@ -43,7 +43,7 @@ fun SelectedSongScreen(
     val uiState = viewModel.uiState.collectAsState().value
 
     LaunchedEffect(Unit) {
-        viewModel.fetchSongDetails(song?.title ?: "", song?.artistName ?: "")
+        viewModel.fetchSongDetails(song?.title ?: "", song?.artistName ?: "", song?.id)
     }
 
 

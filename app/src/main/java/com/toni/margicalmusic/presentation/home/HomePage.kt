@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
@@ -28,11 +27,8 @@ import com.google.accompanist.permissions.shouldShowRationale
 import com.toni.margicalmusic.R
 import com.toni.margicalmusic.presentation.home_page.HomePageView
 import com.toni.margicalmusic.presentation.songs_page.SongsView
-import com.toni.margicalmusic.presentation.splash.UserOnboarded
 import com.toni.margicalmusic.presentation.theme.Ascent
-import com.toni.margicalmusic.presentation.ui.utils.Routes
 import com.toni.margicalmusic.presentation.ui.utils.UiEvent
-import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterialApi::class, ExperimentalPermissionsApi::class)
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")

@@ -19,4 +19,5 @@
     <string name="request_permission">Reading external folder is important for this app. Please grant the permission.</string>
     <string name="permission_required">Permission required to continue</string>
     <string name="grant_access">Grant Access</string>
+    <string name="no_cached_song">Song not cached</string>
 </resources>

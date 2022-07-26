@@ -31,7 +31,7 @@ class SelectedSongVm @Inject constructor(private val lyricsVideoUseCase: GetLyri
     val uiState = _uiState.asStateFlow()
 
 
-    fun fetchSongDetails(title: String, artistName: String) {
+    fun fetchSongDetails(title: String, artistName: String, songId: Long?) {
         if (title.isEmpty() || artistName.isEmpty()) {
             _uiState.update {
                 it.copy(
@@ -43,7 +43,7 @@ class SelectedSongVm @Inject constructor(private val lyricsVideoUseCase: GetLyri
 
         _uiState.update { it.copy(isLoading = true) }
         viewModelScope.launch {
-            val response = lyricsVideoUseCase.invoke(title = title, artistName = artistName)
+            val response = lyricsVideoUseCase.invoke(title = title, artistName = artistName, songId)
 
             parseLyrics(response)
             parseVideo(response)

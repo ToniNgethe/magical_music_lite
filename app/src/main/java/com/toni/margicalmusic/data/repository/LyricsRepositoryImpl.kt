@@ -1,6 +1,5 @@
 package com.toni.margicalmusic.data.repository
 
-import com.toni.margicalmusic.R
 import com.toni.margicalmusic.data.dto.lyrics.LyricsRequestDto
 import com.toni.margicalmusic.data.services.LyricsService
 import com.toni.margicalmusic.domain.models.Lyric

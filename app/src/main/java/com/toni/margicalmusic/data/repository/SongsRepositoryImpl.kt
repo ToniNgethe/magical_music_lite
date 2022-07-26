@@ -1,6 +1,8 @@
 package com.toni.margicalmusic.data.repository
 
 import com.toni.margicalmusic.R
+import com.toni.margicalmusic.data.database.SongsDao
+import com.toni.margicalmusic.data.database.SongsEntity
 import com.toni.margicalmusic.data.dataloaders.SongLoader
 import com.toni.margicalmusic.domain.repositories.SongsRepository
 import com.toni.margicalmusic.utils.AppDispatchers
@@ -11,7 +13,9 @@ import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
 class SongsRepositoryImpl @Inject constructor(
-    private val songLoader: SongLoader, private val appDispatchers: AppDispatchers
+    private val songLoader: SongLoader,
+    private val appDispatchers: AppDispatchers,
+    private val songDao: SongsDao
 ) : SongsRepository {
 
     override fun fetchSongs(limit: Int) = flow {
@@ -26,4 +30,17 @@ class SongsRepositoryImpl @Inject constructor(
             emit(ResponseState.Error(UiText.DynamicText(e.message!!)))
         }
     }.flowOn(appDispatchers.io())
+
+    override suspend fun getCachedSong(songId: Int?): ResponseState<SongsEntity> = try {
+        val song = songDao.getSongById(songId = songId!!)
+        if (song != null) ResponseState.Success(song)
+        else ResponseState.Error(UiText.StaticText(R.string.no_cached_song))
+    } catch (e: Exception) {
+        ResponseState.Error(UiText.DynamicText(e.message ?: ""))
+    }
+
+    override suspend fun cacheSong(songsEntity: SongsEntity?) {
+        songDao.insert(songsEntity)
+    }
+
 }
