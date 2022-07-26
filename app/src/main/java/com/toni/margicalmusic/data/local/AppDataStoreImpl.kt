@@ -24,9 +24,7 @@ class AppDataStoreImpl @Inject constructor(val context: Context) : AppDataStore 
         }
     }
 
-    override fun isUserOnBoarded(): Flow<Boolean> =
-        context.dataStore.data.map { prefs ->
-            prefs[ON_BOARDED] ?: false
-        }
-
+    override fun isUserOnBoarded(): Flow<Boolean> = context.dataStore.data.map { prefs ->
+        prefs[ON_BOARDED] ?: false
+    }
 }
