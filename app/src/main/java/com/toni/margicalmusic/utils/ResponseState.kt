@@ -44,7 +44,8 @@ object ErrorHandler {
                 ResponseState.Error(UiText.StaticText(R.string.check_internet))
             }
             else -> {
-                ResponseState.Error(UiText.StaticText(R.string.something_error))
+                if (e.message == null) ResponseState.Error(UiText.StaticText(R.string.something_error))
+                else ResponseState.Error(UiText.DynamicText(e.message!!))
             }
         }
     }
