@@ -48,8 +48,7 @@ fun HomePageView(
 ) {
 
     val uiState = homePageViewModel.homePageState.collectAsState()
-    Timber.tag("--->").e(uiState.value.genresError?.asString(LocalContext.current))
-    MargicalMusicAppTheme {
+       MargicalMusicAppTheme {
         Column(
             modifier = Modifier
                 .background(MaterialTheme.colors.background)
