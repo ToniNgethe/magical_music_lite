@@ -3,7 +3,6 @@ package com.toni.margicalmusic.presentation.songs_page
 import android.content.res.Configuration
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.MaterialTheme
@@ -24,7 +23,6 @@ import com.toni.margicalmusic.presentation.theme.MargicalMusicAppTheme
 import com.toni.margicalmusic.presentation.ui.CustomSearchField
 import com.toni.margicalmusic.presentation.ui.utils.UiEvent
 import com.toni.margicalmusic.utils.GsonParser
-import com.toni.margicalmusic.utils.MoshiParser
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -42,7 +40,9 @@ fun SongsView(
         ) {
             HomePageHeader()
 
-            CustomSearchField()
+            CustomSearchField { text ->
+                songsVm.searchList(text)
+            }
 
             val errorMessage = songsUiState.value.errorMessage
 

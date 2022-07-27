@@ -21,7 +21,9 @@ fun AlbumsView() {
                 .background(MaterialTheme.colors.background)
         ) {
             HomePageHeader()
-            CustomSearchField()
+            CustomSearchField {
+
+            }
 
 
         }

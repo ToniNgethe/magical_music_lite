@@ -21,7 +21,7 @@ import com.toni.margicalmusic.R
 import com.toni.margicalmusic.presentation.theme.gray_a
 
 @Composable
-fun CustomSearchField() {
+fun CustomSearchField(onSearch: (String) -> Unit) {
     // search
     val text = remember {
         mutableStateOf("")
@@ -42,8 +42,10 @@ fun CustomSearchField() {
                 )
                 BasicTextField(
                     value = text.value,
+                    maxLines = 1,
                     onValueChange = {
                         text.value = it
+                        onSearch.invoke(it)
                     },
                     modifier = Modifier
                         .fillMaxWidth()

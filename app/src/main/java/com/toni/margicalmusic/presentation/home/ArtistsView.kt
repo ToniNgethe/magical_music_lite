@@ -38,7 +38,9 @@ fun ArtistsView(
                 .background(MaterialTheme.colors.background)
         ) {
             HomePageHeader()
-            CustomSearchField()
+            CustomSearchField {
+
+            }
 
             errorMessage?.let {
                 Row(

@@ -24,6 +24,9 @@ class LyricsRepositoryImplTest {
 
     private lateinit var lyricsRepository: LyricsRepository
 
+    val lyricsRequestDto = LyricsRequestDto(
+        artist = "", song = ""
+    )
 
     @Before
     fun setUp() {
@@ -42,9 +45,7 @@ class LyricsRepositoryImplTest {
         // when
         coEvery {
             lyricsService.getLyrics(
-                LyricsRequestDto(
-                    artist = "", song = ""
-                )
+                lyricsRequestDto
             )
         } returns LyricsResponseDto(status = "00", message = "success", data = "sample lyrics")
 
@@ -62,9 +63,7 @@ class LyricsRepositoryImplTest {
         // when
         coEvery {
             lyricsService.getLyrics(
-                LyricsRequestDto(
-                    artist = "", song = ""
-                )
+                lyricsRequestDto
             )
         } throws Exception("unable to complete request")
 
@@ -75,4 +74,5 @@ class LyricsRepositoryImplTest {
         Truth.assertThat((response as ResponseState.Error).uiText)
             .isEqualTo(UiText.DynamicText("unable to complete request"))
     }
+
 }
