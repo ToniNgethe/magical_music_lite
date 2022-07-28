@@ -8,29 +8,51 @@ import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.toni.margicalmusic.R
 import com.toni.margicalmusic.presentation.theme.Ascent
+import java.text.SimpleDateFormat
+import java.util.*
 
 @Composable
 fun HomePageHeader(displaySearchIcon: Boolean = false) {
+    val greetings = remember {
+        mutableStateOf("")
+    }
+
+    LaunchedEffect(true) {
+        val hour = SimpleDateFormat("HH", Locale.getDefault()).format(Date())
+        greetings.value = when (hour.toInt()) {
+            in 12..16 -> {
+                "Good Afternoon"
+            }
+            in 17..20 -> {
+                "Good Evening"
+            }
+            in 21..23 -> {
+                "Good Night"
+            }
+            else -> {
+                "Good Morning"
+            }
+        }
+    }
+
     Row(
         modifier = Modifier
             .padding(all = 10.dp)
             .fillMaxWidth(), Arrangement.SpaceBetween
     ) {
         Text(
-            text = "Good  morning",
+            text = greetings.value,
             color = Ascent,
             style = MaterialTheme.typography.h1.copy(fontSize = 24.sp)
-        )
-        if (displaySearchIcon) Icon(
-            painter = painterResource(R.drawable.ic_search),
-            contentDescription = "search",
-            tint = MaterialTheme.colors.onSurface
         )
     }
 }

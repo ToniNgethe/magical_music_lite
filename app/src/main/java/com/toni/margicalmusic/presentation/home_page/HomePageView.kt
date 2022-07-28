@@ -37,7 +37,6 @@ import com.toni.margicalmusic.presentation.theme.MargicalMusicAppTheme
 import com.toni.margicalmusic.presentation.ui.utils.UiEvent
 import com.toni.margicalmusic.utils.MediaUtils.getAlbumArtUri
 import com.toni.margicalmusic.utils.MoshiParser
-import timber.log.Timber
 
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -48,7 +47,7 @@ fun HomePageView(
 ) {
 
     val uiState = homePageViewModel.homePageState.collectAsState()
-       MargicalMusicAppTheme {
+    MargicalMusicAppTheme {
         Column(
             modifier = Modifier
                 .background(MaterialTheme.colors.background)
