@@ -8,6 +8,7 @@ import com.toni.margicalmusic.utils.AppDispatchers
 import com.toni.margicalmusic.utils.ErrorHandler.parseRequestException
 import com.toni.margicalmusic.utils.ResponseState
 import com.toni.margicalmusic.utils.UiText
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class LyricsRepositoryImpl @Inject constructor(
@@ -15,19 +16,21 @@ class LyricsRepositoryImpl @Inject constructor(
 ) : LyricsRepository {
 
     override suspend fun fetchLyrics(title: String, artistName: String): ResponseState<Lyric> =
-        try {
-            val response = lyricsService.getLyrics(
-                LyricsRequestDto(
-                    artist = artistName, song = title
+        withContext(appDispatchers.io()) {
+            try {
+                val response = lyricsService.getLyrics(
+                    LyricsRequestDto(
+                        artist = artistName, song = title
+                    )
                 )
-            )
-            if (response.status == "00") {
-                ResponseState.Success(response.toLyricModel())
-            } else {
-                ResponseState.Error(UiText.DynamicText(response.message!!))
-            }
+                if (response.status == "00") {
+                    ResponseState.Success(response.toLyricModel())
+                } else {
+                    ResponseState.Error(UiText.DynamicText(response.message!!))
+                }
 
-        } catch (e: Exception) {
-            parseRequestException(e)
+            } catch (e: Exception) {
+                parseRequestException(e)
+            }
         }
 }

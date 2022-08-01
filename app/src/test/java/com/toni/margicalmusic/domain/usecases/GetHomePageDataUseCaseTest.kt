@@ -2,12 +2,15 @@ package com.toni.margicalmusic.domain.usecases
 
 import com.google.common.truth.Truth
 import com.toni.margicalmusic.TestUtiDispatchers
+import com.toni.margicalmusic.artist
 import com.toni.margicalmusic.domain.models.Artist
 import com.toni.margicalmusic.domain.models.GenreSongModel
 import com.toni.margicalmusic.domain.models.Song
 import com.toni.margicalmusic.domain.repositories.ArtistsRepository
 import com.toni.margicalmusic.domain.repositories.GenreRepository
 import com.toni.margicalmusic.domain.repositories.SongsRepository
+import com.toni.margicalmusic.genre
+import com.toni.margicalmusic.song
 import com.toni.margicalmusic.utils.AppDispatchers
 import com.toni.margicalmusic.utils.ResponseState
 import io.mockk.coEvery
@@ -43,33 +46,6 @@ class GetHomePageDataUseCaseTest {
     @Test
     fun `should return a triple with response states for artists, songs and genres`() = runTest {
         // given
-        val artist = Artist(id = 0, name = "", songCount = 0, albumCount = 0, image = null)
-        val song = Song(
-            id = 0,
-            albumId = 0,
-            artistId = 0,
-            title = null,
-            artistName = null,
-            albumName = null,
-            duration = 0,
-            trackNumber = 0,
-            trackImage = null,
-            mbid = null
-        )
-        val genre = GenreSongModel(
-            name = "", song = Song(
-                id = 0,
-                albumId = 0,
-                artistId = 0,
-                title = null,
-                artistName = null,
-                albumName = null,
-                duration = 0,
-                trackNumber = 0,
-                trackImage = null,
-                mbid = null
-            ), count = 0
-        )
         // when
         coEvery { artistsRepository.fetchArtists() } returns flowOf(
             ResponseState.Success(

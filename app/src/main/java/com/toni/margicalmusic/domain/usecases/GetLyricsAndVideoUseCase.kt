@@ -1,5 +1,4 @@
 package com.toni.margicalmusic.domain.usecases
-
 import com.toni.margicalmusic.data.database.SongsEntity
 import com.toni.margicalmusic.data.database.toLyricModel
 import com.toni.margicalmusic.data.database.toVideoModel
@@ -11,7 +10,6 @@ import com.toni.margicalmusic.domain.repositories.VideoRepository
 import com.toni.margicalmusic.utils.AppDispatchers
 import com.toni.margicalmusic.utils.ResponseState
 import kotlinx.coroutines.withContext
-import timber.log.Timber
 import javax.inject.Inject
 
 class GetLyricsAndVideoUseCase @Inject constructor(
@@ -29,10 +27,12 @@ class GetLyricsAndVideoUseCase @Inject constructor(
             val video = ResponseState.Success(songState.data.toVideoModel())
             Pair(lyric, video)
         } else {
-            val lyrics = lyricsRepository.fetchLyrics(title = title, artistName)
-            val videos = videoRepository.getVideo(title = title, artistName = artistName)
-            cacheSongData(songId = songId, lyrics, videos)
-            Pair(lyrics, videos)
+            val lyricsState = lyricsRepository.fetchLyrics(title = title, artistName)
+            val videosState = videoRepository.getVideo(title = title, artistName = artistName)
+            if (lyricsState is ResponseState.Success && videosState is ResponseState.Success) {
+                cacheSongData(songId = songId, lyricsState, videosState)
+            }
+            Pair(lyricsState, videosState)
         }
     }
 
@@ -41,18 +41,13 @@ class GetLyricsAndVideoUseCase @Inject constructor(
     ) {
         withContext(appDispatchers.io()) {
             val entity = SongsEntity(songId = songId?.toInt(), "", "", "", "")
-            if (lyricsState is ResponseState.Success) {
-                entity.lyrics = lyricsState.data.lyrics
-            }
+            entity.lyrics =   (lyricsState as ResponseState.Success).data.lyrics
 
-            if (videosState is ResponseState.Success) {
-                entity.apply {
-                    video = videosState.data.videoId
-                    title = videosState.data.title
-                    artistName = videosState.data.artist
-                }
+            entity.apply {
+                video = (videosState as ResponseState.Success).data.videoId
+                title = videosState.data.title
+                artistName = videosState.data.artist
             }
-            Timber.e("---> ${entity}")
             songsRepository.cacheSong(entity)
         }
     }

@@ -72,10 +72,10 @@ class GenreLoader @Inject constructor(
 
                 //Add the songs' file paths and their genre names to the hash.
                 if (cursor != null) {
-                    for (i in 0 until cursor.getCount()) {
+                    for (i in 0 until cursor.count) {
                         cursor.moveToPosition(i)
-                        mGenresHashMap.put(cursor.getString(0), genreName)
-                        mGenresSongCountHashMap.put(genreName, cursor.getCount())
+                        mGenresHashMap[cursor.getString(0)] = genreName
+                        mGenresSongCountHashMap[genreName] = cursor.count
                     }
 
                     cursor.close()
