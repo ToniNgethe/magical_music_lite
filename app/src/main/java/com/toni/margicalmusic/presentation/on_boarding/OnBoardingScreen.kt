@@ -6,6 +6,8 @@ import android.widget.Toast.LENGTH_SHORT
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
@@ -46,8 +48,7 @@ fun OnBoardingScreen(
             rememberPermissionState(permission = Manifest.permission.READ_EXTERNAL_STORAGE)
         val context = LocalContext.current
 
-        BottomSheetScaffold(
-            scaffoldState = bottomSheetState,
+        BottomSheetScaffold(scaffoldState = bottomSheetState,
             sheetPeekHeight = 0.dp,
             sheetContent = {
                 Column(
@@ -117,6 +118,7 @@ fun OnBoardingScreen(
             Column(
                 modifier = Modifier
                     .background(MaterialTheme.colors.background)
+                    .verticalScroll(rememberScrollState())
                     .fillMaxSize(),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
