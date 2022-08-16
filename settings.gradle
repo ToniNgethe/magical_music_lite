@@ -16,3 +16,4 @@ rootProject.name = "Margical Music App"
 include ':app'
 include ':feature-settings'
 include ':core-database'
+include ':core-network'

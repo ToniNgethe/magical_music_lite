@@ -1,4 +1,4 @@
-package com.toni.margicalmusic.data.services
+package com.margicalmusic.core_network.services
 
 import com.toni.margicalmusic.data.dto.lyrics.LyricsRequestDto
 import com.toni.margicalmusic.data.dto.lyrics.LyricsResponseDto

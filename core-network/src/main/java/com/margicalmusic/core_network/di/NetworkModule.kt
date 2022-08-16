@@ -1,8 +1,8 @@
-package com.toni.margicalmusic.di
+package com.margicalmusic.core_network.di
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import com.toni.margicalmusic.BuildConfig
-import com.toni.margicalmusic.data.services.LyricsService
+import com.margicalmusic.core_network.BuildConfig
+import com.margicalmusic.core_network.services.LyricsService
 import com.toni.margicalmusic.data.services.VideosService
 import dagger.Module
 import dagger.Provides

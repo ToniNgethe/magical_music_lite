@@ -1,7 +1,7 @@
 package com.toni.margicalmusic.data.repository
-
+import com.margicalmusic.core_network.services.LyricsService
 import com.toni.margicalmusic.data.dto.lyrics.LyricsRequestDto
-import com.toni.margicalmusic.data.services.LyricsService
+import com.toni.margicalmusic.data.mappers.toLyricModel
 import com.toni.margicalmusic.domain.models.Lyric
 import com.toni.margicalmusic.domain.repositories.LyricsRepository
 import com.toni.margicalmusic.utils.AppDispatchers

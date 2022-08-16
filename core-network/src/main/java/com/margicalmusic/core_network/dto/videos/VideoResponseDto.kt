@@ -1,8 +1,7 @@
-package com.toni.margicalmusic.data.dto.videos
+package com.margicalmusic.core_network.dto.videos
 
 
 import com.squareup.moshi.Json
-import com.toni.margicalmusic.domain.models.Video
 
 data class VideoResponseDto(
     @field:Json(name = "data") val `data`: List<Data?>?,
@@ -16,11 +15,5 @@ data class VideoResponseDto(
         @field:Json(name = "original_title") val originalTitle: String?,
         @field:Json(name = "publishedAt") val publishedAt: String?,
         @field:Json(name = "title") val title: String?
-    ) {
-
-        fun toVideoModel(): Video = Video(
-            videoId = id, title = originalTitle, duration = duration, artist = artist
-        )
-
-    }
+    )
 }

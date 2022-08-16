@@ -1,6 +1,7 @@
 package com.toni.margicalmusic.data.repository
 
 import com.toni.margicalmusic.data.dto.videos.VideoRequestDto
+import com.toni.margicalmusic.data.mappers.toVideoModel
 import com.toni.margicalmusic.data.services.VideosService
 import com.toni.margicalmusic.domain.models.Video
 import com.toni.margicalmusic.domain.repositories.VideoRepository
