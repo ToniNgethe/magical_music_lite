@@ -1,9 +1,9 @@
-package com.toni.margicalmusic.di
+package com.margicalmusic.core_database.di
 
 import android.content.Context
 import androidx.room.Room
-import com.toni.margicalmusic.data.database.AppDatabase
-import com.toni.margicalmusic.data.database.SongsDao
+import com.margicalmusic.core_database.dao.SongsDao
+import com.margicalmusic.core_database.database.AppDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

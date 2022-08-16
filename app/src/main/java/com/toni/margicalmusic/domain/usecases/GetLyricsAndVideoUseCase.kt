@@ -1,7 +1,7 @@
 package com.toni.margicalmusic.domain.usecases
-import com.toni.margicalmusic.data.database.SongsEntity
-import com.toni.margicalmusic.data.database.toLyricModel
-import com.toni.margicalmusic.data.database.toVideoModel
+import com.margicalmusic.core_database.entity.SongsEntity
+import com.toni.margicalmusic.data.mappers.toLyricModel
+import com.toni.margicalmusic.data.mappers.toVideoModel
 import com.toni.margicalmusic.domain.models.Lyric
 import com.toni.margicalmusic.domain.models.Video
 import com.toni.margicalmusic.domain.repositories.LyricsRepository

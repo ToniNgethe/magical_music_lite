@@ -1,8 +1,8 @@
 package com.toni.margicalmusic.data.repository
 
+import com.margicalmusic.core_database.dao.SongsDao
+import com.margicalmusic.core_database.entity.SongsEntity
 import com.toni.margicalmusic.R
-import com.toni.margicalmusic.data.database.SongsDao
-import com.toni.margicalmusic.data.database.SongsEntity
 import com.toni.margicalmusic.data.dataloaders.SongLoader
 import com.toni.margicalmusic.domain.repositories.SongsRepository
 import com.toni.margicalmusic.utils.AppDispatchers
