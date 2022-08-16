@@ -1,5 +1,12 @@
 <p align="center"><img src="https://user-images.githubusercontent.com/23453229/180805718-0242462d-d6c8-4696-95b5-5f23edc78456.png"></p> 
 <h2 align="center"><b>Magical music app - lite</b></h2>
+
+<p align="center">
+  <a href="https://android-arsenal.com/api?level=21"><img alt="API" src="https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat"/></a>
+  <a href="https://github.com/ToniNgethe/magical_music_lite/actions"><img alt="Build Status" src="https://github.com/skydoves/Pokedex/workflows/Android%20CI/badge.svg"/></a> 
+
+</p>
+
 <h4 align="center">A beautiful android application create using jetpack compose that fetches a video and lyrics of your locally stored songs.</h4>
 
 
