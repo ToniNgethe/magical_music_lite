@@ -1,7 +1,7 @@
 package com.toni.margicalmusic.domain.repositories
 
-import com.toni.margicalmusic.domain.models.Album
-import com.toni.margicalmusic.utils.ResponseState
+import com.margicalmusic.core_media.models.Album
+import com.margicalmusic.core_network.ResponseState
 import kotlinx.coroutines.flow.Flow
 
 interface AlbumRepository {

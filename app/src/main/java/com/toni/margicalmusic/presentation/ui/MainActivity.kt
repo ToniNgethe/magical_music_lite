@@ -1,10 +1,10 @@
 package com.toni.margicalmusic.presentation.ui
 
-import android.Manifest
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.material.*
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
@@ -12,19 +12,16 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.google.accompanist.permissions.ExperimentalPermissionsApi
-import com.google.accompanist.permissions.rememberPermissionState
+import com.example.core_navigation.Routes
+import com.example.core_navigation.UiEvent
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
-import com.toni.margicalmusic.domain.models.Song
+import com.margicalmusic.core_utils.GsonParser
 import com.toni.margicalmusic.presentation.home.HomePage
-import com.toni.margicalmusic.presentation.on_boarding.OnBoardingScreen
 import com.toni.margicalmusic.presentation.selected_song.SelectedSongScreen
-import com.toni.margicalmusic.presentation.splash.SplashScreen
-import com.toni.margicalmusic.presentation.theme.DarkPrimary
-import com.toni.margicalmusic.presentation.theme.MargicalMusicAppTheme
-import com.toni.margicalmusic.presentation.ui.utils.Routes
-import com.toni.margicalmusic.presentation.ui.utils.UiEvent
-import com.toni.margicalmusic.utils.GsonParser
+import com.example.core_navigation.theme.DarkPrimary
+import com.example.core_navigation.theme.MargicalMusicAppTheme
+import com.margicalmusic.feature_onboarding.presentation.SplashScreen
+import com.margicalmusic.feature_onboarding.presentation.on_boarding.OnBoardingScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -73,7 +70,8 @@ class MainActivity : ComponentActivity() {
                             Routes.SONG_PAGE, arguments = listOf(navArgument("song") {})
                         ) { backSentry ->
                             SelectedSongScreen(context, GsonParser.fromJson(
-                                backSentry.arguments?.getString("song")!!, Song::class.java
+                                backSentry.arguments?.getString("song")!!,
+                                com.margicalmusic.core_media.models.Song::class.java
                             ), lifecycle, navController, onNavigate = { event ->
 
                             })

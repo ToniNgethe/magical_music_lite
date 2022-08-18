@@ -1,12 +1,12 @@
 package com.toni.margicalmusic.data.repository
 
+import com.margicalmusic.core_media.dataloaders.GenreLoader
+import com.margicalmusic.core_network.ResponseState
+import com.margicalmusic.core_utils.AppDispatchers
+import com.margicalmusic.core_utils.UiText
 import com.toni.margicalmusic.R
-import com.toni.margicalmusic.data.dataloaders.GenreLoader
 import com.toni.margicalmusic.domain.models.GenreSongModel
 import com.toni.margicalmusic.domain.repositories.GenreRepository
-import com.toni.margicalmusic.utils.AppDispatchers
-import com.toni.margicalmusic.utils.ResponseState
-import com.toni.margicalmusic.utils.UiText
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
@@ -26,7 +26,7 @@ class GenreRepositoryImpl @Inject constructor(
             if (genresModels.isNotEmpty()) {
                 emit(ResponseState.Success(genresModels.toList()))
             } else {
-                emit(ResponseState.Error(UiText.StaticText(R.string.no_genres)))
+                emit(ResponseState.Error(UiText.StaticText(com.margicalmusic.resources.R.string.no_genres)))
             }
         } catch (e: Exception) {
             emit(ResponseState.Error(UiText.DynamicText(e.message.toString())))

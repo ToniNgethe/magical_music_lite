@@ -1,13 +1,13 @@
 package com.toni.margicalmusic.data.repository
+import com.margicalmusic.core_network.ErrorHandler.parseRequestException
+import com.margicalmusic.core_network.ResponseState
 import com.margicalmusic.core_network.services.LyricsService
-import com.toni.margicalmusic.data.dto.lyrics.LyricsRequestDto
+import com.margicalmusic.core_utils.AppDispatchers
+import com.margicalmusic.core_utils.UiText
+import com.margicalmusic.core_network.dto.lyrics.LyricsRequestDto
 import com.toni.margicalmusic.data.mappers.toLyricModel
 import com.toni.margicalmusic.domain.models.Lyric
 import com.toni.margicalmusic.domain.repositories.LyricsRepository
-import com.toni.margicalmusic.utils.AppDispatchers
-import com.toni.margicalmusic.utils.ErrorHandler.parseRequestException
-import com.toni.margicalmusic.utils.ResponseState
-import com.toni.margicalmusic.utils.UiText
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 

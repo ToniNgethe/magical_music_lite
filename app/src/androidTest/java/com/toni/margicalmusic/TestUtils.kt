@@ -1,6 +1,6 @@
 package com.toni.margicalmusic
 
-import com.toni.margicalmusic.utils.AppDispatchers
+import com.margicalmusic.core_utils.AppDispatchers
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi

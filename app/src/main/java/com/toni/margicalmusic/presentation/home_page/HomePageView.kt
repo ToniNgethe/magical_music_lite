@@ -24,20 +24,17 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.toni.margicalmusic.R
-import com.toni.margicalmusic.domain.models.Artist
-import com.toni.margicalmusic.domain.models.Song
+import com.example.core_navigation.UiEvent
+import com.example.core_navigation.theme.Ascent
+import com.example.core_navigation.theme.MargicalMusicAppTheme
+import com.margicalmusic.core_utils.GsonParser
+import com.margicalmusic.core_utils.MediaUtils.getAlbumArtUri
+import com.margicalmusic.core_utils.MoshiParser
 import com.toni.margicalmusic.presentation.home.NavigationItem
 import com.toni.margicalmusic.presentation.home_page.components.CategoriesView
 import com.toni.margicalmusic.presentation.home_page.vm.HomePageViewModel
 import com.toni.margicalmusic.presentation.shared_components.HomePageHeader
 import com.toni.margicalmusic.presentation.shared_components.HomeSongsItem
-import com.toni.margicalmusic.presentation.theme.Ascent
-import com.toni.margicalmusic.presentation.theme.MargicalMusicAppTheme
-import com.toni.margicalmusic.presentation.ui.utils.UiEvent
-import com.toni.margicalmusic.utils.MediaUtils.getAlbumArtUri
-import com.toni.margicalmusic.utils.MoshiParser
-
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -152,8 +149,8 @@ fun HomePageView(
                         onNavigate?.invoke(
                             UiEvent.OnNavigate(
                                 "song_page?song=${
-                                    MoshiParser.toJson(
-                                        song, Song::class.java
+                                    GsonParser.toJson(
+                                        song, com.margicalmusic.core_media.models.Song::class.java
                                     )
                                 }"
                             )
@@ -180,7 +177,7 @@ fun HomePageView(
 
 @Composable
 private fun ArtistViewItem(
-    modifier: Modifier, artist: Artist
+    modifier: Modifier, artist: com.margicalmusic.core_media.models.Artist
 ) {
     Column(
         modifier = Modifier.padding(end = 5.dp, bottom = 5.dp)
@@ -226,7 +223,7 @@ fun TitleRow(title: String, moreText: String? = null, onRowClick: () -> Unit) {
             color = MaterialTheme.colors.onSurface
         )
         if (moreText == null) Icon(
-            painter = painterResource(id = R.drawable.ic_right),
+            painter = painterResource(id = com.margicalmusic.resources.R.drawable.ic_right),
             contentDescription = "ic_right",
             tint = Ascent,
             modifier = Modifier

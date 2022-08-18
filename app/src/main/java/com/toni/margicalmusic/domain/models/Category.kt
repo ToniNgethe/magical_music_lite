@@ -8,9 +8,25 @@ data class Category(
 )
 
 val sampleDaya = listOf(
-    Category(title = "Hip hop", image = R.drawable.sample_image, color = Color(0xFF84A59D)),
-    Category(title = "Rnb", image = R.drawable.sample_image, color = Color(0xFFE55C57)),
-    Category(title = "Hip hop/Rap", image = R.drawable.sample_image, color = Color(0xFFF6BD60)),
-    Category(title = "Soft beat", image = R.drawable.sample_image, color = Color(0xFFE55C57)),
+    Category(
+        title = "Hip hop",
+        image = com.margicalmusic.resources.R.drawable.sample_image,
+        color = Color(0xFF84A59D)
+    ),
+    Category(
+        title = "Rnb",
+        image = com.margicalmusic.resources.R.drawable.sample_image,
+        color = Color(0xFFE55C57)
+    ),
+    Category(
+        title = "Hip hop/Rap",
+        image = com.margicalmusic.resources.R.drawable.sample_image,
+        color = Color(0xFFF6BD60)
+    ),
+    Category(
+        title = "Soft beat",
+        image = com.margicalmusic.resources.R.drawable.sample_image,
+        color = Color(0xFFE55C57)
+    ),
 
     )

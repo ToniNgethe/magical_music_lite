@@ -7,8 +7,8 @@ import com.toni.margicalmusic.domain.models.Video
 import com.toni.margicalmusic.domain.repositories.LyricsRepository
 import com.toni.margicalmusic.domain.repositories.SongsRepository
 import com.toni.margicalmusic.domain.repositories.VideoRepository
-import com.toni.margicalmusic.utils.AppDispatchers
-import com.toni.margicalmusic.utils.ResponseState
+import com.margicalmusic.core_network.ResponseState
+import com.margicalmusic.core_utils.AppDispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 

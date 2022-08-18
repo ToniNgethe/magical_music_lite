@@ -3,7 +3,7 @@ package com.toni.margicalmusic.presentation.atists
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.toni.margicalmusic.domain.repositories.ArtistsRepository
-import com.toni.margicalmusic.utils.ResponseState
+import com.margicalmusic.core_network.ResponseState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collectLatest

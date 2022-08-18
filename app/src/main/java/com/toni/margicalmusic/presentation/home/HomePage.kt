@@ -20,6 +20,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.core_navigation.UiEvent
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.PermissionStatus
 import com.google.accompanist.permissions.rememberPermissionState
@@ -27,8 +28,7 @@ import com.google.accompanist.permissions.shouldShowRationale
 import com.toni.margicalmusic.R
 import com.toni.margicalmusic.presentation.home_page.HomePageView
 import com.toni.margicalmusic.presentation.songs_page.SongsView
-import com.toni.margicalmusic.presentation.theme.Ascent
-import com.toni.margicalmusic.presentation.ui.utils.UiEvent
+import com.example.core_navigation.theme.Ascent
 
 @OptIn(ExperimentalMaterialApi::class, ExperimentalPermissionsApi::class)
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
@@ -58,19 +58,19 @@ fun HomePage(
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
-                    stringResource(R.string.permission_music_folder),
+                    stringResource(com.margicalmusic.resources.R.string.permission_music_folder),
                     style = MaterialTheme.typography.h1.copy(
                         fontSize = 24.sp, color = Color.White
                     )
                 )
                 Image(
-                    painter = painterResource(id = R.drawable.ic_music_folder),
+                    painter = painterResource(id = com.margicalmusic.resources.R.drawable.ic_music_folder),
                     contentDescription = null
                 )
             }
 
             Text(
-                text = stringResource(R.string.permission_description),
+                text = stringResource(com.margicalmusic.resources.R.string.permission_description),
                 modifier = Modifier.padding(10.dp),
                 style = MaterialTheme.typography.body2.copy(
                     color = Color.White, fontSize = 16.sp
@@ -84,9 +84,9 @@ fun HomePage(
 
                         } else {
                             val message = if (permissionState.status.shouldShowRationale) {
-                                context.getString(R.string.request_permission)
+                                context.getString(com.margicalmusic.resources.R.string.request_permission)
                             } else {
-                                context.getString(R.string.permission_required)
+                                context.getString(com.margicalmusic.resources.R.string.permission_required)
                             }
                             Toast.makeText(
                                 context, message, Toast.LENGTH_SHORT
@@ -102,7 +102,7 @@ fun HomePage(
                     )
                 ) {
                     Text(
-                        text = stringResource(R.string.grant_access),
+                        text = stringResource(com.margicalmusic.resources.R.string.grant_access),
                         style = MaterialTheme.typography.h1.copy(color = Color.White)
                     )
                 }

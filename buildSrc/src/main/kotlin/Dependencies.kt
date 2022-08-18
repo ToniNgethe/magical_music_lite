@@ -1,9 +1,12 @@
 object Versions {
-    const val compose = "1.3.0-alpha01"
-    const val retrofit = "2.9.0"
-    const val coroutines = "1.6.3"
-    const val room = "2.4.2"
-    const val dataStore = "1.0.0"
+    internal const val compose = "1.3.0-alpha01"
+    internal const val retrofit = "2.9.0"
+    internal const val coroutines = "1.6.3"
+    internal const val room = "2.4.2"
+    internal const val dataStore = "1.0.0"
+    internal const val RETROFIT_KOTLIN_SERIALIZATION = "0.8.0"
+    internal const val KOTLIN_SERIALIZATION_JSON = "1.3.2"
+    const val COMPOSE_COMPILER = "1.3.0"
 }
 
 
@@ -44,6 +47,8 @@ object Dependencies {
     const val retrofitCoroutineAdapter =
         "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2"
     const val mockWebserver = "com.squareup.okhttp3:mockwebserver:4.9.3"
+    const val retrofitKotlinSerialization =
+        "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:${Versions.RETROFIT_KOTLIN_SERIALIZATION}"
 
     // Coroutines & Coroutine Lifecycle Scopes
     const val viewmodelLifecycle = "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1"
@@ -67,11 +72,13 @@ object Dependencies {
     const val jUnit = "junit:junit:4.13.2"
     const val expressoCore = "androidx.test.espresso:espresso-core:3.4.0"
     const val androidxJunit = "androidx.test.ext:junit:1.1.3"
-    const val googleTruth  = "com.google.truth:truth:1.1.3"
+    const val googleTruth = "com.google.truth:truth:1.1.3"
     const val mockk = "io.mockk:mockk:1.12.4"
-    const val composeUiTestJunit = "androidx.compose.ui:ui-test-junit4:1.3.0"
+    const val composeUiTestJunit = "androidx.compose.ui:ui-test-junit4:${Versions.compose}"
 
     // others
     const val gson = "com.google.code.gson:gson:2.9.0"
+    const val kotlinSerializationJson =
+        "org.jetbrains.kotlinx:kotlinx-serialization-json:${Versions.KOTLIN_SERIALIZATION_JSON}"
 }
 

@@ -56,9 +56,14 @@ dependencies {
 
 
     implementation(Dependencies.roomKtx)
+    androidTestImplementation(project(mapOf("path" to ":core-utils")))
     kapt(Dependencies.roomCompiler)
     implementation(Dependencies.roomKRuntime)
+    implementation(Dependencies.dataStore)
 
     implementation(Dependencies.hilt)
     kapt(Dependencies.hiltCompiler)
+
+    androidTestImplementation(Dependencies.coroutinesTest)
+    androidTestImplementation(Dependencies.googleTruth)
 }

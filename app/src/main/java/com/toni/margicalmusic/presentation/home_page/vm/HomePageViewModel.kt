@@ -1,13 +1,12 @@
 package com.toni.margicalmusic.presentation.home_page.vm
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.toni.margicalmusic.domain.models.Artist
+import com.margicalmusic.core_media.models.Artist
 import com.toni.margicalmusic.domain.models.GenreSongModel
-import com.toni.margicalmusic.domain.models.Song
+import com.margicalmusic.core_media.models.Song
 import com.toni.margicalmusic.domain.usecases.GetHomePageDataUseCase
-import com.toni.margicalmusic.utils.ResponseState
+import com.margicalmusic.core_network.ResponseState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -49,7 +48,7 @@ class HomePageViewModel @Inject constructor(private val getHomePageDataUseCase: 
         }
     }
 
-    private fun emitSongs(songs: ResponseState<List<Song>>) {
+    private fun emitSongs(songs: ResponseState<List<com.margicalmusic.core_media.models.Song>>) {
         when (songs) {
             is ResponseState.Success -> {
                 _homePageState.update { it.copy(songs = songs.data) }
@@ -60,7 +59,7 @@ class HomePageViewModel @Inject constructor(private val getHomePageDataUseCase: 
         }
     }
 
-    private fun emitArtists(artists: ResponseState<List<Artist>>) {
+    private fun emitArtists(artists: ResponseState<List<com.margicalmusic.core_media.models.Artist>>) {
         // artists
         when (artists) {
             is ResponseState.Success -> {

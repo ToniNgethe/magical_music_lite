@@ -18,7 +18,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import com.toni.margicalmusic.R
-import com.toni.margicalmusic.presentation.theme.gray_a
+import com.example.core_navigation.theme.gray_a
 
 @Composable
 fun CustomSearchField(onSearch: (String) -> Unit) {
@@ -35,7 +35,7 @@ fun CustomSearchField(onSearch: (String) -> Unit) {
         ) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Icon(
-                    painter = painterResource(id = R.drawable.ic_search),
+                    painter = painterResource(id = com.margicalmusic.resources.R.drawable.ic_search),
                     contentDescription = "search",
                     modifier = Modifier.padding(all = 10.dp),
                     tint = gray_a

@@ -1,10 +1,10 @@
 package com.toni.margicalmusic.di
 
 import android.content.Context
-import com.toni.margicalmusic.data.local.AppDataStore
-import com.toni.margicalmusic.data.local.AppDataStoreImpl
-import com.toni.margicalmusic.utils.AppDispatchers
-import com.toni.margicalmusic.utils.AppDispatchersImpl
+import com.margicalmusic.core_utils.AppDispatchers
+import com.margicalmusic.core_utils.AppDispatchersImpl
+import com.margicalmusic.core_database.local.AppDataStore
+import com.margicalmusic.core_database.local.AppDataStoreImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,9 +19,4 @@ object AppModule {
     @Singleton
     @Provides
     fun provideDispatchers(): AppDispatchers = AppDispatchersImpl()
-
-    @Singleton
-    @Provides
-    fun providesDataStore(@ApplicationContext context: Context): AppDataStore =
-        AppDataStoreImpl(context = context)
 }

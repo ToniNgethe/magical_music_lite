@@ -6,8 +6,8 @@ import com.toni.margicalmusic.R
 import com.toni.margicalmusic.domain.models.Lyric
 import com.toni.margicalmusic.domain.models.Video
 import com.toni.margicalmusic.domain.usecases.GetLyricsAndVideoUseCase
-import com.toni.margicalmusic.utils.ResponseState
-import com.toni.margicalmusic.utils.UiText
+import com.margicalmusic.core_network.ResponseState
+import com.margicalmusic.core_utils.UiText
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -35,7 +35,7 @@ class SelectedSongVm @Inject constructor(private val lyricsVideoUseCase: GetLyri
         if (title.isEmpty() || artistName.isEmpty()) {
             _uiState.update {
                 it.copy(
-                    errorMessage = UiText.StaticText(R.string.song_details_error)
+                    errorMessage = UiText.StaticText(com.margicalmusic.resources.R.string.song_details_error)
                 )
             }
             return

@@ -17,7 +17,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberImagePainter
 import com.toni.margicalmusic.R
-import com.toni.margicalmusic.utils.MediaUtils.getAlbumArtUri
 
 @Composable
 fun CategoriesView(title: String, imageUri: Uri, color: Color) {
@@ -41,7 +40,7 @@ fun CategoriesView(title: String, imageUri: Uri, color: Color) {
                 )
             )
             Icon(
-                painter = painterResource(id = R.drawable.ic_play),
+                painter = painterResource(id = com.margicalmusic.resources.R.drawable.ic_play),
                 contentDescription = null,
                 tint = Color.White,
                 modifier = Modifier.padding(all = 5.dp)

@@ -2,7 +2,7 @@ package com.toni.margicalmusic.domain.usecases
 
 import com.toni.margicalmusic.domain.models.Lyric
 import com.toni.margicalmusic.domain.repositories.LyricsRepository
-import com.toni.margicalmusic.utils.ResponseState
+import com.margicalmusic.core_network.ResponseState
 import javax.inject.Inject
 
 class GetSongLyricsUseCase @Inject constructor(private val lyricsRepository: LyricsRepository) {

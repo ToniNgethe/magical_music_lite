@@ -1,11 +1,11 @@
 package com.toni.margicalmusic.data.repository
 
 import com.google.common.truth.Truth
-import com.toni.margicalmusic.data.dto.videos.VideoRequestDto
+import com.margicalmusic.core_network.dto.videos.VideoRequestDto
 import com.margicalmusic.core_network.dto.videos.VideoResponseDto
 import com.toni.margicalmusic.data.services.VideosService
 import com.toni.margicalmusic.domain.repositories.VideoRepository
-import com.toni.margicalmusic.utils.ResponseState
+import com.margicalmusic.core_network.ResponseState
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi

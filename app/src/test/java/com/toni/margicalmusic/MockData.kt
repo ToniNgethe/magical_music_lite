@@ -3,8 +3,14 @@ package com.toni.margicalmusic
 import com.toni.margicalmusic.data.database.SongsEntity
 import com.toni.margicalmusic.domain.models.*
 
-val artist = Artist(id = 0, name = "", songCount = 0, albumCount = 0, image = null)
-val song = Song(
+val artist = com.margicalmusic.core_media.models.Artist(
+    id = 0,
+    name = "",
+    songCount = 0,
+    albumCount = 0,
+    image = null
+)
+val song = com.margicalmusic.core_media.models.Song(
     id = 0,
     albumId = 0,
     artistId = 0,
@@ -17,7 +23,7 @@ val song = Song(
     mbid = null
 )
 val genre = GenreSongModel(
-    name = "", song = Song(
+    name = "", song = com.margicalmusic.core_media.models.Song(
         id = 0,
         albumId = 0,
         artistId = 0,

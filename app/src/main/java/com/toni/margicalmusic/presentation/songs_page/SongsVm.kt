@@ -2,18 +2,16 @@ package com.toni.margicalmusic.presentation.songs_page
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.toni.margicalmusic.domain.models.Song
+import com.margicalmusic.core_media.models.Song
 import com.toni.margicalmusic.domain.repositories.SongsRepository
-import com.toni.margicalmusic.utils.ResponseState
+import com.margicalmusic.core_network.ResponseState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -21,7 +19,7 @@ class SongsVm @Inject constructor(val songsRepository: SongsRepository) : ViewMo
 
     private val _songsUiState = MutableStateFlow(SongsUiState(isLoading = true))
     val songsUiState = _songsUiState.asStateFlow()
-    private val songsList = mutableListOf<Song>()
+    private val songsList = mutableListOf<com.margicalmusic.core_media.models.Song>()
 
     private var searchJob: Job? = null
 
@@ -62,7 +60,7 @@ class SongsVm @Inject constructor(val songsRepository: SongsRepository) : ViewMo
         }
         searchJob?.cancel()
         searchJob = viewModelScope.launch {
-            val filteredList = mutableListOf<Song>()
+            val filteredList = mutableListOf<com.margicalmusic.core_media.models.Song>()
 
             _songsUiState.value.songs?.forEach { song ->
                 if (song.title?.lowercase()?.contains(keyWord.lowercase()) == true) {

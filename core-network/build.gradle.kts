@@ -7,6 +7,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
+    id("org.jetbrains.kotlin.plugin.serialization")
 }
 
 val localProperties = Properties().apply {
@@ -55,6 +56,12 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    packagingOptions {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1"
+        }
+    }
 }
 
 dependencies {
@@ -70,7 +77,12 @@ dependencies {
     implementation(Dependencies.retrofitConverterMoshi)
     implementation(Dependencies.loggingInterceptor)
     implementation(Dependencies.retrofitCoroutineAdapter)
+    implementation(Dependencies.gson)
+    implementation(Dependencies.kotlinSerializationJson)
+    implementation(Dependencies.retrofitKotlinSerialization)
 
     implementation(Dependencies.hilt)
     kapt(Dependencies.hiltCompiler)
+
+    implementation(project(mapOf("path" to ":core-utils")))
 }

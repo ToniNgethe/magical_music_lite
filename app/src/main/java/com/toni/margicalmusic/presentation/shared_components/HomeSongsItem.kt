@@ -5,7 +5,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.Colors
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -14,30 +13,26 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import coil.compose.AsyncImage
 import coil.compose.rememberImagePainter
-import coil.request.ImageRequest
 import com.toni.margicalmusic.R
-import com.toni.margicalmusic.domain.models.Song
-import com.toni.margicalmusic.utils.MediaUtils.convertMillisToMinsSecs
-import com.toni.margicalmusic.utils.MediaUtils.getAlbumArtUri
-
+import com.margicalmusic.core_media.models.Song
+import com.margicalmusic.core_utils.MediaUtils.convertMillisToMinsSecs
+import com.margicalmusic.core_utils.MediaUtils.getAlbumArtUri
 
 @Composable
 fun HomeSongsItem(
     modifier: Modifier = Modifier,
-    index: Int, song: Song, icon: Int = R.drawable.ic_more, onClick: ((Song) -> Unit)? = null
+    index: Int,
+    song: Song,
+    icon: Int = com.margicalmusic.resources.R.drawable.ic_more,
+    onClick: ((Song) -> Unit)? = null
 ) {
-    Box(
-        modifier = modifier
-            .background(color = if (index % 2 == 1) MaterialTheme.colors.background else MaterialTheme.colors.primaryVariant)
-            .clickable { onClick?.invoke(song) }
-    ) {
+    Box(modifier = modifier
+        .background(color = if (index % 2 == 1) MaterialTheme.colors.background else MaterialTheme.colors.primaryVariant)
+        .clickable { onClick?.invoke(song) }) {
         Row(
             modifier = modifier
                 .fillMaxWidth()
@@ -65,7 +60,7 @@ fun HomeSongsItem(
 
                 Row(modifier = Modifier.padding(all = 10.dp)) {
                     Image(
-                        painterResource(id = R.drawable.ic_logo),
+                        painterResource(id = com.margicalmusic.resources.R.drawable.ic_logo),
                         contentDescription = null,
                         contentScale = ContentScale.Crop,
                         modifier = Modifier

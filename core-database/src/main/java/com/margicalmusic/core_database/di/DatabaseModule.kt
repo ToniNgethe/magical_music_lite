@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.room.Room
 import com.margicalmusic.core_database.dao.SongsDao
 import com.margicalmusic.core_database.database.AppDatabase
+import com.margicalmusic.core_database.local.AppDataStore
+import com.margicalmusic.core_database.local.AppDataStoreImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -24,4 +26,10 @@ object DatabaseModule {
     @Provides
     @Singleton
     fun provideSingDao(appDatabase: AppDatabase): SongsDao = appDatabase.songDao()
+
+
+    @Singleton
+    @Provides
+    fun providesDataStore(@ApplicationContext context: Context): AppDataStore =
+        AppDataStoreImpl(context = context)
 }

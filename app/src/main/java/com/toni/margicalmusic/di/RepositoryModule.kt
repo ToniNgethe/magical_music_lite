@@ -32,8 +32,4 @@ abstract class RepositoryModule {
     @Singleton
     @Binds
     abstract fun bindVideoRepository(videoRepositoryImpl: VideoRepositoryImpl): VideoRepository
-
-    @Singleton
-    @Binds
-    abstract fun bindSplashScreenRepo(splashScreenRepoImpl: SplashScreenRepoImpl): SplashScreenRepo
 }

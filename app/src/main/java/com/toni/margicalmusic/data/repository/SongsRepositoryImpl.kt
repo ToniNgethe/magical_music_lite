@@ -2,12 +2,12 @@ package com.toni.margicalmusic.data.repository
 
 import com.margicalmusic.core_database.dao.SongsDao
 import com.margicalmusic.core_database.entity.SongsEntity
+import com.margicalmusic.core_media.dataloaders.SongLoader
+import com.margicalmusic.core_network.ResponseState
+import com.margicalmusic.core_utils.AppDispatchers
+import com.margicalmusic.core_utils.UiText
 import com.toni.margicalmusic.R
-import com.toni.margicalmusic.data.dataloaders.SongLoader
 import com.toni.margicalmusic.domain.repositories.SongsRepository
-import com.toni.margicalmusic.utils.AppDispatchers
-import com.toni.margicalmusic.utils.ResponseState
-import com.toni.margicalmusic.utils.UiText
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
@@ -24,7 +24,7 @@ class SongsRepositoryImpl @Inject constructor(
             if (songs.isNotEmpty()) {
                 emit(ResponseState.Success(songs))
             } else {
-                emit(ResponseState.Error(UiText.StaticText(R.string.no_songs)))
+                emit(ResponseState.Error(UiText.StaticText(com.margicalmusic.resources.R.string.no_songs)))
             }
         } catch (e: Exception) {
             emit(ResponseState.Error(UiText.DynamicText(e.message!!)))
@@ -34,7 +34,7 @@ class SongsRepositoryImpl @Inject constructor(
     override suspend fun getCachedSong(songId: Int?): ResponseState<SongsEntity> = try {
         val song = songDao.getSongById(songId = songId!!)
         if (song != null) ResponseState.Success(song)
-        else ResponseState.Error(UiText.StaticText(R.string.no_cached_song))
+        else ResponseState.Error(UiText.StaticText(com.margicalmusic.resources.R.string.no_cached_song))
     } catch (e: Exception) {
         ResponseState.Error(UiText.DynamicText(e.message ?: ""))
     }

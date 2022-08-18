@@ -1,8 +1,8 @@
 package com.toni.margicalmusic.presentation.atists
 
-import com.toni.margicalmusic.domain.models.Artist
-import com.toni.margicalmusic.utils.UiText
+import com.margicalmusic.core_utils.UiText
+
 
 data class ArtistsUiState(
-    var errorMessage: UiText? = null, var artists: List<Artist>? = null
+    var errorMessage: UiText? = null, var artists: List<com.margicalmusic.core_media.models.Artist>? = null
 )

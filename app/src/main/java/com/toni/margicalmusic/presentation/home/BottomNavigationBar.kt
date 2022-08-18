@@ -6,8 +6,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.toni.margicalmusic.presentation.theme.Ascent
-import com.toni.margicalmusic.presentation.theme.MargicalMusicAppTheme
+import com.example.core_navigation.theme.Ascent
+import com.example.core_navigation.theme.MargicalMusicAppTheme
 
 
 @Composable

@@ -4,7 +4,7 @@ import androidx.compose.ui.graphics.Color
 
 
 data class GenreSongModel(
-    val name: String, val song: Song, val count: Int
+    val name: String, val song: com.margicalmusic.core_media.models.Song, val count: Int
 ) {
 
     fun getGenreColor() : Color {

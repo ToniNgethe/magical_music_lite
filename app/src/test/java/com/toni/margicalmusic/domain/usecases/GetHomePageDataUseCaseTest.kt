@@ -3,16 +3,13 @@ package com.toni.margicalmusic.domain.usecases
 import com.google.common.truth.Truth
 import com.toni.margicalmusic.TestUtiDispatchers
 import com.toni.margicalmusic.artist
-import com.toni.margicalmusic.domain.models.Artist
-import com.toni.margicalmusic.domain.models.GenreSongModel
-import com.toni.margicalmusic.domain.models.Song
 import com.toni.margicalmusic.domain.repositories.ArtistsRepository
 import com.toni.margicalmusic.domain.repositories.GenreRepository
 import com.toni.margicalmusic.domain.repositories.SongsRepository
 import com.toni.margicalmusic.genre
 import com.toni.margicalmusic.song
 import com.toni.margicalmusic.utils.AppDispatchers
-import com.toni.margicalmusic.utils.ResponseState
+import com.margicalmusic.core_network.ResponseState
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi

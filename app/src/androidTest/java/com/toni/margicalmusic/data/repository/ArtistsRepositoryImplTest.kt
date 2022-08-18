@@ -9,10 +9,10 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.preferencesDataStoreFile
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.margicalmusic.core_utils.AppDispatchers
 import com.toni.margicalmusic.TestUtiDispatchers
-import com.toni.margicalmusic.data.local.AppDataStore
-import com.toni.margicalmusic.domain.repositories.SplashScreenRepo
-import com.toni.margicalmusic.utils.AppDispatchers
+import com.margicalmusic.core_database.local.AppDataStore
+import com.margicalmusic.feature_onboarding.domain.SplashScreenRepo
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
@@ -46,7 +46,7 @@ class TestAppDataStore constructor(testContext: Context) :
 class ArtistsRepositoryImplTest {
     private lateinit var dataStore: AppDataStore
     private lateinit var appDispatchers: AppDispatchers
-    private lateinit var splashScreenRepo: SplashScreenRepo
+    private lateinit var splashScreenRepo: com.margicalmusic.feature_onboarding.domain.SplashScreenRepo
 
     private val testContext: Context = ApplicationProvider.getApplicationContext()
 
@@ -55,7 +55,10 @@ class ArtistsRepositoryImplTest {
         appDispatchers = TestUtiDispatchers()
         dataStore = TestAppDataStore(testContext = testContext)
 
-        splashScreenRepo = SplashScreenRepoImpl(dataStore, appDispatchers = appDispatchers)
+        splashScreenRepo = com.margicalmusic.feature_onboarding.data.SplashScreenRepoImpl(
+            dataStore,
+            appDispatchers = appDispatchers
+        )
     }
 
     @Test

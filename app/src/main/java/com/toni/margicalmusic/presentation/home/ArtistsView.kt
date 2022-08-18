@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.toni.margicalmusic.presentation.atists.ArtistsVm
 import com.toni.margicalmusic.presentation.shared_components.HomePageHeader
-import com.toni.margicalmusic.presentation.theme.MargicalMusicAppTheme
+import com.example.core_navigation.theme.MargicalMusicAppTheme
 import com.toni.margicalmusic.presentation.ui.CustomSearchField
 
 @Composable

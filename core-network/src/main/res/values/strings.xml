@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="server_error">Unable to connect to server. Please contact support.</string>
+    <string name="connection_error">Unable to connect to server. Please check your internet connection.</string>
+    <string name="socket_exception_error">Unable to connect to server. Please try again later.</string>
+    <string name="check_internet">Please check your internet connection and try again.</string>
+    <string name="something_error">Something went wrong. Please try again.</string>
+</resources>
