@@ -77,7 +77,6 @@ dependencies {
     implementation(Dependencies.retrofitConverterMoshi)
     implementation(Dependencies.loggingInterceptor)
     implementation(Dependencies.retrofitCoroutineAdapter)
-    implementation(Dependencies.gson)
     implementation(Dependencies.kotlinSerializationJson)
     implementation(Dependencies.retrofitKotlinSerialization)
 
