@@ -2,7 +2,7 @@ package com.toni.margicalmusic.data.services
 
 import com.google.common.truth.Truth
 import com.squareup.moshi.Moshi
-import com.toni.margicalmusic.data.dto.videos.VideoRequestDto
+import com.margicalmusic.core_network.dto.videos.VideoRequestDto
 import com.margicalmusic.core_network.dto.videos.VideoResponseDto
 import kotlinx.coroutines.test.runTest
 import okhttp3.OkHttpClient

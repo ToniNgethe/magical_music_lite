@@ -1,11 +1,11 @@
-package com.toni.margicalmusic.data.dto.lyrics
+package com.margicalmusic.core_network.dto.lyrics
 
 
-import com.squareup.moshi.Json
+import kotlinx.serialization.SerialName
 
-
+@kotlinx.serialization.Serializable
 data class LyricsResponseDto(
-    @field:Json(name = "data") val data: String?,
-    @field:Json(name = "message") val message: String?,
-    @field:Json(name = "status") val status: String?
+    @SerialName("data") val data: String?,
+    @SerialName("message") val message: String?,
+    @SerialName("status") val status: String?
 )

@@ -1,11 +1,8 @@
-package com.toni.margicalmusic.data.dto.videos
+package com.margicalmusic.core_network.dto.videos
 
+import kotlinx.serialization.SerialName
 
-import com.squareup.moshi.Json
-
+@kotlinx.serialization.Serializable
 data class VideoRequestDto(
-    @Json(name = "artist")
-    val artist: String?,
-    @Json(name = "song")
-    val song: String?
+    @SerialName("artist") val artist: String?, @SerialName("song") val song: String?
 )

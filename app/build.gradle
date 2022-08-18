@@ -42,7 +42,7 @@ android {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion '1.1.0-rc02'
+        kotlinCompilerExtensionVersion Versions.COMPOSE_COMPILER
     }
     packagingOptions {
         resources {
@@ -87,6 +87,9 @@ dependencies {
 
     implementation project(path: ':core-database')
     implementation project(path: ':core-network')
+    implementation project(path: ':core-media')
+    implementation project(path: ':resources')
+    implementation project(path: ':feature_onboarding')
 }
 
 // test
@@ -95,7 +98,8 @@ dependencies {
     testImplementation Dependencies.googleTruth
     testImplementation Dependencies.mockk
 
-    androidTestImplementation Dependencies.googleTruth
+    androidTestImplementation(Dependencies.coroutinesTest)
+    androidTestImplementation(Dependencies.googleTruth)
     androidTestImplementation Dependencies.androidxJunit
     androidTestImplementation Dependencies.expressoCore
     androidTestImplementation Dependencies.composeUiTestJunit
@@ -117,11 +121,9 @@ dependencies {
 }
 
 dependencies {
+    implementation project(path: ':core-navigation')
+    implementation project(path: ':core-utils')
+    implementation project(path: ':core-media')
+    androidTestImplementation project(path: ':core-utils')
     implementation Dependencies.gson
-}
-
-configurations.all {
-    resolutionStrategy {
-        force "com.squareup.okhttp3:okhttp:4.9.3"
-    }
 }

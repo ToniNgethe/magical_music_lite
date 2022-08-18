@@ -1,19 +1,21 @@
 package com.margicalmusic.core_network.dto.videos
 
 
-import com.squareup.moshi.Json
+import kotlinx.serialization.SerialName
 
+@kotlinx.serialization.Serializable
 data class VideoResponseDto(
-    @field:Json(name = "data") val `data`: List<Data?>?,
-    @field:Json(name = "message") val message: String?,
-    @field:Json(name = "status") val status: String?
+    @SerialName("data") val `data`: List<Data?>?,
+    @SerialName( "message") val message: String?,
+    @SerialName("status") val status: String?
 ) {
+    @kotlinx.serialization.Serializable
     data class Data(
-        @field:Json(name = "artist") val artist: String?,
-        @field:Json(name = "duration") val duration: Int?,
-        @field:Json(name = "id") val id: String?,
-        @field:Json(name = "original_title") val originalTitle: String?,
-        @field:Json(name = "publishedAt") val publishedAt: String?,
-        @field:Json(name = "title") val title: String?
+        @SerialName( "artist") val artist: String?,
+        @SerialName( "duration") val duration: Int?,
+        @SerialName( "id") val id: String?,
+        @SerialName( "original_title") val originalTitle: String?,
+        @SerialName( "publishedAt") val publishedAt: String?,
+        @SerialName( "title") val title: String?
     )
 }

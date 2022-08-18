@@ -1,9 +1,9 @@
-package com.toni.margicalmusic.data.dto.lyrics
+package com.margicalmusic.core_network.dto.lyrics
 
 
-import com.squareup.moshi.Json
-import com.squareup.moshi.JsonClass
+import kotlinx.serialization.SerialName
 
+@kotlinx.serialization.Serializable
 data class LyricsRequestDto(
-    @field:Json(name = "artist") val artist: String?, @field:Json(name = "song") val song: String?
+    @SerialName("artist") val artist: String?, @SerialName("song") val song: String?
 )
