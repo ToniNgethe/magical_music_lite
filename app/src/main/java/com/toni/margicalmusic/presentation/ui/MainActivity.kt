@@ -15,13 +15,15 @@ import androidx.navigation.navArgument
 import com.example.core_navigation.Routes
 import com.example.core_navigation.UiEvent
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import com.magicalmusic.core_design.DarkPrimary
+import com.magicalmusic.core_design.MargicalMusicAppTheme
+import com.margicalmusic.core_media.models.Song
 import com.margicalmusic.core_utils.GsonParser
+import com.margicalmusic.feature_onboarding.presentation.on_boarding.OnBoardingScreen
+import com.margicalmusic.feature_onboarding.presentation.splashscreen.SplashScreen
+import com.margicalmusic.feature_settings.presentation.SettingsPage
 import com.toni.margicalmusic.presentation.home.HomePage
 import com.toni.margicalmusic.presentation.selected_song.SelectedSongScreen
-import com.example.core_navigation.theme.DarkPrimary
-import com.example.core_navigation.theme.MargicalMusicAppTheme
-import com.margicalmusic.feature_onboarding.presentation.SplashScreen
-import com.margicalmusic.feature_onboarding.presentation.on_boarding.OnBoardingScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -63,7 +65,9 @@ class MainActivity : ComponentActivity() {
                         }
                         composable(Routes.HOME_PAGE) {
                             HomePage(context) { uiEvent ->
-                                if (uiEvent is UiEvent.OnNavigate) navController.navigate(uiEvent.route)
+                                if (uiEvent is UiEvent.OnNavigate) {
+                                    navController.navigate(uiEvent.route)
+                                }
                             }
                         }
                         composable(
@@ -71,10 +75,13 @@ class MainActivity : ComponentActivity() {
                         ) { backSentry ->
                             SelectedSongScreen(context, GsonParser.fromJson(
                                 backSentry.arguments?.getString("song")!!,
-                                com.margicalmusic.core_media.models.Song::class.java
+                                Song::class.java
                             ), lifecycle, navController, onNavigate = { event ->
 
                             })
+                        }
+                        composable(Routes.SETTINGS_PAGE) {
+                            SettingsPage(onNavigate = navController)
                         }
                     }
 

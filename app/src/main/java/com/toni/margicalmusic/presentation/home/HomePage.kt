@@ -25,10 +25,9 @@ import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.PermissionStatus
 import com.google.accompanist.permissions.rememberPermissionState
 import com.google.accompanist.permissions.shouldShowRationale
-import com.toni.margicalmusic.R
+import com.magicalmusic.core_design.Ascent
 import com.toni.margicalmusic.presentation.home_page.HomePageView
 import com.toni.margicalmusic.presentation.songs_page.SongsView
-import com.example.core_navigation.theme.Ascent
 
 @OptIn(ExperimentalMaterialApi::class, ExperimentalPermissionsApi::class)
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
@@ -146,7 +145,7 @@ fun Navigation(
             SongsView(onNavigate = onUiEvent)
         }
         composable(NavigationItem.Artists.route) {
-            ArtistsView(context)
+            ArtistsView(context, onNavigate = onUiEvent)
         }
     }
 }

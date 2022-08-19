@@ -1,6 +1,6 @@
 package com.toni.margicalmusic.domain.repositories
 
-import com.margicalmusic.core_database.entity.SongsEntity
+import com.margicalmusic.core_database.data.entity.SongsEntity
 import com.margicalmusic.core_media.models.Song
 import com.margicalmusic.core_network.ResponseState
 import kotlinx.coroutines.flow.Flow

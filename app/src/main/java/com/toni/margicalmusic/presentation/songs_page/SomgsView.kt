@@ -16,12 +16,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.margicalmusic.core_utils.GsonParser
-import com.toni.margicalmusic.R
 import com.toni.margicalmusic.presentation.shared_components.HomePageHeader
 import com.toni.margicalmusic.presentation.shared_components.HomeSongsItem
-import com.example.core_navigation.theme.MargicalMusicAppTheme
 import com.toni.margicalmusic.presentation.ui.CustomSearchField
 import com.example.core_navigation.UiEvent
+import com.magicalmusic.core_design.MargicalMusicAppTheme
+import com.margicalmusic.core_media.models.Song
+import com.margicalmusic.resources.R
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -37,7 +38,7 @@ fun SongsView(
                 .fillMaxSize()
                 .background(MaterialTheme.colors.background)
         ) {
-            HomePageHeader()
+            HomePageHeader( onNavigate!! )
 
             CustomSearchField { text ->
                 songsVm.searchList(text)
@@ -67,13 +68,13 @@ fun SongsView(
                         modifier = Modifier.animateItemPlacement(),
                         index,
                         songs[index],
-                        icon = com.margicalmusic.resources.R.drawable.ic_play,
+                        icon = R.drawable.ic_play,
                         onClick = { song ->
                             onNavigate?.invoke(
                                 UiEvent.OnNavigate(
                                     "song_page?song=${
                                         GsonParser.toJson(
-                                            song, com.margicalmusic.core_media.models.Song::class.java
+                                            song, Song::class.java
                                         )
                                     }"
                                 )

@@ -2,7 +2,7 @@ package com.toni.margicalmusic.data.repository
 
 import com.margicalmusic.core_network.ErrorHandler.parseRequestException
 import com.margicalmusic.core_network.ResponseState
-import com.margicalmusic.core_network.dto.videos.VideoRequestDto
+import com.margicalmusic.core_network.data.dto.videos.VideoRequestDto
 import com.margicalmusic.core_utils.UiText
 import com.toni.margicalmusic.data.mappers.toVideoModel
 import com.toni.margicalmusic.data.services.VideosService

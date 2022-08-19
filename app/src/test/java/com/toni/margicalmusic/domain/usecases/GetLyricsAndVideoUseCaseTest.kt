@@ -1,7 +1,7 @@
 package com.toni.margicalmusic.domain.usecases
 
 import com.google.common.truth.Truth
-import com.margicalmusic.core_database.entity.SongsEntity
+import com.margicalmusic.core_database.data.entity.SongsEntity
 import com.margicalmusic.core_network.ResponseState
 import com.margicalmusic.core_utils.AppDispatchers
 import com.margicalmusic.core_utils.UiText

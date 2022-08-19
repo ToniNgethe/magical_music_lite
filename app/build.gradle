@@ -90,6 +90,7 @@ dependencies {
     implementation project(path: ':core-media')
     implementation project(path: ':resources')
     implementation project(path: ':feature_onboarding')
+    implementation project(path: ':feature-settings')
 }
 
 // test
@@ -125,5 +126,6 @@ dependencies {
     implementation project(path: ':core-utils')
     implementation project(path: ':core-media')
     androidTestImplementation project(path: ':core-utils')
+    implementation(project(":core-design"))
     implementation Dependencies.gson
 }

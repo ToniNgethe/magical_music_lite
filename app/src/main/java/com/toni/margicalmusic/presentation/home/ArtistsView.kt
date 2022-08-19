@@ -17,14 +17,17 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.toni.margicalmusic.presentation.atists.ArtistsVm
+import com.example.core_navigation.UiEvent
+import com.magicalmusic.core_design.MargicalMusicAppTheme
 import com.toni.margicalmusic.presentation.shared_components.HomePageHeader
-import com.example.core_navigation.theme.MargicalMusicAppTheme
+import com.toni.margicalmusic.presentation.atists.ArtistsVm
 import com.toni.margicalmusic.presentation.ui.CustomSearchField
 
 @Composable
 fun ArtistsView(
-    context: Context, artistsVm: ArtistsVm = hiltViewModel()
+    context: Context,
+    artistsVm: ArtistsVm = hiltViewModel(),
+    onNavigate: (UiEvent.OnNavigate) -> Unit
 ) {
     val artistsUiState = artistsVm.artistsUiState.collectAsState()
 
@@ -37,7 +40,7 @@ fun ArtistsView(
                 .fillMaxSize()
                 .background(MaterialTheme.colors.background)
         ) {
-            HomePageHeader()
+            HomePageHeader(onNavigate)
             CustomSearchField {
 
             }

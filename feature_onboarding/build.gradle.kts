@@ -69,6 +69,6 @@ dependencies {
     implementation(Dependencies.hiltNavigationCompose)
 
     implementation(project(mapOf("path" to ":core-navigation")))
+    implementation(project(mapOf("path" to ":core-design")))
     implementation(project(mapOf("path" to ":resources")))
-
 }

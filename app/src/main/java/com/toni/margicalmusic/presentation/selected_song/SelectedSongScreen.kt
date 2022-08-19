@@ -23,8 +23,9 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.NavHostController
 import com.example.core_navigation.UiEvent
-import com.example.core_navigation.theme.Ascent
-import com.example.core_navigation.theme.MargicalMusicAppTheme
+import com.magicalmusic.core_design.Ascent
+import com.magicalmusic.core_design.MargicalMusicAppTheme
+import com.margicalmusic.resources.R
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
@@ -59,7 +60,7 @@ fun SelectedSongScreen(
                         .fillMaxWidth()
                         .padding(top = 18.dp, start = 18.dp, end = 18.dp)
                 ) {
-                    Icon(painter = painterResource(id = com.margicalmusic.resources.R.drawable.ic_close),
+                    Icon(painter = painterResource(id = R.drawable.ic_close),
                         contentDescription = "close page",
                         tint = MaterialTheme.colors.onSurface,
                         modifier = Modifier.clickable {

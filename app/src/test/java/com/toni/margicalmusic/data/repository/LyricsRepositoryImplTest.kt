@@ -2,8 +2,8 @@ package com.toni.margicalmusic.data.repository
 
 import com.google.common.truth.Truth
 import com.toni.margicalmusic.TestUtiDispatchers
-import com.margicalmusic.core_network.dto.lyrics.LyricsRequestDto
-import com.margicalmusic.core_network.dto.lyrics.LyricsResponseDto
+import com.margicalmusic.core_network.data.dto.lyrics.LyricsRequestDto
+import com.margicalmusic.core_network.data.dto.lyrics.LyricsResponseDto
 import com.toni.margicalmusic.data.services.LyricsService
 import com.toni.margicalmusic.domain.models.Lyric
 import com.toni.margicalmusic.domain.repositories.LyricsRepository

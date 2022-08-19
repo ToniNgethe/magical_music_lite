@@ -2,10 +2,10 @@ package com.margicalmusic.core_database.di
 
 import android.content.Context
 import androidx.room.Room
-import com.margicalmusic.core_database.dao.SongsDao
-import com.margicalmusic.core_database.database.AppDatabase
-import com.margicalmusic.core_database.local.AppDataStore
-import com.margicalmusic.core_database.local.AppDataStoreImpl
+import com.margicalmusic.core_database.data.dao.SongsDao
+import com.margicalmusic.core_database.data.database.AppDatabase
+import com.margicalmusic.core_database.data.local.AppDataStore
+import com.margicalmusic.core_database.data.local.AppDataStoreImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

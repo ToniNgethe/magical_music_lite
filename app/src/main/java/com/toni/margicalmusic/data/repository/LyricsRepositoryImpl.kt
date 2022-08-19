@@ -4,7 +4,7 @@ import com.margicalmusic.core_network.ResponseState
 import com.margicalmusic.core_network.services.LyricsService
 import com.margicalmusic.core_utils.AppDispatchers
 import com.margicalmusic.core_utils.UiText
-import com.margicalmusic.core_network.dto.lyrics.LyricsRequestDto
+import com.margicalmusic.core_network.data.dto.lyrics.LyricsRequestDto
 import com.toni.margicalmusic.data.mappers.toLyricModel
 import com.toni.margicalmusic.domain.models.Lyric
 import com.toni.margicalmusic.domain.repositories.LyricsRepository

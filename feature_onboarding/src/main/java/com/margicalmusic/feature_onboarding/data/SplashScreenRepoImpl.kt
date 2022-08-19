@@ -1,6 +1,6 @@
 package com.margicalmusic.feature_onboarding.data
 
-import com.margicalmusic.core_database.local.AppDataStore
+import com.margicalmusic.core_database.data.local.AppDataStore
 import com.margicalmusic.core_utils.AppDispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn

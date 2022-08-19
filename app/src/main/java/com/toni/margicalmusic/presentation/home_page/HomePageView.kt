@@ -25,11 +25,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.core_navigation.UiEvent
-import com.example.core_navigation.theme.Ascent
-import com.example.core_navigation.theme.MargicalMusicAppTheme
+import com.magicalmusic.core_design.Ascent
+import com.magicalmusic.core_design.MargicalMusicAppTheme
+import com.margicalmusic.core_media.models.Song
 import com.margicalmusic.core_utils.GsonParser
 import com.margicalmusic.core_utils.MediaUtils.getAlbumArtUri
-import com.margicalmusic.core_utils.MoshiParser
 import com.toni.margicalmusic.presentation.home.NavigationItem
 import com.toni.margicalmusic.presentation.home_page.components.CategoriesView
 import com.toni.margicalmusic.presentation.home_page.vm.HomePageViewModel
@@ -51,7 +51,7 @@ fun HomePageView(
                 .fillMaxSize()
         ) {
             // header
-            HomePageHeader(displaySearchIcon = true)
+            HomePageHeader(onNavigate!!)
 
             // categories
             val categories = uiState.value.genres
@@ -150,7 +150,7 @@ fun HomePageView(
                             UiEvent.OnNavigate(
                                 "song_page?song=${
                                     GsonParser.toJson(
-                                        song, com.margicalmusic.core_media.models.Song::class.java
+                                        song, Song::class.java
                                     )
                                 }"
                             )

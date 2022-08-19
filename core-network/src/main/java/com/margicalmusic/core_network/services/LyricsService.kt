@@ -1,7 +1,7 @@
 package com.margicalmusic.core_network.services
 
-import com.margicalmusic.core_network.dto.lyrics.LyricsRequestDto
-import com.margicalmusic.core_network.dto.lyrics.LyricsResponseDto
+import com.margicalmusic.core_network.data.dto.lyrics.LyricsRequestDto
+import com.margicalmusic.core_network.data.dto.lyrics.LyricsResponseDto
 import retrofit2.http.Body
 import retrofit2.http.POST
 

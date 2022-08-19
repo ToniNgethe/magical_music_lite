@@ -22,15 +22,16 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.core_navigation.Routes
 import com.example.core_navigation.UiEvent
-import com.example.core_navigation.theme.Ascent
-import com.example.core_navigation.theme.MargicalMusicAppTheme
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.PermissionStatus
 import com.google.accompanist.permissions.rememberPermissionState
 import com.google.accompanist.permissions.shouldShowRationale
+import com.magicalmusic.core_design.Ascent
+import com.magicalmusic.core_design.MargicalMusicAppTheme
 import com.margicalmusic.feature_onboarding.presentation.SplashScreenVm
 import com.margicalmusic.feature_onboarding.presentation.UserOnboarded
 import com.margicalmusic.feature_onboarding.presentation.on_boarding.components.OnBoardingItem
+import com.margicalmusic.resources.R
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterialApi::class, ExperimentalPermissionsApi::class)
@@ -46,31 +47,34 @@ fun OnBoardingScreen(
             rememberPermissionState(permission = Manifest.permission.READ_EXTERNAL_STORAGE)
         val context = LocalContext.current
 
-        BottomSheetScaffold(
-            scaffoldState = bottomSheetState,
+        BottomSheetScaffold(scaffoldState = bottomSheetState,
             sheetPeekHeight = 0.dp,
             sheetContent = {
                 Column(
-                    modifier = Modifier.fillMaxWidth().background(Ascent)
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(Ascent)
                 ) {
                     Row(
-                        modifier = Modifier.padding(10.dp).fillMaxWidth(),
+                        modifier = Modifier
+                            .padding(10.dp)
+                            .fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
                         Text(
-                            stringResource(com.margicalmusic.resources.R.string.permission_music_folder),
+                            stringResource(R.string.permission_music_folder),
                             style = MaterialTheme.typography.h1.copy(
                                 fontSize = 24.sp, color = Color.White
                             )
                         )
                         Image(
-                            painter = painterResource(id = com.margicalmusic.resources.R.drawable.ic_music_folder),
+                            painter = painterResource(id = R.drawable.ic_music_folder),
                             contentDescription = null
                         )
                     }
 
                     Text(
-                        text = stringResource(com.margicalmusic.resources.R.string.permission_description),
+                        text = stringResource(R.string.permission_description),
                         modifier = Modifier.padding(10.dp),
                         style = MaterialTheme.typography.body2.copy(
                             color = Color.White, fontSize = 16.sp
@@ -95,7 +99,9 @@ fun OnBoardingScreen(
                                     permissionState.launchPermissionRequest()
                                 }
                             },
-                            modifier = Modifier.fillMaxWidth().height(50.dp),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(50.dp),
                             colors = ButtonDefaults.buttonColors(
                                 backgroundColor = Color.Black
                             )
@@ -109,17 +115,18 @@ fun OnBoardingScreen(
                 }
             }) {
             Column(
-                modifier = Modifier.background(MaterialTheme.colors.background)
-                    .verticalScroll(rememberScrollState()).fillMaxSize(),
+                modifier = Modifier
+                    .background(MaterialTheme.colors.background)
+                    .verticalScroll(rememberScrollState())
+                    .fillMaxSize(),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Image(
-                    painter = painterResource(id = com.margicalmusic.resources.R.drawable.ic_logo),
-                    contentDescription = "logo"
+                    painter = painterResource(id = R.drawable.ic_logo), contentDescription = "logo"
                 )
                 Text(
-                    text = stringResource(com.margicalmusic.resources.R.string.magical_music_app),
+                    text = stringResource(R.string.magical_music_app),
                     style = MaterialTheme.typography.h1,
                     color = MaterialTheme.colors.secondary,
                     fontSize = 20.sp,
@@ -129,19 +136,19 @@ fun OnBoardingScreen(
 
                 OnBoardingItem(
                     title = "Get videos, artists alternatives and lyrics of \n" + "your Local music. ",
-                    icon = com.margicalmusic.resources.R.drawable.ic_music
+                    icon = R.drawable.ic_music
                 )
 
                 Spacer(modifier = Modifier.padding(all = 10.dp))
 
                 OnBoardingItem(
                     title = "Bringing more to your  music, artists and \nplaylist",
-                    icon = com.margicalmusic.resources.R.drawable.ic_playlist
+                    icon = R.drawable.ic_playlist
                 )
                 Spacer(modifier = Modifier.padding(all = 10.dp))
                 OnBoardingItem(
                     title = "Discover your favourite artist albums, songs \n" + "and music videos",
-                    icon = com.margicalmusic.resources.R.drawable.ic_albums
+                    icon = R.drawable.ic_albums
                 )
 
                 Spacer(modifier = Modifier.weight(2f))
@@ -153,11 +160,13 @@ fun OnBoardingScreen(
                                 bottomSheetState.bottomSheetState.expand()
                             }
                         },
-                        modifier = Modifier.fillMaxWidth().height(50.dp),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(50.dp),
                         colors = ButtonDefaults.buttonColors(backgroundColor = Ascent)
                     ) {
                         Text(
-                            text = stringResource(com.margicalmusic.resources.R.string.get_started),
+                            text = stringResource(R.string.get_started),
                             color = Color.White,
                             fontSize = 16.sp
                         )

@@ -1,4 +1,4 @@
-package com.margicalmusic.feature_onboarding.presentation
+package com.margicalmusic.feature_onboarding.presentation.splashscreen
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
@@ -20,7 +20,8 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.core_navigation.Routes
 import com.example.core_navigation.UiEvent
-import com.example.core_navigation.theme.MargicalMusicAppTheme
+import com.magicalmusic.core_design.MargicalMusicAppTheme
+import com.margicalmusic.feature_onboarding.presentation.SplashScreenVm
 import com.margicalmusic.resources.R
 import kotlinx.coroutines.delay
 

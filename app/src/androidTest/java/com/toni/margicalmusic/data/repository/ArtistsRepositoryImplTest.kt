@@ -11,7 +11,7 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.margicalmusic.core_utils.AppDispatchers
 import com.toni.margicalmusic.TestUtiDispatchers
-import com.margicalmusic.core_database.local.AppDataStore
+import com.margicalmusic.core_database.data.local.AppDataStore
 import com.margicalmusic.feature_onboarding.domain.SplashScreenRepo
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow

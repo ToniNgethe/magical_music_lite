@@ -4,9 +4,10 @@ import android.content.Context
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import com.google.common.truth.Truth
-import com.margicalmusic.core_database.dao.SongsDao
+import com.margicalmusic.core_database.data.dao.SongsDao
 import com.margicalmusic.core_database.CustomCoroutineRule
-import com.margicalmusic.core_database.entity.SongsEntity
+import com.margicalmusic.core_database.data.database.AppDatabase
+import com.margicalmusic.core_database.data.entity.SongsEntity
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.junit.After

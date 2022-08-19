@@ -2,8 +2,8 @@ package com.toni.margicalmusic.data.services
 
 import com.google.common.truth.Truth
 import com.squareup.moshi.Moshi
-import com.margicalmusic.core_network.dto.lyrics.LyricsRequestDto
-import com.margicalmusic.core_network.dto.lyrics.LyricsResponseDto
+import com.margicalmusic.core_network.data.dto.lyrics.LyricsRequestDto
+import com.margicalmusic.core_network.data.dto.lyrics.LyricsResponseDto
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import okhttp3.OkHttpClient

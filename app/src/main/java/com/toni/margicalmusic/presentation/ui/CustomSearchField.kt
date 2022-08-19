@@ -17,8 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
-import com.toni.margicalmusic.R
-import com.example.core_navigation.theme.gray_a
+import com.magicalmusic.core_design.gray_a
 
 @Composable
 fun CustomSearchField(onSearch: (String) -> Unit) {

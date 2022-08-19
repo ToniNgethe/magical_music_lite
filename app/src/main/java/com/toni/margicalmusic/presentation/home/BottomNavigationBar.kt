@@ -6,9 +6,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.example.core_navigation.theme.Ascent
-import com.example.core_navigation.theme.MargicalMusicAppTheme
-
+import com.magicalmusic.core_design.Ascent
+import com.magicalmusic.core_design.MargicalMusicAppTheme
 
 @Composable
 fun BottomNavigationBar(navController: NavHostController) {

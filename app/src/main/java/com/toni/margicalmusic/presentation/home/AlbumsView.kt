@@ -6,8 +6,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import com.magicalmusic.core_design.MargicalMusicAppTheme
 import com.toni.margicalmusic.presentation.shared_components.HomePageHeader
-import com.example.core_navigation.theme.MargicalMusicAppTheme
 import com.toni.margicalmusic.presentation.ui.CustomSearchField
 
 @Composable
@@ -18,7 +18,9 @@ fun AlbumsView() {
                 .fillMaxSize()
                 .background(MaterialTheme.colors.background)
         ) {
-            HomePageHeader()
+            HomePageHeader() {
+
+            }
             CustomSearchField {
 
             }

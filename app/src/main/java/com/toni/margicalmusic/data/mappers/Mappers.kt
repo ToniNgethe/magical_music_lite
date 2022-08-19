@@ -1,8 +1,8 @@
 package com.toni.margicalmusic.data.mappers
 
-import com.margicalmusic.core_database.entity.SongsEntity
-import com.margicalmusic.core_network.dto.videos.VideoResponseDto
-import com.margicalmusic.core_network.dto.lyrics.LyricsResponseDto
+import com.margicalmusic.core_database.data.entity.SongsEntity
+import com.margicalmusic.core_network.data.dto.videos.VideoResponseDto
+import com.margicalmusic.core_network.data.dto.lyrics.LyricsResponseDto
 import com.toni.margicalmusic.domain.models.Lyric
 import com.toni.margicalmusic.domain.models.Video
 

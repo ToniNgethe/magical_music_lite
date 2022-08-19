@@ -1,8 +1,8 @@
 package com.toni.margicalmusic.data.repository
 
 import com.google.common.truth.Truth
-import com.margicalmusic.core_network.dto.videos.VideoRequestDto
-import com.margicalmusic.core_network.dto.videos.VideoResponseDto
+import com.margicalmusic.core_network.data.dto.videos.VideoRequestDto
+import com.margicalmusic.core_network.data.dto.videos.VideoResponseDto
 import com.toni.margicalmusic.data.services.VideosService
 import com.toni.margicalmusic.domain.repositories.VideoRepository
 import com.margicalmusic.core_network.ResponseState

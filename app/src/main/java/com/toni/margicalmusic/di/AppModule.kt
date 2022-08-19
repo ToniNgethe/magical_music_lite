@@ -3,8 +3,8 @@ package com.toni.margicalmusic.di
 import android.content.Context
 import com.margicalmusic.core_utils.AppDispatchers
 import com.margicalmusic.core_utils.AppDispatchersImpl
-import com.margicalmusic.core_database.local.AppDataStore
-import com.margicalmusic.core_database.local.AppDataStoreImpl
+import com.margicalmusic.core_database.data.local.AppDataStore
+import com.margicalmusic.core_database.data.local.AppDataStoreImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
