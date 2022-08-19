@@ -37,7 +37,7 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = Versions.COMPOSE_COMPILER
     }
-    buildFeatures{
+    buildFeatures {
         compose = true
     }
     packagingOptions {
@@ -57,7 +57,9 @@ dependencies {
     implementation(project(mapOf("path" to ":core-database")))
     implementation(project(mapOf("path" to ":core-utils")))
     debugImplementation(Dependencies.composeTooling)
-    debugImplementation(Dependencies.accompanistPermission)
+
+    implementation(Dependencies.accompanist)
+    implementation(Dependencies.accompanistPermission)
 
     // compose
     implementation(Dependencies.composeViewModel)
