@@ -1,9 +1,9 @@
-package com.toni.margicalmusic.presentation.atists
+package com.margicalmusic.feature_artists.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.toni.margicalmusic.domain.repositories.ArtistsRepository
 import com.margicalmusic.core_network.ResponseState
+import com.margicalmusic.feature_artists.domain.ArtistsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collectLatest

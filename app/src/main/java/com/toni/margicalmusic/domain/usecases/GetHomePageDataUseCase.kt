@@ -2,8 +2,8 @@ package com.toni.margicalmusic.domain.usecases
 
 import com.margicalmusic.core_network.ResponseState
 import com.margicalmusic.core_utils.AppDispatchers
+import com.margicalmusic.feature_artists.domain.ArtistsRepository
 import com.toni.margicalmusic.domain.models.GenreSongModel
-import com.toni.margicalmusic.domain.repositories.ArtistsRepository
 import com.toni.margicalmusic.domain.repositories.GenreRepository
 import com.toni.margicalmusic.domain.repositories.SongsRepository
 import kotlinx.coroutines.async

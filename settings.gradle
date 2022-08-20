@@ -14,12 +14,13 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Margical Music App"
 include ':app'
-include ':feature-settings'
+include ':features:feature-settings'
 include ':core-database'
 include ':core-network'
 include ':core-media'
 include ':core-utils'
-include ':feature_onboarding'
+include ':features:feature_onboarding'
 include ':core-navigation'
 include ':resources'
 include ':core-design'
+include ':features:feature-artists'

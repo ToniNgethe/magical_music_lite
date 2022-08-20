@@ -1,4 +1,4 @@
-package com.toni.margicalmusic.domain.repositories
+package com.margicalmusic.feature_artists.domain
 
 import com.margicalmusic.core_media.models.Artist
 import com.margicalmusic.core_network.ResponseState

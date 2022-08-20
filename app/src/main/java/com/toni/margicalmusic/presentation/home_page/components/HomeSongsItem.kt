@@ -1,4 +1,4 @@
-package com.toni.margicalmusic.presentation.shared_components
+package com.magicalmusic.core_design.shared_components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -17,7 +17,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberImagePainter
-import com.toni.margicalmusic.R
 import com.margicalmusic.core_media.models.Song
 import com.margicalmusic.core_utils.MediaUtils.convertMillisToMinsSecs
 import com.margicalmusic.core_utils.MediaUtils.getAlbumArtUri

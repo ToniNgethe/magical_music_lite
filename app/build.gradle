@@ -89,8 +89,8 @@ dependencies {
     implementation project(path: ':core-network')
     implementation project(path: ':core-media')
     implementation project(path: ':resources')
-    implementation project(path: ':feature_onboarding')
-    implementation project(path: ':feature-settings')
+    implementation project(path: ':features:feature_onboarding')
+    implementation project(path: ':features:feature-settings')
 }
 
 // test
@@ -123,6 +123,7 @@ dependencies {
 
 dependencies {
     implementation project(path: ':core-navigation')
+    implementation project(path: ':features:feature-artists')
     implementation project(path: ':core-utils')
     implementation project(path: ':core-media')
     androidTestImplementation project(path: ':core-utils')

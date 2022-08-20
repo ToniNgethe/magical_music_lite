@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.magicalmusic.core_design"
+    namespace = "com.margicalmusic.feature_artists"
     compileSdk = 32
 
     defaultConfig {
@@ -21,7 +21,8 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
             )
         }
     }
@@ -43,23 +44,27 @@ android {
 dependencies {
     implementation(Dependencies.ktxCore)
     implementation(Dependencies.lifecycleRuntime)
-    implementation("androidx.appcompat:appcompat:1.5.0")
-    implementation("com.google.android.material:material:1.6.1")
-    implementation(project(mapOf("path" to ":core-database")))
-    implementation(project(mapOf("path" to ":core-navigation")))
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
-
+    implementation(Dependencies.activityCompose)
     implementation(Dependencies.composeUi)
     implementation(Dependencies.composeToolingPreview)
     implementation(Dependencies.composeMaterial)
+    implementation(project(mapOf("path" to ":core-network")))
+    implementation(project(mapOf("path" to ":core-media")))
     debugImplementation(Dependencies.composeTooling)
-    debugImplementation(Dependencies.activityCompose)
+    debugImplementation(Dependencies.accompanistPermission)
 
-    implementation(Dependencies.hiltNavigationCompose)
+    // compose
+    implementation(Dependencies.composeViewModel)
+    implementation(Dependencies.composeNavigation)
+
+    //Dagger - Hilt
     implementation(Dependencies.hilt)
     kapt(Dependencies.hiltCompiler)
+    implementation(Dependencies.hiltNavigationCompose)
 
+    implementation(project(":core-navigation"))
     implementation(project(":resources"))
+    implementation(project(":core-design"))
+    implementation(project(":core-database"))
+    implementation(project(":core-utils"))
 }

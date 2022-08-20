@@ -33,8 +33,8 @@ import com.margicalmusic.core_utils.MediaUtils.getAlbumArtUri
 import com.toni.margicalmusic.presentation.home.NavigationItem
 import com.toni.margicalmusic.presentation.home_page.components.CategoriesView
 import com.toni.margicalmusic.presentation.home_page.vm.HomePageViewModel
-import com.toni.margicalmusic.presentation.shared_components.HomePageHeader
-import com.toni.margicalmusic.presentation.shared_components.HomeSongsItem
+import com.magicalmusic.core_design.shared_components.HomePageHeader
+import com.magicalmusic.core_design.shared_components.HomeSongsItem
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable

@@ -7,7 +7,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.magicalmusic.core_design.MargicalMusicAppTheme
-import com.toni.margicalmusic.presentation.shared_components.HomePageHeader
+import com.magicalmusic.core_design.shared_components.HomePageHeader
 import com.toni.margicalmusic.presentation.ui.CustomSearchField
 
 @Composable

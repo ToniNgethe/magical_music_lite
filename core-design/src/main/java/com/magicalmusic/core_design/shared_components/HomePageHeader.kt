@@ -1,4 +1,4 @@
-package com.toni.margicalmusic.presentation.shared_components
+package com.magicalmusic.core_design.shared_components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row

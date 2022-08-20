@@ -19,14 +19,13 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.core_navigation.UiEvent
 import com.magicalmusic.core_design.MargicalMusicAppTheme
-import com.toni.margicalmusic.presentation.shared_components.HomePageHeader
-import com.toni.margicalmusic.presentation.atists.ArtistsVm
+import com.magicalmusic.core_design.shared_components.HomePageHeader
 import com.toni.margicalmusic.presentation.ui.CustomSearchField
 
 @Composable
 fun ArtistsView(
     context: Context,
-    artistsVm: ArtistsVm = hiltViewModel(),
+    artistsVm: com.margicalmusic.feature_artists.presentation.ArtistsVm = hiltViewModel(),
     onNavigate: (UiEvent.OnNavigate) -> Unit
 ) {
     val artistsUiState = artistsVm.artistsUiState.collectAsState()
@@ -41,9 +40,7 @@ fun ArtistsView(
                 .background(MaterialTheme.colors.background)
         ) {
             HomePageHeader(onNavigate)
-            CustomSearchField {
-
-            }
+            CustomSearchField {}
 
             errorMessage?.let {
                 Row(
@@ -59,11 +56,11 @@ fun ArtistsView(
                 }
             }
 
-            if (artists?.isNotEmpty() == true)
-                LazyVerticalGrid(
-                    verticalArrangement = Arrangement.spacedBy(8.dp),
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                    columns = GridCells.Fixed(3)) {
+            if (artists?.isNotEmpty() == true) LazyVerticalGrid(
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                columns = GridCells.Fixed(3)
+            ) {
                 items(artists.size) { index ->
                     val artist = artists[index]
                     Column {

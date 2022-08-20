@@ -1,7 +1,7 @@
 package com.toni.margicalmusic.di
 
 import com.margicalmusic.core_utils.AppDispatchers
-import com.toni.margicalmusic.domain.repositories.ArtistsRepository
+import com.margicalmusic.feature_artists.domain.ArtistsRepository
 import com.toni.margicalmusic.domain.repositories.GenreRepository
 import com.toni.margicalmusic.domain.repositories.SongsRepository
 import com.toni.margicalmusic.domain.usecases.GetHomePageDataUseCase

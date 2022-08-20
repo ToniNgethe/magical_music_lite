@@ -19,8 +19,10 @@
             <option value="$PROJECT_DIR$/core-navigation" />
             <option value="$PROJECT_DIR$/core-network" />
             <option value="$PROJECT_DIR$/core-utils" />
-            <option value="$PROJECT_DIR$/feature-settings" />
-            <option value="$PROJECT_DIR$/feature_onboarding" />
+            <option value="$PROJECT_DIR$/features" />
+            <option value="$PROJECT_DIR$/features/feature-artists" />
+            <option value="$PROJECT_DIR$/features/feature-settings" />
+            <option value="$PROJECT_DIR$/features/feature_onboarding" />
             <option value="$PROJECT_DIR$/resources" />
           </set>
         </option>

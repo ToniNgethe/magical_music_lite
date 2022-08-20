@@ -3,7 +3,7 @@ package com.toni.margicalmusic.domain.usecases
 import com.google.common.truth.Truth
 import com.toni.margicalmusic.TestUtiDispatchers
 import com.toni.margicalmusic.artist
-import com.toni.margicalmusic.domain.repositories.ArtistsRepository
+import com.margicalmusic.feature_artists.data.repository.ArtistsRepository
 import com.toni.margicalmusic.domain.repositories.GenreRepository
 import com.toni.margicalmusic.domain.repositories.SongsRepository
 import com.toni.margicalmusic.genre
@@ -23,7 +23,7 @@ import org.junit.Test
 class GetHomePageDataUseCaseTest {
 
     private lateinit var genreSongRepository: GenreRepository
-    private lateinit var artistsRepository: ArtistsRepository
+    private lateinit var artistsRepository: com.margicalmusic.feature_artists.data.repository.ArtistsRepository
     private lateinit var songsRepository: SongsRepository
     private lateinit var appDispatchers: AppDispatchers
     private lateinit var getHomePageDataUseCase: GetHomePageDataUseCase

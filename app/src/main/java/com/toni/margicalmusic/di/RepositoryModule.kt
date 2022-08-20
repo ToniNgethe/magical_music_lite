@@ -22,10 +22,6 @@ abstract class RepositoryModule {
 
     @Singleton
     @Binds
-    abstract fun bindArtistrepository(artistsRepositoryImpl: ArtistsRepositoryImpl): ArtistsRepository
-
-    @Singleton
-    @Binds
     abstract fun bindLyricRepository(lyricsRepositoryImpl: LyricsRepositoryImpl): LyricsRepository
 
 

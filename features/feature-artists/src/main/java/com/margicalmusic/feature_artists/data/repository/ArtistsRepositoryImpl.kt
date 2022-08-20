@@ -1,11 +1,10 @@
-package com.toni.margicalmusic.data.repository
+package com.margicalmusic.feature_artists.data.repository
 
 import com.margicalmusic.core_media.dataloaders.ArtistLoader
 import com.margicalmusic.core_network.ResponseState
 import com.margicalmusic.core_utils.AppDispatchers
 import com.margicalmusic.core_utils.UiText
-import com.toni.margicalmusic.R
-import com.toni.margicalmusic.domain.repositories.ArtistsRepository
+import com.margicalmusic.feature_artists.domain.ArtistsRepository
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject

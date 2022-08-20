@@ -1,4 +1,4 @@
-package com.toni.margicalmusic.presentation.atists
+package com.margicalmusic.feature_artists.presentation
 
 import com.margicalmusic.core_utils.UiText
 
