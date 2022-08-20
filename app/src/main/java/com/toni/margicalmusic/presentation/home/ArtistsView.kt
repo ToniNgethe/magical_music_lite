@@ -59,16 +59,20 @@ fun ArtistsView(
                 }
             }
 
-            if (artists?.isNotEmpty() == true) LazyVerticalGrid(columns = GridCells.Adaptive(minSize = 131.dp)) {
+            if (artists?.isNotEmpty() == true)
+                LazyVerticalGrid(
+                    verticalArrangement = Arrangement.spacedBy(8.dp),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    columns = GridCells.Fixed(3)) {
                 items(artists.size) { index ->
                     val artist = artists[index]
-                    Column(modifier = Modifier.padding(bottom = 10.dp)) {
+                    Column {
                         if (artist.image == null) {
                             Box(
                                 modifier = Modifier
                                     .background(Color.LightGray)
                                     .height(90.dp)
-                                    .width(130.dp)
+                                    .fillMaxWidth()
                             )
                         }
                         Text(
