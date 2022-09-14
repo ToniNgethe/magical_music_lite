@@ -34,7 +34,7 @@ import com.toni.margicalmusic.presentation.home.NavigationItem
 import com.toni.margicalmusic.presentation.home_page.components.CategoriesView
 import com.toni.margicalmusic.presentation.home_page.vm.HomePageViewModel
 import com.magicalmusic.core_design.shared_components.HomePageHeader
-import com.magicalmusic.core_design.shared_components.HomeSongsItem
+import com.toni.margicalmusic.presentation.home_page.components.HomeSongsItem
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable

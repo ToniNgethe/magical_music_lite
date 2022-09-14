@@ -4,7 +4,7 @@ import com.google.common.truth.Truth
 import com.margicalmusic.core_network.data.dto.videos.VideoRequestDto
 import com.margicalmusic.core_network.data.dto.videos.VideoResponseDto
 import com.toni.margicalmusic.data.services.VideosService
-import com.toni.margicalmusic.domain.repositories.VideoRepository
+import com.magicalmusic.feature_selected_song.domain.repository.VideoRepository
 import com.margicalmusic.core_network.ResponseState
 import io.mockk.coEvery
 import io.mockk.mockk
@@ -16,12 +16,13 @@ import org.junit.Test
 @OptIn(ExperimentalCoroutinesApi::class)
 class VideoRepositoryImplTest {
     private lateinit var videoService: VideosService
-    private lateinit var videoRepository: VideoRepository
+    private lateinit var videoRepository: com.magicalmusic.feature_selected_song.domain.repository.VideoRepository
 
     @Before
     fun setUp() {
         videoService = mockk()
-        videoRepository = VideoRepositoryImpl(videoService)
+        videoRepository =
+            com.magicalmusic.feature_selected_song.data.repository.VideoRepositoryImpl(videoService)
     }
 
 

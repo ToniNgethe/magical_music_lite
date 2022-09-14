@@ -1,15 +1,15 @@
 package com.toni.margicalmusic.data.repository
 
 import com.google.common.truth.Truth
-import com.toni.margicalmusic.TestUtiDispatchers
+import com.magicalmusic.feature_selected_song.domain.model.Lyric
+import com.magicalmusic.feature_selected_song.domain.repository.LyricsRepository
+import com.margicalmusic.core_network.ResponseState
 import com.margicalmusic.core_network.data.dto.lyrics.LyricsRequestDto
 import com.margicalmusic.core_network.data.dto.lyrics.LyricsResponseDto
-import com.toni.margicalmusic.data.services.LyricsService
-import com.toni.margicalmusic.domain.models.Lyric
-import com.toni.margicalmusic.domain.repositories.LyricsRepository
-import com.toni.margicalmusic.utils.AppDispatchers
-import com.margicalmusic.core_network.ResponseState
-import com.toni.margicalmusic.utils.UiText
+import com.margicalmusic.core_network.services.LyricsService
+import com.margicalmusic.core_utils.AppDispatchers
+import com.margicalmusic.core_utils.UiText
+import com.toni.margicalmusic.TestUtiDispatchers
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -33,7 +33,11 @@ class LyricsRepositoryImplTest {
         lyricsService = mockk()
         appDispatchers = TestUtiDispatchers()
 
-        lyricsRepository = LyricsRepositoryImpl(lyricsService, appDispatchers)
+        lyricsRepository =
+            com.magicalmusic.feature_selected_song.data.repository.LyricsRepositoryImpl(
+                lyricsService,
+                appDispatchers
+            )
     }
 
     @Test

@@ -1,6 +1,6 @@
 package com.toni.margicalmusic
 
-import com.toni.margicalmusic.data.database.SongsEntity
+import com.margicalmusic.core_database.data.entity.SongsEntity
 import com.toni.margicalmusic.domain.models.*
 
 val artist = com.margicalmusic.core_media.models.Artist(
@@ -44,9 +44,9 @@ val songEntity = SongsEntity(
     video = "QRBNDS",
     lyrics = "sample lyrics"
 )
-val video = Video(
+val video = com.magicalmusic.feature_selected_song.domain.model.Video(
     videoId = "QRBNDS", title = "new song", duration = null, artist = "artist name"
 
 )
 
-val lyricModel = Lyric(lyrics = "sample lyrics")
+val lyricModel = com.magicalmusic.feature_selected_song.domain.model.Lyric(lyrics = "sample lyrics")

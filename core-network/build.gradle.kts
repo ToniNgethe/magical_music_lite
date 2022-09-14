@@ -86,4 +86,8 @@ dependencies {
     kapt(Dependencies.hiltCompiler)
 
     implementation(project(mapOf("path" to ":core-utils")))
+
+    testImplementation(Dependencies.mockWebserver)
+    testImplementation(Dependencies.googleTruth)
+    testImplementation(Dependencies.coroutinesTest)
 }

@@ -23,7 +23,7 @@ import com.margicalmusic.feature_onboarding.presentation.on_boarding.OnBoardingS
 import com.margicalmusic.feature_onboarding.presentation.splashscreen.SplashScreen
 import com.margicalmusic.feature_settings.presentation.SettingsPage
 import com.toni.margicalmusic.presentation.home.HomePage
-import com.toni.margicalmusic.presentation.selected_song.SelectedSongScreen
+import com.magicalmusic.feature_selected_song.presentation.SelectedSongScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

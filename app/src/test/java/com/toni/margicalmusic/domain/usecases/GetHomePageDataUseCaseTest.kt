@@ -3,13 +3,13 @@ package com.toni.margicalmusic.domain.usecases
 import com.google.common.truth.Truth
 import com.toni.margicalmusic.TestUtiDispatchers
 import com.toni.margicalmusic.artist
-import com.margicalmusic.feature_artists.data.repository.ArtistsRepository
 import com.toni.margicalmusic.domain.repositories.GenreRepository
-import com.toni.margicalmusic.domain.repositories.SongsRepository
+import com.magicalmusic.feature_song.domain.SongsRepository
 import com.toni.margicalmusic.genre
 import com.toni.margicalmusic.song
-import com.toni.margicalmusic.utils.AppDispatchers
 import com.margicalmusic.core_network.ResponseState
+import com.margicalmusic.core_utils.AppDispatchers
+import com.margicalmusic.feature_artists.domain.ArtistsRepository
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -23,7 +23,7 @@ import org.junit.Test
 class GetHomePageDataUseCaseTest {
 
     private lateinit var genreSongRepository: GenreRepository
-    private lateinit var artistsRepository: com.margicalmusic.feature_artists.data.repository.ArtistsRepository
+    private lateinit var artistsRepository: ArtistsRepository
     private lateinit var songsRepository: SongsRepository
     private lateinit var appDispatchers: AppDispatchers
     private lateinit var getHomePageDataUseCase: GetHomePageDataUseCase

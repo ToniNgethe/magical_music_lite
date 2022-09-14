@@ -15,17 +15,4 @@ abstract class RepositoryModule {
     @Singleton
     @Binds
     abstract fun bindGenereRepository(genreRepositoryImpl: GenreRepositoryImpl): GenreRepository
-
-    @Singleton
-    @Binds
-    abstract fun bindSongsRepository(songsRepositoryImpl: SongsRepositoryImpl): SongsRepository
-
-    @Singleton
-    @Binds
-    abstract fun bindLyricRepository(lyricsRepositoryImpl: LyricsRepositoryImpl): LyricsRepository
-
-
-    @Singleton
-    @Binds
-    abstract fun bindVideoRepository(videoRepositoryImpl: VideoRepositoryImpl): VideoRepository
 }

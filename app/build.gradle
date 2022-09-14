@@ -116,12 +116,9 @@ dependencies {
     testImplementation Dependencies.coroutinesTest
 }
 
-// data store
 dependencies {
-    implementation Dependencies.dataStore
-}
-
-dependencies {
+    implementation project(path: ':features:feature-selected-song')
+    implementation project(path: ':features:feature-song')
     implementation project(path: ':core-navigation')
     implementation project(path: ':features:feature-artists')
     implementation project(path: ':core-utils')

@@ -1,7 +1,7 @@
 package com.toni.margicalmusic.domain.usecases
 
-import com.toni.margicalmusic.domain.models.Lyric
-import com.toni.margicalmusic.domain.repositories.LyricsRepository
+import com.magicalmusic.feature_selected_song.domain.model.Lyric
+import com.magicalmusic.feature_selected_song.domain.repository.LyricsRepository
 import com.margicalmusic.core_network.ResponseState
 import javax.inject.Inject
 

@@ -21,7 +21,9 @@
             <option value="$PROJECT_DIR$/core-utils" />
             <option value="$PROJECT_DIR$/features" />
             <option value="$PROJECT_DIR$/features/feature-artists" />
+            <option value="$PROJECT_DIR$/features/feature-selected-song" />
             <option value="$PROJECT_DIR$/features/feature-settings" />
+            <option value="$PROJECT_DIR$/features/feature-song" />
             <option value="$PROJECT_DIR$/features/feature_onboarding" />
             <option value="$PROJECT_DIR$/resources" />
           </set>

@@ -6,10 +6,10 @@ import com.margicalmusic.core_network.ResponseState
 import com.margicalmusic.core_utils.AppDispatchers
 import com.margicalmusic.core_utils.UiText
 import com.toni.margicalmusic.TestUtiDispatchers
-import com.toni.margicalmusic.domain.models.Lyric
-import com.toni.margicalmusic.domain.repositories.LyricsRepository
-import com.toni.margicalmusic.domain.repositories.SongsRepository
-import com.toni.margicalmusic.domain.repositories.VideoRepository
+import com.magicalmusic.feature_selected_song.domain.model.Lyric
+import com.magicalmusic.feature_selected_song.domain.repository.LyricsRepository
+import com.magicalmusic.feature_song.domain.SongsRepository
+import com.magicalmusic.feature_selected_song.domain.repository.VideoRepository
 import com.toni.margicalmusic.lyricModel
 import com.toni.margicalmusic.songEntity
 import com.toni.margicalmusic.video
@@ -29,7 +29,7 @@ class GetLyricsAndVideoUseCaseTest {
     private lateinit var lyricsRepository: LyricsRepository
     private lateinit var appDispatchers: AppDispatchers
 
-    private lateinit var getLyricsAndVideoUseCase: GetLyricsAndVideoUseCase
+    private lateinit var getLyricsAndVideoUseCase: com.magicalmusic.feature_selected_song.domain.usecases.GetLyricsAndVideoUseCase
 
     @Before
     fun setUp() {
@@ -38,12 +38,13 @@ class GetLyricsAndVideoUseCaseTest {
         lyricsRepository = mockk()
         appDispatchers = TestUtiDispatchers()
 
-        getLyricsAndVideoUseCase = GetLyricsAndVideoUseCase(
-            lyricsRepository = lyricsRepository,
-            videoRepository = videoRepository,
-            songsRepository = songsRepository,
-            appDispatchers = appDispatchers
-        )
+        getLyricsAndVideoUseCase =
+            com.magicalmusic.feature_selected_song.domain.usecases.GetLyricsAndVideoUseCase(
+                lyricsRepository = lyricsRepository,
+                videoRepository = videoRepository,
+                songsRepository = songsRepository,
+                appDispatchers = appDispatchers
+            )
     }
 
 
