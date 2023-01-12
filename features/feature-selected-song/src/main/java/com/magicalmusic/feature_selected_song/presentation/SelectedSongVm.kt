@@ -62,9 +62,7 @@ class SelectedSongVm @Inject constructor(private val lyricsVideoUseCase: GetLyri
             is ResponseState.Error -> _uiState.update {
                 it.copy(
                     videoError = video.uiText,
-                    lyricsError = null,
                     isLoading = false,
-                    lyrics = null,
                     video = null
                 )
             }
@@ -84,10 +82,8 @@ class SelectedSongVm @Inject constructor(private val lyricsVideoUseCase: GetLyri
             is ResponseState.Error -> _uiState.update {
                 it.copy(
                     lyricsError = lyrics.uiText,
-                    videoError = null,
                     isLoading = false,
-                    lyrics = null,
-                    video = null
+                    lyrics = null
                 )
             }
         }

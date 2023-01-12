@@ -5,10 +5,13 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.emptyPreferences
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
+import java.io.IOException
 import javax.inject.Inject
 
 val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "magical_music")
@@ -26,9 +29,18 @@ class AppDataStoreImpl @Inject constructor(val context: Context) : AppDataStore 
         }
     }
 
-    override fun isUserOnBoarded(): Flow<Boolean> = context.dataStore.data.map { prefs ->
-        prefs[ON_BOARDED] ?: false
-    }
+    override fun isUserOnBoarded(): Flow<Boolean> = context
+        .dataStore
+        .data
+        .catch {
+            if (it is IOException) {
+                emit(emptyPreferences())
+            } else {
+                throw it
+            }
+        }.map { prefs ->
+            prefs[ON_BOARDED] ?: false
+        }
 
     override suspend fun toggleTheme() {
         val currentThemeStatus = context.dataStore.data.map { it[APP_THEME] ?: false }
