@@ -66,7 +66,13 @@ class MainActivity : ComponentActivity() {
                         composable(Routes.HOME_PAGE) {
                             HomePage(context) { uiEvent ->
                                 if (uiEvent is UiEvent.OnNavigate) {
-                                    navController.navigate(uiEvent.route)
+                                    navController.navigate(uiEvent.route){
+                                        // Avoid multiple copies of the same destination when
+                                        // reselecting the same item
+                                        launchSingleTop = true
+                                        // Restore state when reselecting a previously selected item
+                                        restoreState = true
+                                    }
                                 }
                             }
                         }

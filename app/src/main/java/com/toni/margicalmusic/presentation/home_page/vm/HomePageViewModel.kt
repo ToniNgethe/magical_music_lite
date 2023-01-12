@@ -8,10 +8,7 @@ import com.margicalmusic.core_media.models.Song
 import com.toni.margicalmusic.domain.usecases.GetHomePageDataUseCase
 import com.margicalmusic.core_network.ResponseState
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -29,11 +26,11 @@ class HomePageViewModel @Inject constructor(private val getHomePageDataUseCase: 
     private fun fetchAlbums() {
         viewModelScope.launch {
             getHomePageDataUseCase.invoke().collectLatest { tripleData ->
-                    val (artists, songs, genres) = tripleData
-                    emitArtists(artists)
-                    emitSongs(songs)
-                    emitGenres(genres)
-                }
+                val (artists, songs, genres) = tripleData
+                emitArtists(artists)
+                emitSongs(songs)
+                emitGenres(genres)
+            }
         }
     }
 
@@ -48,7 +45,7 @@ class HomePageViewModel @Inject constructor(private val getHomePageDataUseCase: 
         }
     }
 
-    private fun emitSongs(songs: ResponseState<List<com.margicalmusic.core_media.models.Song>>) {
+    private fun emitSongs(songs: ResponseState<List<Song>>) {
         when (songs) {
             is ResponseState.Success -> {
                 _homePageState.update { it.copy(songs = songs.data) }
@@ -59,7 +56,7 @@ class HomePageViewModel @Inject constructor(private val getHomePageDataUseCase: 
         }
     }
 
-    private fun emitArtists(artists: ResponseState<List<com.margicalmusic.core_media.models.Artist>>) {
+    private fun emitArtists(artists: ResponseState<List<Artist>>) {
         // artists
         when (artists) {
             is ResponseState.Success -> {
