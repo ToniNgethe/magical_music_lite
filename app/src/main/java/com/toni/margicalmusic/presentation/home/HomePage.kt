@@ -28,6 +28,7 @@ import com.google.accompanist.permissions.shouldShowRationale
 import com.magicalmusic.core_design.Ascent
 import com.toni.margicalmusic.presentation.home_page.HomePageView
 import com.magicalmusic.feature_song.presentation.SongsView
+import com.margicalmusic.feature_artists.presentation.ArtistsView
 
 @OptIn(ExperimentalMaterialApi::class, ExperimentalPermissionsApi::class)
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")

@@ -1,4 +1,4 @@
-package com.toni.margicalmusic.presentation.home
+package com.margicalmusic.feature_artists.presentation
 
 import android.content.Context
 import androidx.compose.foundation.background
@@ -25,7 +25,7 @@ import com.toni.margicalmusic.presentation.ui.CustomSearchField
 @Composable
 fun ArtistsView(
     context: Context,
-    artistsVm: com.margicalmusic.feature_artists.presentation.ArtistsVm = hiltViewModel(),
+    artistsVm: ArtistsVm = hiltViewModel(),
     onNavigate: (UiEvent.OnNavigate) -> Unit
 ) {
     val artistsUiState = artistsVm.artistsUiState.collectAsState()

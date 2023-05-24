@@ -12,6 +12,7 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
+
 rootProject.name = "Margical Music App"
 include ':app'
 include ':features:feature-settings'

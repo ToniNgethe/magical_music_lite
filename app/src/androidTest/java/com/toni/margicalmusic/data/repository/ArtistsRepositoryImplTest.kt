@@ -24,6 +24,7 @@ import org.junit.runner.RunWith
 class TestAppDataStore constructor(testContext: Context) :
     AppDataStore {
     private val ON_BOARDED = booleanPreferencesKey("on_boarded")
+    private val THEME = booleanPreferencesKey("theme")
 
     private val testDataStore: DataStore<Preferences> =
         PreferenceDataStoreFactory.create(
@@ -38,6 +39,13 @@ class TestAppDataStore constructor(testContext: Context) :
     override fun isUserOnBoarded(): Flow<Boolean> = testDataStore.data.map { prefs ->
         prefs[ON_BOARDED] ?: false
     }
+
+    override suspend fun toggleTheme() {
+        val currentTheme = getTheme().first()
+        testDataStore.edit { prefs -> prefs[THEME] = !currentTheme }
+    }
+
+    override fun getTheme(): Flow<Boolean> = testDataStore.data.map { prefs -> prefs[THEME] ?: false }
 }
 
 @RunWith(AndroidJUnit4::class)

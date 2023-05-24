@@ -9,7 +9,7 @@ object Versions {
     const val COMPOSE_COMPILER = "1.3.0"
 }
 
-
+// TODO: user version catalog
 object Dependencies {
     // core
     const val ktxCore = "androidx.core:core-ktx:1.8.0"
