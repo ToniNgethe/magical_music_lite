@@ -1,9 +1,9 @@
 [versions]
-accompanist = "0.28.0"
+accompanist = "0.30.1"
 androidYoutubePlayer = "11.0.1"
 androidxLifecycle = "2.6.1"
 androidxActivity = "1.7.1"
-androidxComposeBom = "2023.05.01"
+androidxComposeBom = "2023.06.01"
 androidxDataStore = "1.0.0"
 androidxComposeMaterial3 = "1.2.0-alpha01"
 androidxComposeRuntimeTracing = "1.0.0-alpha03"
@@ -16,7 +16,7 @@ androidxTestRules = "1.5.0"
 androidxTestRunner = "1.5.1"
 androidxJunit = "1.1.5"
 core-ktx = "1.8.0"
-androidGradlePlugin = "8.0.1"
+androidGradlePlugin = "8.0.2"
 hilt = "2.45"
 hiltExt = "1.0.0"
 kotlin = "1.8.20"
@@ -53,6 +53,7 @@ hilt-android-testing = { group = "com.google.dagger", name = "hilt-android-testi
 hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
 hilt-ext-compiler = { group = "androidx.hilt", name = "hilt-compiler", version.ref = "hiltExt" }
 hilt-ext-work = { group = "androidx.hilt", name = "hilt-work", version.ref = "hiltExt" }
+hilt-navigation-compose = { group = "androidx.hilt", name = "navigation-compose", version.ref = "hilt" }
 
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidxComposeBom" }
 androidx-hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "androidxHiltNavigationCompose" }
@@ -107,3 +108,6 @@ hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+
+[bundles]
+compose = ["androidx-compose-bom", "androidx-compose-ui", "androidx-compose-material", "androidx-compose-ui-tooling", "androidx-lifecycle-viewModelCompose", "androidx-navigation-compose", "hilt-navigation-compose"]
