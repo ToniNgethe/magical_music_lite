@@ -12,6 +12,6 @@ fun SongsEntity.toVideoModel(): Video =
 
 fun LyricsResponseDto.toLyricModel(): com.magicalmusic.feature_selected_song.domain.model.Lyric =
     com.magicalmusic.feature_selected_song.domain.model.Lyric(lyrics = data!!)
-fun VideoResponseDto.Data.toVideoModel(): Video = Video(
+fun VideoResponseDto.VideoData.toVideoModel(): Video = Video(
     videoId = id, title = originalTitle, duration = duration, artist = artist
 )

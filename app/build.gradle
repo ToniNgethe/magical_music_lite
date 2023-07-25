@@ -7,14 +7,14 @@ plugins {
 
 android {
     namespace 'com.toni.margicalmusic'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.toni.margicalmusic"
         minSdk 21
-        targetSdk 33
-        versionCode 5
-        versionName "1.0.5"
+        targetSdk 34
+        versionCode 6
+        versionName "1.0.6"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -32,11 +32,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '17'
     }
     buildFeatures {
         compose true
@@ -59,16 +59,15 @@ dependencies {
     implementation libs.androidx.compose.ui.tooling.preview
     implementation libs.androidx.compose.material
     debugImplementation libs.androidx.compose.ui.tooling
-    implementation libs.androidx.dataStore.core
+    implementation libs.androidx.dataStore.pref
 
-    // compose
     implementation libs.androidx.lifecycle.viewModelCompose
-    implementation libs.androidx.navigation.compose
+    implementation libs.androidx.hilt.navigation.compose
 
     // ui
     implementation libs.accompanist.systemuicontroller
     implementation libs.accompanist.permissions
-    implementation libs.coil.kt
+    implementation libs.coil.kt.compose
     implementation libs.android.youtubePlayer
 
     //Dagger - Hilt
@@ -83,10 +82,10 @@ dependencies {
     implementation libs.retrofit.core
     implementation libs.retrofit.loggingInterceptor
 
-    implementation project(path: ':core-database')
-    implementation project(path: ':core-network')
-    implementation project(path: ':core-media')
-    implementation project(path: ':resources')
+    implementation project(':core:core-database')
+    implementation project(path: ':core:core-network')
+    implementation project(path: ':core:core-media')
+    implementation project(path: ':core:resources')
     implementation project(path: ':features:feature_onboarding')
     implementation project(path: ':features:feature-settings')
 }
@@ -113,12 +112,12 @@ dependencies {
 }
 
 dependencies {
+    implementation project(':core:songs')
     implementation project(path: ':features:feature-selected-song')
     implementation project(path: ':features:feature-song')
-    implementation project(path: ':core-navigation')
+    implementation project(path: ':core:core-navigation')
     implementation project(path: ':features:feature-artists')
-    implementation project(path: ':core-utils')
-    implementation project(path: ':core-media')
-    androidTestImplementation project(path: ':core-utils')
-    implementation(project(":core-design"))
+    implementation project(path: ':core:core-utils')
+    implementation project(path: ':core:core-media')
+    implementation(project(":core:core-design"))
 }

@@ -5,7 +5,7 @@ import com.magicalmusic.feature_selected_song.domain.model.Lyric
 import com.magicalmusic.feature_selected_song.domain.model.Video
 import com.magicalmusic.feature_selected_song.domain.repository.LyricsRepository
 import com.magicalmusic.feature_selected_song.domain.repository.VideoRepository
-import com.magicalmusic.feature_song.domain.SongsRepository
+import com.magicalmusic.songs.domain.SongsRepository
 import com.margicalmusic.core_database.data.entity.SongsEntity
 import com.margicalmusic.core_network.ResponseState
 import com.margicalmusic.core_utils.AppDispatchers

@@ -17,6 +17,7 @@ import com.example.core_navigation.UiEvent
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.magicalmusic.core_design.DarkPrimary
 import com.magicalmusic.core_design.MargicalMusicAppTheme
+import com.magicalmusic.core_design.isAppDarkTheme
 import com.margicalmusic.core_media.models.Song
 import com.margicalmusic.core_utils.GsonParser
 import com.margicalmusic.feature_onboarding.presentation.on_boarding.OnBoardingScreen
@@ -31,17 +32,20 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MargicalMusicAppTheme {
+
+            val isAppInDarkMode = isAppDarkTheme()
+            MargicalMusicAppTheme(
+                darkTheme = isAppInDarkMode
+            ) {
                 val systemUiController = rememberSystemUiController()
-                val userDarkIcons = MaterialTheme.colors.isLight
                 val context = LocalContext.current
 
                 SideEffect {
                     systemUiController.setSystemBarsColor(
-                        color = Color.Transparent, darkIcons = userDarkIcons
+                        color = Color.Transparent, darkIcons = isAppInDarkMode
                     )
-                    systemUiController.setStatusBarColor(if (userDarkIcons) Color.White else DarkPrimary)
-                    systemUiController.setNavigationBarColor(if (userDarkIcons) Color.White else DarkPrimary)
+                    systemUiController.setStatusBarColor(if (isAppInDarkMode) Color.White else DarkPrimary)
+                    systemUiController.setNavigationBarColor(if (isAppInDarkMode) Color.White else DarkPrimary)
                 }
 
                 val navController = rememberNavController()
@@ -66,7 +70,7 @@ class MainActivity : ComponentActivity() {
                         composable(Routes.HOME_PAGE) {
                             HomePage(context) { uiEvent ->
                                 if (uiEvent is UiEvent.OnNavigate) {
-                                    navController.navigate(uiEvent.route){
+                                    navController.navigate(uiEvent.route) {
                                         // Avoid multiple copies of the same destination when
                                         // reselecting the same item
                                         launchSingleTop = true

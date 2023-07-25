@@ -2,6 +2,7 @@ package com.magicalmusic.feature_song.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.magicalmusic.songs.domain.SongsRepository
 import com.margicalmusic.core_media.models.Song
 import com.margicalmusic.core_network.ResponseState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -14,7 +15,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class SongsVm @Inject constructor(val songsRepository: com.magicalmusic.feature_song.domain.SongsRepository) : ViewModel() {
+class SongsVm @Inject constructor(val songsRepository: SongsRepository) : ViewModel() {
 
     private val _songsUiState = MutableStateFlow(SongsUiState(isLoading = true))
     val songsUiState = _songsUiState.asStateFlow()

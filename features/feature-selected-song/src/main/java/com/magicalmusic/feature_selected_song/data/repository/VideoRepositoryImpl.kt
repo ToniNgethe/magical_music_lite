@@ -7,7 +7,8 @@ import com.margicalmusic.core_network.ResponseState
 import com.margicalmusic.core_network.data.dto.videos.VideoRequestDto
 import com.margicalmusic.core_utils.UiText
 import com.magicalmusic.feature_selected_song.data.mappers.toVideoModel
-import com.toni.margicalmusic.data.services.VideosService
+import com.margicalmusic.core_network.services.VideosService
+import timber.log.Timber
 import javax.inject.Inject
 
 class VideoRepositoryImpl @Inject constructor(val service: VideosService) : VideoRepository {
@@ -18,7 +19,7 @@ class VideoRepositoryImpl @Inject constructor(val service: VideosService) : Vide
             )
         )
         if (response.status == "00") {
-            ResponseState.Success(response.data?.get(0)!!.toVideoModel())
+            ResponseState.Success(response.videoData?.get(0)!!.toVideoModel())
         } else {
             ResponseState.Error(UiText.DynamicText(response.message!!))
         }

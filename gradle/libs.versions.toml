@@ -2,12 +2,12 @@
 accompanist = "0.30.1"
 androidYoutubePlayer = "11.0.1"
 androidxLifecycle = "2.6.1"
-androidxActivity = "1.7.1"
+androidxActivity = "1.7.2"
 androidxComposeBom = "2023.06.01"
 androidxDataStore = "1.0.0"
-androidxComposeMaterial3 = "1.2.0-alpha01"
+androidxComposeMaterial3 = "1.2.0-alpha03"
 androidxComposeRuntimeTracing = "1.0.0-alpha03"
-androidxNavigation = "2.5.3"
+androidxNavigation = "2.6.0"
 androidxHiltNavigationCompose = "1.0.0"
 androidxTestCore = "1.5.0"
 androidxEspresso = "3.5.1"
@@ -15,9 +15,10 @@ androidxTestExt = "1.1.5"
 androidxTestRules = "1.5.0"
 androidxTestRunner = "1.5.1"
 androidxJunit = "1.1.5"
+androidxAppCompat = "1.5.0"
 core-ktx = "1.8.0"
 androidGradlePlugin = "8.0.2"
-hilt = "2.45"
+hilt = "2.46.1"
 hiltExt = "1.0.0"
 kotlin = "1.8.20"
 kotlinxCoroutines = "1.6.4"
@@ -28,24 +29,27 @@ coil = "2.2.2"
 timber = "5.0.1"
 retrofit = "2.9.0"
 retrofitKotlinxSerializationJson = "1.0.0"
+room = "2.5.0"
 loggingInterceptor = "5.0.0-alpha.3"
 junit4 = "4.13.2"
 googleTruth = "1.1.3"
 mockk = "1.12.4"
+kotlin1821 = "1.8.21"
+material = "1.9.0"
 
 [libraries]
 android-youtubePlayer = { group = "com.pierfrancescosoffritti.androidyoutubeplayer", name = "core", version.ref = "androidYoutubePlayer" }
 accompanist-permissions = { group = "com.google.accompanist", name = "accompanist-permissions", version.ref = "accompanist" }
 accompanist-systemuicontroller = { group = "com.google.accompanist", name = "accompanist-systemuicontroller", version.ref = "accompanist" }
 
-androidx-core-ktx = { name = "androidx.core", group = "core-ktx", version.ref = "core-ktx" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidxAppCompat" }
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidxActivity" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "androidxLifecycle" }
 androidx-lifecycle-runtimeCompose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidxLifecycle" }
 androidx-lifecycle-viewModelCompose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "androidxLifecycle" }
 androidx-lifecycle-viewModelKtx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "androidxLifecycle" }
 
-androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidxNavigation" }
 androidx-navigation-testing = { group = "androidx.navigation", name = "navigation-testing", version.ref = "androidxNavigation" }
 
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
@@ -73,7 +77,7 @@ androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-toolin
 androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 androidx-compose-ui-util = { group = "androidx.compose.ui", name = "ui-util" }
 
-androidx-dataStore-core = { group = "androidx.datastore", name = "datastore", version.ref = "androidxDataStore" }
+androidx-dataStore-pref = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "androidxDataStore" }
 
 coil-kt = { group = "io.coil-kt", name = "coil", version.ref = "coil" }
 coil-kt-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
@@ -85,6 +89,7 @@ retrofit-core = { group = "com.squareup.retrofit2", name = "retrofit", version.r
 retrofit-kotlin-serialization = { group = "com.jakewharton.retrofit", name = "retrofit2-kotlinx-serialization-converter", version.ref = "retrofitKotlinxSerializationJson" }
 retrofit-loggingInterceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "loggingInterceptor" }
 
+kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib-jdk8", version.ref = "kotlin" }
 kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
 kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
@@ -100,6 +105,11 @@ androidx-test-rules = { group = "androidx.test", name = "rules", version.ref = "
 androidx-test-runner = { group = "androidx.test", name = "runner", version.ref = "androidxTestRunner" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidxJunit" }
 
+room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
@@ -108,6 +118,8 @@ hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin1821" }
 
 [bundles]
-compose = ["androidx-compose-bom", "androidx-compose-ui", "androidx-compose-material", "androidx-compose-ui-tooling", "androidx-lifecycle-viewModelCompose", "androidx-navigation-compose", "hilt-navigation-compose"]
+compose = ["androidx-compose-bom", "androidx-compose-ui", "androidx-compose-material", "androidx-lifecycle-viewModelCompose", "androidx-hilt-navigation-compose", "androidx-compose-ui-tooling-preview"]
+retrofit = ["retrofit-core", "retrofit-kotlin-serialization", "retrofit-loggingInterceptor"]

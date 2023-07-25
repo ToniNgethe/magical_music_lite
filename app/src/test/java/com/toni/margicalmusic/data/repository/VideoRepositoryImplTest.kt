@@ -3,8 +3,7 @@ package com.toni.margicalmusic.data.repository
 import com.google.common.truth.Truth
 import com.margicalmusic.core_network.data.dto.videos.VideoRequestDto
 import com.margicalmusic.core_network.data.dto.videos.VideoResponseDto
-import com.toni.margicalmusic.data.services.VideosService
-import com.magicalmusic.feature_selected_song.domain.repository.VideoRepository
+import com.margicalmusic.core_network.services.VideosService
 import com.margicalmusic.core_network.ResponseState
 import io.mockk.coEvery
 import io.mockk.mockk

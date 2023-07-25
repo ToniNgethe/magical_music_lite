@@ -8,7 +8,7 @@ import com.margicalmusic.core_utils.UiText
 import com.toni.margicalmusic.TestUtiDispatchers
 import com.magicalmusic.feature_selected_song.domain.model.Lyric
 import com.magicalmusic.feature_selected_song.domain.repository.LyricsRepository
-import com.magicalmusic.feature_song.domain.SongsRepository
+import com.magicalmusic.songs.domain.SongsRepository
 import com.magicalmusic.feature_selected_song.domain.repository.VideoRepository
 import com.toni.margicalmusic.lyricModel
 import com.toni.margicalmusic.songEntity
@@ -24,7 +24,7 @@ import org.junit.Test
 @OptIn(ExperimentalCoroutinesApi::class)
 class GetLyricsAndVideoUseCaseTest {
 
-    private lateinit var songsRepository: SongsRepository
+    private lateinit var songsRepository: com.magicalmusic.songs.domain.SongsRepository
     private lateinit var videoRepository: VideoRepository
     private lateinit var lyricsRepository: LyricsRepository
     private lateinit var appDispatchers: AppDispatchers

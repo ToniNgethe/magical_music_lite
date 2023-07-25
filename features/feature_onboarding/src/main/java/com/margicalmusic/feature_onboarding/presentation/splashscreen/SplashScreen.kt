@@ -21,7 +21,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.core_navigation.Routes
 import com.example.core_navigation.UiEvent
 import com.magicalmusic.core_design.MargicalMusicAppTheme
-import com.margicalmusic.feature_onboarding.presentation.SplashScreenVm
 import com.margicalmusic.resources.R
 import kotlinx.coroutines.delay
 

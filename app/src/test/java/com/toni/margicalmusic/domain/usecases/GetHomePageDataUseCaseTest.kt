@@ -4,7 +4,7 @@ import com.google.common.truth.Truth
 import com.toni.margicalmusic.TestUtiDispatchers
 import com.toni.margicalmusic.artist
 import com.toni.margicalmusic.domain.repositories.GenreRepository
-import com.magicalmusic.feature_song.domain.SongsRepository
+import com.magicalmusic.songs.domain.SongsRepository
 import com.toni.margicalmusic.genre
 import com.toni.margicalmusic.song
 import com.margicalmusic.core_network.ResponseState
@@ -24,7 +24,7 @@ class GetHomePageDataUseCaseTest {
 
     private lateinit var genreSongRepository: GenreRepository
     private lateinit var artistsRepository: ArtistsRepository
-    private lateinit var songsRepository: SongsRepository
+    private lateinit var songsRepository: com.magicalmusic.songs.domain.SongsRepository
     private lateinit var appDispatchers: AppDispatchers
     private lateinit var getHomePageDataUseCase: GetHomePageDataUseCase
 

@@ -7,11 +7,11 @@ plugins {
 
 android {
     namespace = "com.margicalmusic.feature_onboarding"
-    compileSdk = 32
+    compileSdk = 34
 
     defaultConfig {
         minSdk = 21
-        targetSdk = 32
+        targetSdk = 34
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -27,11 +27,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
 
     composeOptions {
@@ -48,29 +48,20 @@ android {
 }
 
 dependencies {
-    implementation(Dependencies.ktxCore)
-    implementation(Dependencies.lifecycleRuntime)
-    implementation(Dependencies.activityCompose)
-    implementation(Dependencies.composeUi)
-    implementation(Dependencies.composeToolingPreview)
-    implementation(Dependencies.composeMaterial)
-    implementation(project(mapOf("path" to ":core-database")))
-    implementation(project(mapOf("path" to ":core-utils")))
-    debugImplementation(Dependencies.composeTooling)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.bundles.compose)
+    implementation(project(mapOf("path" to ":core:core-database")))
+    implementation(project(mapOf("path" to ":core:core-utils")))
 
-    implementation(Dependencies.accompanist)
-    implementation(Dependencies.accompanistPermission)
-
-    // compose
-    implementation(Dependencies.composeViewModel)
-    implementation(Dependencies.composeNavigation)
+    implementation(libs.accompanist.permissions)
+    implementation(libs.accompanist.systemuicontroller)
 
     //Dagger - Hilt
-    implementation(Dependencies.hilt)
-    kapt(Dependencies.hiltCompiler)
-    implementation(Dependencies.hiltNavigationCompose)
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
 
-    implementation(project(mapOf("path" to ":core-navigation")))
-    implementation(project(mapOf("path" to ":core-design")))
-    implementation(project(mapOf("path" to ":resources")))
+    implementation(project(mapOf("path" to ":core:core-navigation")))
+    implementation(project(mapOf("path" to ":core:core-design")))
+    implementation(project(mapOf("path" to ":core:resources")))
 }

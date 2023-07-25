@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.magicalmusic.core_design.MargicalMusicAppTheme
 import com.magicalmusic.core_design.shared_components.HomePageHeader
-import com.toni.margicalmusic.presentation.ui.CustomSearchField
+import com.magicalmusic.core_design.shared_components.CustomSearchField
 
 @Composable
 fun AlbumsView() {

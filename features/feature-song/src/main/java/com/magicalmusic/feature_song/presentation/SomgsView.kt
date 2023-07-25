@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.margicalmusic.core_utils.GsonParser
 import com.magicalmusic.core_design.shared_components.HomePageHeader
-import com.toni.margicalmusic.presentation.ui.CustomSearchField
+import com.magicalmusic.core_design.shared_components.CustomSearchField
 import com.example.core_navigation.UiEvent
 import com.magicalmusic.core_design.MargicalMusicAppTheme
 import com.margicalmusic.core_media.models.Song

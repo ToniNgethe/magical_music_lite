@@ -6,7 +6,8 @@ import com.margicalmusic.core_utils.AppDispatchers
 import com.margicalmusic.feature_artists.domain.ArtistsRepository
 import com.toni.margicalmusic.domain.models.GenreSongModel
 import com.toni.margicalmusic.domain.repositories.GenreRepository
-import com.magicalmusic.feature_song.domain.SongsRepository
+import com.magicalmusic.songs.domain.SongsRepository
+import com.margicalmusic.core_media.models.Song
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
@@ -16,10 +17,10 @@ import javax.inject.Inject
 class GetHomePageDataUseCase @Inject constructor(
     val genreSongRepository: GenreRepository,
     val artistsRepository: ArtistsRepository,
-    val songsRepository: com.magicalmusic.feature_song.domain.SongsRepository,
+    val songsRepository: SongsRepository,
     val appDispatchers: AppDispatchers
 ) {
-    suspend fun invoke(): Flow<Triple<ResponseState<List<Artist>>, ResponseState<List<com.margicalmusic.core_media.models.Song>>, ResponseState<List<GenreSongModel>>>> {
+    suspend fun invoke(): Flow<Triple<ResponseState<List<Artist>>, ResponseState<List<Song>>, ResponseState<List<GenreSongModel>>>> {
         val artists = artistsRepository.fetchArtists()
         val songs = songsRepository.fetchSongs( 10 )
         val genres = genreSongRepository.fetchGenres()

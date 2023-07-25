@@ -6,7 +6,7 @@ object Versions {
     internal const val dataStore = "1.0.0"
     internal const val RETROFIT_KOTLIN_SERIALIZATION = "0.8.0"
     internal const val KOTLIN_SERIALIZATION_JSON = "1.3.2"
-    const val COMPOSE_COMPILER = "1.3.0"
+    const val COMPOSE_COMPILER = "1.4.7"
 }
 
 // TODO: user version catalog

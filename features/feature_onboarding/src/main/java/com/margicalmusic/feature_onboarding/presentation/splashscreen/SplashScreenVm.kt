@@ -1,4 +1,4 @@
-package com.margicalmusic.feature_onboarding.presentation
+package com.margicalmusic.feature_onboarding.presentation.splashscreen
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -27,7 +27,7 @@ class SplashScreenVm @Inject constructor(val splashScreenRepo: SplashScreenRepo)
     val splashUiState = _splashUiState.asStateFlow()
 
     init {
-        onEvent( UserOnboarded.OnBoardUserStatus )
+        onEvent(UserOnboarded.OnBoardUserStatus)
     }
 
     fun onEvent(event: UserOnboarded) {
@@ -45,6 +45,8 @@ class SplashScreenVm @Inject constructor(val splashScreenRepo: SplashScreenRepo)
                     }
                 }
             }
+
+            else -> {}
         }
     }
 

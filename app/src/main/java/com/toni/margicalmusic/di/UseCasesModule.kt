@@ -1,9 +1,9 @@
 package com.toni.margicalmusic.di
 
+import com.magicalmusic.songs.domain.SongsRepository
 import com.margicalmusic.core_utils.AppDispatchers
 import com.margicalmusic.feature_artists.domain.ArtistsRepository
 import com.toni.margicalmusic.domain.repositories.GenreRepository
-import com.magicalmusic.feature_song.domain.SongsRepository
 import com.toni.margicalmusic.domain.usecases.GetHomePageDataUseCase
 import dagger.Module
 import dagger.Provides
@@ -19,7 +19,7 @@ object UseCasesModule {
     @Singleton
     fun provideGetHomePageDataUseCase(
         genreRepository: GenreRepository,
-        songsRepository:SongsRepository,
+        songsRepository: SongsRepository,
         artistsRepository: ArtistsRepository,
         appDispatchers: AppDispatchers
     ): GetHomePageDataUseCase = GetHomePageDataUseCase(

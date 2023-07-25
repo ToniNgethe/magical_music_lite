@@ -20,7 +20,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.core_navigation.UiEvent
 import com.magicalmusic.core_design.MargicalMusicAppTheme
 import com.magicalmusic.core_design.shared_components.HomePageHeader
-import com.toni.margicalmusic.presentation.ui.CustomSearchField
+import com.magicalmusic.core_design.shared_components.CustomSearchField
 
 @Composable
 fun ArtistsView(
